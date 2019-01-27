@@ -1,17 +1,17 @@
 # Site settings
-title: A blog about lorem ipsum dolor sit amet
-description: A blog about lorem ipsum dolor sit amet
-# baseurl: "/particle" # the subpath of your site, e.g. /blog
-# url: "localhost:3000" # the base hostname & protocol for your site e.g. http://willianjusten.com.br
+title: Hello I am Twarit Waikar
+description: My portfolio
+baseurl: "/particle" # the subpath of your site, e.g. /blog
+url: "" # the base hostname & protocol for your site e.g. http://willianjusten.com.br
 
 # User settings
-username: Anon Developer
-user_description: Bicycle rights irony actually neutra typewriter lyft. Man bun taxidermy put a bird on it, umami yr ramps pop-up ugh bushwick chia lo-fi. Occupy bitters pour-over snackwave you probably haven't heard of them small batch. Cornhole mustache man bun letterpress echo park VHS.
-user_title: Software Developer
-email: anon@anon.com
-twitter_username: lorem_ipsum
-github_username:  lorem_ipsum
-gplus_username:  lorem_ipsum
+username: Twarit Waikar
+user_description: I am a game developer specialising in engine programming and gameplay systems in C++ with interest in web development, information security and game designing.
+user_title: Game & Software Developer
+email: wtwarit@gmail.com
+twitter_username: TwaritW
+github_username:  IronicallySerious
+gplus_username:  Twarit-Waikar
 
 # Google-analytics
 google-analytics:
