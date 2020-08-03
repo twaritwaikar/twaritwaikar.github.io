@@ -13,13 +13,13 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       },
       "color": {
-        "value": "#ffffff"
+        "value": "#2dc462"
       },
       "shape": {
         "type": "polygon",
         "stroke": {
-          "width": 0,
-          "color": "#000000"
+          "width": 2,
+          "color": "#a9dbbb"
         },
         "polygon": {
           "nb_sides": 5
@@ -53,9 +53,9 @@ document.addEventListener("DOMContentLoaded", function () {
       "line_linked": {
         "enable": true,
         "distance": 150,
-        "color": "#ffffff",
-        "opacity": 0.4,
-        "width": 1
+        "color": "#000000",
+        "opacity": 1,
+        "width": 3
       },
       "move": {
         "enable": true,
