@@ -19,6 +19,23 @@ Here are some of my projects that I am the most proud of.
 
 ---
 
+## [Version Control System Integration in Google Summer of Code 2019 at Godot Engine](/2020/08/04/gsoc-godot-engine/)
+
+<img src="/assets/godot.png" width=300em>
+<img src="/assets/gsoc.png" width=300em>
+
+**Google Summer of Code 2019** is a program conducted by Google which allows open-source organization to hire students to work on their projects related to the organization for around 3 months. This program is sponsored by Google.
+
+My proposal for adding a version control system integration was selected by the [Godot Engine organization](https://godotengine.org/){:target="_blank"} which maintains the fully-featured and fully open-sourced C++ based game engine. I am now maintaining the VCS integration feature in the Godot Engine organization.
+
+* [View details](/2020/08/04/gsoc-godot-engine/)
+* [View official Godot Engine news blog post](https://godotengine.org/article/gsoc-2019-progress-report-3#vcs-integration){:target="_blank"}
+* [View plugin code](https://github.com/godotengine/godot-git-plugin){:target="_blank"}
+* [View feature code](https://github.com/godotengine/godot/pull/31461){:target="_blank"}
+* [View documentation](https://github.com/godotengine/godot-git-plugin/wiki){:target="_blank"}
+
+---
+
 ## [Rubeus 2D Game Engine](/2020/08/03/rubeus-engine/)
 
 <img src="/assets/rubeus.png" width=250em>

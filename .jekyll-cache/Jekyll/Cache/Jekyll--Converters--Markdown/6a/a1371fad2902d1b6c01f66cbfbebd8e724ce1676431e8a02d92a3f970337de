@@ -1,0 +1,30 @@
+I"*<p><img src="/assets/godot.png" />
+<img src="/assets/gsoc.png" /></p>
+
+<ul>
+  <li><a href="https://github.com/sdslabs/Rootex" target="_blank">View code</a></li>
+  <li><a href="https://rootex.readthedocs.io/" target="_blank">View documentation</a></li>
+</ul>
+
+<p><strong>Google Summer of Code 2019</strong> is a program conducted by Google which allows open-source organization to hire students to work on their projects related to the organization for around 3 months. This program is sponsored by Google.</p>
+
+<p>My proposal for adding a version control system integration was selected by the <a href="https://godotengine.org/" target="_blank">Godot Engine organization</a> which maintains the fully-featured and fully open-sourced C++ based game engine. I am now maintaining the VCS integration feature in the Godot Engine organization.</p>
+
+<h2 id="features">Features</h2>
+
+<ul>
+  <li>Ability to stage files from Godot Editor UI</li>
+  <li>Ability to commit staged files</li>
+  <li>Ability to view diffs of modified files from UI</li>
+</ul>
+
+<h2 id="tech-stack">Tech Stack</h2>
+
+<ul>
+  <li>C++ with C interop</li>
+  <li><a href="https://docs.godotengine.org/en/stable/tutorials/plugins/gdnative/gdnative-cpp-example.html">GDNative</a> with GDNative API for C++</li>
+  <li><a href="https://libgit2.org/">libgit2</a>, a C library that simulates Git in code.</li>
+</ul>
+
+<p>Godot Engine is maintained by the <a href="https://godotengine.org/">Godot Engine organization</a> and I am maintaining the VCS integration feature and plugin included in the Godot Editor as of v3.2.</p>
+:ET
