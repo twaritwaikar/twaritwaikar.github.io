@@ -9,8 +9,6 @@ Here are some of my projects that I am the most proud of.
 
 ## [Rootex 3D Game Engine](/2020/08/04/rootex-engine/)
 
-<img src="/assets/rootex.png" width=100em>
-
 **Rootex Engine** is an advanced 3D game engine written in C++ made by a small team which I am leading at a programming club named [SDSLabs at IIT Roorkee](https://sdslabs.co/){:target="_blank"}. Rootex is supporting a work-in-progress game, which is planned to be released in 2021. It comes with an editor written also in C++ using [Dear ImGui](https://github.com/ocornut/imgui){:target="_blank"}.
 
 * [View details](/2020/08/04/rootex-engine/)
@@ -21,8 +19,8 @@ Here are some of my projects that I am the most proud of.
 
 ## [Version Control System Integration in Google Summer of Code 2019 at Godot Engine](/2020/08/04/gsoc-godot-engine/)
 
-<img src="/assets/godot.png" width=300em>
-<img src="/assets/gsoc.png" width=300em>
+![](/assets/godot.png)
+![](/assets/gsoc.png)
 
 **Google Summer of Code 2019** is a program conducted by Google which allows open-source organization to hire students to work on their projects related to the organization for around 3 months. This program is sponsored by Google.
 
@@ -38,7 +36,7 @@ My proposal for adding a version control system integration was selected by the 
 
 ## [Rubeus 2D Game Engine](/2020/08/03/rubeus-engine/)
 
-<img src="/assets/rubeus.png" width=250em>
+![](/assets/rubeus.png)
 
 **Rubeus Engine** is a simple, cross-platform, 2D game engine written in C++17 using OpenGL 3.3. The main objective of making this engine is to provide a simple and fast API to help people realize their game ideas efficiently. I was the original author of the v1.0 release.
 
@@ -51,7 +49,7 @@ My proposal for adding a version control system integration was selected by the 
 
 ## [G for Golf Game + VR Edition](/2020/08/02/g-for-golf/)
 
-<img src="/assets/g_for_golf.png" width=250em>
+![](/assets/g_for_golf.png)
 
 **G for Golf** is a golf game but with a twist. The player controls the ball's gravity and not the ball directly, which means they have the complete control of the ball in 3D space.
 
