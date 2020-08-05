@@ -1,0 +1,35 @@
+I"z<p><img src="/assets/g_for_golf.png" alt="" /></p>
+
+<ul>
+  <li><a href="https://gamejolt.com/games/gforgolf/307491" target="_blank">View release page</a></li>
+  <li><a href="https://github.com/sdswoc/g-for-Golf" target="_blank">View code</a></li>
+</ul>
+
+<p><strong>G for Golf</strong> is a golf game but with a twist. The player controls the ball’s gravity and not the ball directly, which means they have the complete control of the ball in 3D space.</p>
+
+<p><strong>Also I have VR edition for this game</strong>, which won prizes in multiple hackathons and exhibitions. Created in Unreal Engine 4.</p>
+
+<p>The game was released with 3 levels. And each level explored a different aspect of the game design possibilities in this idea.</p>
+
+<p><img src="/assets/g_for_golf_1.png" alt="" />
+<img src="/assets/g_for_golf_2.png" alt="" />
+<img src="/assets/g_for_golf_4.png" alt="" />
+<img src="/assets/g_for_golf_3.png" alt="" /></p>
+
+<h2 id="main-features">Main features</h2>
+
+<ul>
+  <li>Special VR Edition also released</li>
+  <li>Bright and colourful music and ambience</li>
+  <li>Unique gameplay explored in depth with a simple interface</li>
+</ul>
+
+<h2 id="tech-stack">Tech stack</h2>
+
+<ul>
+  <li>Language: Unreal Engine Blueprints</li>
+  <li>Unreal Engine 4</li>
+</ul>
+
+<p>This project was created during the SDS Winter of Code 2017 under the mentorship of SDS members who are now my seniors.</p>
+:ET

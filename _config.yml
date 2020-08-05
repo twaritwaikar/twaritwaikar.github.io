@@ -1,20 +1,38 @@
-# Site settings
-title: Hello I am Twarit Waikar
-description: My portfolio
-# baseurl: "/particle" # the subpath of your site, e.g. /blog
-# url: "" # the base hostname & protocol for your site e.g. http://willianjusten.com.br
+# Dependencies
+markdown:         kramdown
+highlighter:      pygments
+gems: [jekyll-gist]
 
-# User settings
-username: Twarit Waikar
-user_description: Software and game developer specialising in low level systems including engine programming and gameplay systems in C++ with interest in game designing, VR development, information security, and listening to lo-fi music.
-user_title: Software Developer
-email: wtwarit@gmail.com
-twitter_username: TwaritW
-github_username:  IronicallySerious
-gplus_username:  Twarit-Waikar
+# Permalinks
+permalink:        pretty
+#relative_permalinks: true
 
-# Google-analytics
-google-analytics:
-  id: ""
+plugins:
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-gist
+  - jekyll-feed
+  - jemoji
+  - jekyll-include-cache
 
-exclude: ['package.json', 'src' , 'node_modules']
+# Setup
+title:            Twarit Waikar
+tagline:          'Portfolio'
+description:      'Systems programmer, Senior at B.Tech (CSE) IIT Roorkee'
+url:              https://ironicallyserious.github.io/
+baseurl:          /
+
+author:
+  name:           'Mark Otto'
+  url:            https://twitter.com/mdo
+
+paginate:         5
+
+# Custom vars
+version:          2.1.0
+
+github:
+  repo:           https://github.com/poole/hyde
+
+assets:
+  resume:         /assets/Twarit_Waikar_Resume.pdf/

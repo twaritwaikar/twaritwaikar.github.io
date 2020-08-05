@@ -1,0 +1,29 @@
+I" <ul>
+  <li><a href="https://github.com/sdslabs/Rootex" target="_blank">View code</a></li>
+  <li><a href="https://rootex.readthedocs.io/" target="_blank">View documentation</a></li>
+</ul>
+
+<p><strong>Rootex Engine</strong> is an advanced 3D game engine written in C++ made by a small team which I am leading at <a href="https://sdslabs.co/" target="_blank">SDSLabs, IIT Roorkee</a>. Rootex is supporting a work-in-progress game, which is planned to be released in 2021. It comes with an editor written also in C++ using <a href="https://github.com/ocornut/imgui" target="_blank">Dear ImGui</a>.</p>
+
+<p><img src="/assets/rootex_editor_sponza.png" alt="Rootex Editor Sponza Screenshot" /></p>
+
+<p>Rootex uses a modified version of the Entity-Component-System architecture, now popular in the game development world because its ease of use, modularity and performance boost thanks to better CPU cache usage.</p>
+
+<p><img src="/assets/rootex_editor_gif.gif" alt="Rootex Editor Editor Gif" /></p>
+
+<p>Rootex uses DirectX 11 as its rendering backend and we keep adding rendering effects to it like dynamic phong lighting, particles effects, etc.</p>
+
+<p><img src="/assets/rootex_physics_gif.gif" alt="Rootex Editor Physics Gif" /></p>
+
+<p>Rootex has integrated <a href="https://github.com/bulletphysics/bullet3" target="_blank">Bullet 3D Physics SDK</a> and uses it to simulate and visualize real-life-like physics in the game world.</p>
+
+<h2 id="other-features">Other features</h2>
+
+<ul>
+  <li>Audio Engine based on OpenAL with 3D attenuation</li>
+  <li>Lua scripting API exposed for faster gameplay development iterations</li>
+  <li>Event based programming model used in both internal functions and gameplay functions</li>
+</ul>
+
+<p>Rootex has been designed and developed completely inside <a href="https://sdslabs.co/" target="_blank">SDSLabs, IIT Roorkee</a> and has been documented <a href="https://rootex.readthedocs.io/" target="_blank">here</a>.</p>
+:ET

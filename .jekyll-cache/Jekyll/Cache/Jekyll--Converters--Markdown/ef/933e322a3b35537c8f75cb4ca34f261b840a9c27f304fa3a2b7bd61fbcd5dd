@@ -1,0 +1,15 @@
+I"Ó<ul>
+  <li><a href="https://github.com/sdslabs/Rootex" target="_blank">View code</a></li>
+  <li><a href="https://rootex.readthedocs.io/" target="_blank">View documentation</a></li>
+</ul>
+
+<p><strong>Rootex Engine</strong> is an advanced 3D game engine written in C++ made by a small team which I am leading at <a href="https://sdslabs.co/">SDSLabs, IIT Roorkee</a>. Rootex is supporting a work-in-progress game, which is planned to be released in 2021. It comes with an editor written also in C++ using <a href="https://github.com/ocornut/imgui">Dear ImGui</a>.</p>
+
+<p><img src="/assets/rootex_editor_sponza.png" alt="Rootex Editor Sponza Screenshot" /></p>
+
+<p><img src="/assets/rootex_editor_gif.gif" alt="Rootex Editor Editor Gif" /></p>
+
+<p>Rootex uses DirectX 11 as its rendering backend and we keep adding rendering effects to it like dynamic phong lighting, particles effects, etc.</p>
+
+<p><img src="/assets/rootex_physics_gif.gif" alt="Rootex Editor Physics Gif" /></p>
+:ET

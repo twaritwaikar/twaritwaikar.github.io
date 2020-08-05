@@ -1,0 +1,12 @@
+I"Ÿ<p>Here are some of my projects that I am the most proud of.</p>
+
+<h2 id="rootex-3d-game-engine">Rootex 3D Game Engine</h2>
+
+<p><img src="/assets/rootex.png" width="32px" /></p>
+
+<ul>
+  <li><a href="% post_url 2020-08-04-rootex-engine.md %">View blog post</a></li>
+  <li><a href="https://github.com/sdslabs/Rootex">View code</a></li>
+  <li><a href="https://rootex.readthedocs.io/">View documentation</a></li>
+</ul>
+:ET

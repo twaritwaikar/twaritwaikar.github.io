@@ -1,0 +1,41 @@
+I"¶	<p><img src="/assets/rubeus.png" alt="" /></p>
+
+<ul>
+  <li><a href="https://github.com/sdslabs/Rubeus" target="_blank">View code</a></li>
+  <li><a href="https://github.com/sdslabs/Rubeus/wiki" target="_blank">View user guides</a></li>
+  <li><a href="https://blog.sdslabs.co/Rubeus-Docs/html/index.html" target="_blank">View API documentation</a></li>
+  <li><a href="https://blog.sdslabs.co/2018/12/making-a-game-engine-from-scratch" target="_blank">View SDSLabs v1.0 release blog</a></li>
+  <li><a href="https://blog.sdslabs.co/2019/10/announcing-rubeus-engine-2" target="_blank">View SDSLabs v2.0 release blog</a></li>
+</ul>
+
+<p>A simple, cross-platform, 2D game engine written in C++17 using OpenGL 3.3. The main objective of making this engine is to provide a simple and fast API to help people realize their game ideas efficiently. I was the original author of the v1.0 release.</p>
+
+<p><img src="/assets/rubeus_render.png" alt="Rubeus rendered image" /></p>
+
+<p>Rubeus uses <a href="https://github.com/sdslabs/broCLI">broCLI</a>, a Go based CLI tool that helps create the project structure for using Rubeus. broCLI was later superceded by a separate project manager released with Rubeus v2.0.</p>
+
+<p><a href="https://blog.sdslabs.co/2018/12/making-a-game-engine-from-scratch" target="_blank">Rubeus v1.0 was released</a> on 22nd December 2018 and around 10 months later on October 13th 2019, <a href="https://blog.sdslabs.co/2019/10/announcing-rubeus-engine-2" target="_blank">Rubeus v2.0 was launched</a>.</p>
+
+<h2 id="main-features">Main features</h2>
+
+<ul>
+  <li>Colour and image textured 2D sprites</li>
+  <li>Collision detection and resolution of boxes, circles and planes.</li>
+  <li>Cueing music and sound effects with a single line of code.</li>
+  <li>Taking user inputs through mouse and keyboard.</li>
+  <li>Easy first look CLI interface for a beginner.</li>
+</ul>
+
+<h2 id="tech-stack">Tech stack</h2>
+
+<ul>
+  <li>Language: C++17</li>
+  <li>GLFW with OpenGL 3.3 for 2D rendering and cross-platform input and window management</li>
+  <li>SFML for audio</li>
+  <li>DevIL for image loading and manipulations</li>
+  <li>Dear ImGui for project manager UI released in v2.0</li>
+  <li>and some other utility libraries</li>
+</ul>
+
+<p>Rubeus has been designed and developed completely inside <a href="https://sdslabs.co/" target="_blank">SDSLabs, IIT Roorkee</a> and has been documented <a href="https://blog.sdslabs.co/Rubeus-Docs/html/index.html" target="_blank">here</a>.</p>
+:ET

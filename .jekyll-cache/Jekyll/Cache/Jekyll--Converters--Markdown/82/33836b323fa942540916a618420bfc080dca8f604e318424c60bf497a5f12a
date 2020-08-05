@@ -1,0 +1,27 @@
+I"#<p>Here are some of my projects that I am the most proud of.</p>
+
+<hr />
+
+<h2 id="rootex-3d-game-engine"><a href="/2020/08/04/rootex-engine/">Rootex 3D Game Engine</a></h2>
+
+<p><img src="/assets/rootex.png" width="100em" /></p>
+
+<ul>
+  <li><a href="/2020/08/04/rootex-engine/">View blog post</a></li>
+  <li><a href="https://github.com/sdslabs/Rootex" target="_blank">View code</a></li>
+  <li><a href="https://rootex.readthedocs.io/" target="_blank">View documentation</a></li>
+</ul>
+
+<hr />
+
+<h2 id="rubeus-2d-game-engine"><a href="/2020/08/03/rubeus-engine/">Rubeus 2D Game Engine</a></h2>
+
+<p><img src="/assets/rubeus.png" width="250em" /></p>
+
+<ul>
+  <li><a href="/2020/08/04/rubeus-engine/">View blog post</a></li>
+  <li><a href="https://blog.sdslabs.co/2018/12/making-a-game-engine-from-scratch" target="_blank">View the SDSLabs release blog</a></li>
+  <li><a href="https://github.com/sdslabs/Rubeus" target="_blank">View code</a></li>
+  <li><a href="https://blog.sdslabs.co/Rubeus-Docs/html/index.html" target="_blank">View documentation</a></li>
+</ul>
+:ET
