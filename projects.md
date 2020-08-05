@@ -19,9 +19,6 @@ Here are some of my projects that I am the most proud of.
 
 ## [Version Control System Integration in Google Summer of Code 2019 at Godot Engine](/2020/08/04/gsoc-godot-engine/)
 
-![](/assets/godot.png)
-![](/assets/gsoc.png)
-
 **Google Summer of Code 2019** is a program conducted by Google which allows open-source organization to hire students to work on their projects related to the organization for around 3 months. This program is sponsored by Google.
 
 My proposal for adding a version control system integration was selected by the [Godot Engine organization](https://godotengine.org/){:target="_blank"} which maintains the fully-featured and fully open-sourced C++ based game engine. I am now maintaining the VCS integration feature in the Godot Engine organization.
@@ -36,8 +33,6 @@ My proposal for adding a version control system integration was selected by the 
 
 ## [Rubeus 2D Game Engine](/2020/08/03/rubeus-engine/)
 
-![](/assets/rubeus.png)
-
 **Rubeus Engine** is a simple, cross-platform, 2D game engine written in C++17 using OpenGL 3.3. The main objective of making this engine is to provide a simple and fast API to help people realize their game ideas efficiently. I was the original author of the v1.0 release.
 
 * [View details](/2020/08/03/rubeus-engine/)
@@ -48,8 +43,6 @@ My proposal for adding a version control system integration was selected by the 
 ---
 
 ## [G for Golf Game + VR Edition](/2020/08/02/g-for-golf/)
-
-![](/assets/g_for_golf.png)
 
 **G for Golf** is a golf game but with a twist. The player controls the ball's gravity and not the ball directly, which means they have the complete control of the ball in 3D space.
 
