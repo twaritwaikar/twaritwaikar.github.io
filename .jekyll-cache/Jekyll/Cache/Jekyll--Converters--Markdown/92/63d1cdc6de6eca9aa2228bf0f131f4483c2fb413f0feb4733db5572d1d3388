@@ -1,10 +1,8 @@
-I"Þ<p>Here are some of my projects that I am the most proud of.</p>
+I"Ò<p>Here are some of my projects that I am the most proud of.</p>
 
 <hr />
 
 <h2 id="rootex-3d-game-engine"><a href="/2020/08/04/rootex-engine/">Rootex 3D Game Engine</a></h2>
-
-<p><img src="/assets/rootex.png" width="100em" /></p>
 
 <p><strong>Rootex Engine</strong> is an advanced 3D game engine written in C++ made by a small team which I am leading at a programming club named <a href="https://sdslabs.co/" target="_blank">SDSLabs at IIT Roorkee</a>. Rootex is supporting a work-in-progress game, which is planned to be released in 2021. It comes with an editor written also in C++ using <a href="https://github.com/ocornut/imgui" target="_blank">Dear ImGui</a>.</p>
 
@@ -17,9 +15,6 @@
 <hr />
 
 <h2 id="version-control-system-integration-in-google-summer-of-code-2019-at-godot-engine"><a href="/2020/08/04/gsoc-godot-engine/">Version Control System Integration in Google Summer of Code 2019 at Godot Engine</a></h2>
-
-<p><img src="/assets/godot.png" width="300em" />
-<img src="/assets/gsoc.png" width="300em" /></p>
 
 <p><strong>Google Summer of Code 2019</strong> is a program conducted by Google which allows open-source organization to hire students to work on their projects related to the organization for around 3 months. This program is sponsored by Google.</p>
 
@@ -37,8 +32,6 @@
 
 <h2 id="rubeus-2d-game-engine"><a href="/2020/08/03/rubeus-engine/">Rubeus 2D Game Engine</a></h2>
 
-<p><img src="/assets/rubeus.png" width="250em" /></p>
-
 <p><strong>Rubeus Engine</strong> is a simple, cross-platform, 2D game engine written in C++17 using OpenGL 3.3. The main objective of making this engine is to provide a simple and fast API to help people realize their game ideas efficiently. I was the original author of the v1.0 release.</p>
 
 <ul>
@@ -51,8 +44,6 @@
 <hr />
 
 <h2 id="g-for-golf-game--vr-edition"><a href="/2020/08/02/g-for-golf/">G for Golf Game + VR Edition</a></h2>
-
-<p><img src="/assets/g_for_golf.png" width="250em" /></p>
 
 <p><strong>G for Golf</strong> is a golf game but with a twist. The player controls the ballâ€™s gravity and not the ball directly, which means they have the complete control of the ball in 3D space.</p>
 
