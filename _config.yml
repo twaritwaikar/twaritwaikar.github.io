@@ -19,8 +19,8 @@ plugins:
 title:            Twarit Waikar
 tagline:          'Portfolio'
 description:      'Systems programmer, Senior at B.Tech (CSE) IIT Roorkee'
-url:              https://ironicallyserious.github.io/
-baseurl:          https://ironicallyserious.github.io/
+url:              https://chronicallyserious.github.io/
+baseurl:          https://chronicallyserious.github.io/
 
 author:
   name:           'Mark Otto'
