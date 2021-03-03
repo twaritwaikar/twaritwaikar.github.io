@@ -12,7 +12,7 @@ title: Rootex 3D Game Engine
 
 ## Features
 
-![Rootex Editor Sponza Screenshot](/assets/rootex_editor_sponza.png)
+![Rootex Editor Sponza Screenshot](/assets/rootex_editor_sponza_gif.gif)
 
 Rootex uses a modified version of the Entity-Component-System architecture, now popular in the game development world because its ease of use, modularity and performance boost thanks to better CPU cache usage.
 
