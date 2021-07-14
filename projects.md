@@ -9,7 +9,7 @@ Here are some of my projects that I am the most proud of.
 
 ## [Rootex 3D Game Engine](/2020/08/04/rootex-engine/)
 
-**Rootex Engine** is an advanced 3D game engine written in C++ made by a small team which I am leading at a programming club named [SDSLabs at IIT Roorkee](https://sdslabs.co/){:target="_blank"}. Rootex is supporting a work-in-progress game, which is planned to be released in 2021. It comes with an editor written also in C++ using [Dear ImGui](https://github.com/ocornut/imgui){:target="_blank"}.
+**Rootex Engine** is an advanced 3D game engine written in C++ made by a small team which I led at a programming club named [SDSLabs at IIT Roorkee](https://sdslabs.co/){:target="_blank"}. Rootex is supporting a work-in-progress game, which is planned to be released in 2021. It comes with an editor written also in C++ using [Dear ImGui](https://github.com/ocornut/imgui){:target="_blank"}.
 
 * [View details](/2020/08/04/rootex-engine/)
 * [View code](https://github.com/sdslabs/Rootex){:target="_blank"}
