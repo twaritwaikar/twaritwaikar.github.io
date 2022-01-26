@@ -5,11 +5,11 @@ title: About
 
 Hello, I am Twarit Waikar.
 
-I am currently doing my Bachelor in Computer Science and Engineering degree from Indian Institute of Technology Roorkee (expected 2021). You can see my resume [here](/assets/Twarit_Waikar_Resume.pdf){:target="_blank"}.
+Currently I am working at Salesforce as a software engineer and I completed my B.Tech in Computer Science and Engineering degree from Indian Institute of Technology Roorkee in 2021. You can view my resume here{:target="_blank"}.
 
-In my free time I work on my projects and read about operating systems, computer graphics, game development (including virtual reality), and general systems programming.
+I quite like reading about operating systems, cloud, computer graphics, game development (including virtual reality), and also just high performance low level systems programming in general.
 
-I am a part of IIT Roorkee's programming group known as [SDSLabs](sdslabs.co){:target="_blank"} where we build all our large-scale projects and IIT Roorkee's technical magazine group called [Geek Gazette](https://geekgazette.iitr.ac.in/){:target="_blank"} where I usually help them design their magazines.
+I was a part of IIT Roorkee's programming group known as [SDSLabs](sdslabs.co){:target="_blank"} where we built all our large-scale projects. I also helped with IIT Roorkee's technical magazine group called [Geek Gazette](https://geekgazette.iitr.ac.in/){:target="_blank"} by co-leading the design team.
 
 During the past few years I have done internships in the field of cloud infrastructure management and simulations based on road traffic.
 
