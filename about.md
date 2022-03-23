@@ -5,7 +5,7 @@ title: About
 
 Hello, I am Twarit Waikar.
 
-Currently I am working at Salesforce as a software engineer and I completed my B.Tech in Computer Science and Engineering degree from Indian Institute of Technology Roorkee in 2021. You can view my resume here{:target="_blank"}.
+Currently I am working at Salesforce as a software engineer and I completed my B.Tech in Computer Science and Engineering degree from Indian Institute of Technology Roorkee in 2021. You can take a look at my [resume](https://chronicallyserious.github.io/assets/Twarit_Waikar_Resume.pdf){:target="_blank"}.
 
 I quite like reading about operating systems, cloud, computer graphics, game development (including virtual reality), and also just high performance low level systems programming in general.
 
