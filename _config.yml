@@ -1,10 +1,10 @@
 # Dependencies
-markdown:         kramdown
-highlighter:      pygments
+markdown: kramdown
+highlighter: pygments
 gems: [jekyll-gist]
 
 # Permalinks
-permalink:        pretty
+permalink: pretty
 #relative_permalinks: true
 
 plugins:
@@ -16,23 +16,23 @@ plugins:
   - jekyll-include-cache
 
 # Setup
-title:            Twarit Waikar
-tagline:          'Portfolio'
-description:      'Software Engineer at Salesforce'
-url:              https://chronicallyserious.github.io/
-baseurl:          https://chronicallyserious.github.io/
+title: Twarit Waikar
+tagline: "Portfolio"
+description: "Software Engineer at Salesforce"
+url: https://twaritwaikar.github.io/
+baseurl: https://twaritwaikar.github.io/
 
 author:
-  name:           'Mark Otto'
-  url:            https://twitter.com/mdo
+  name: "Mark Otto"
+  url: https://twitter.com/mdo
 
-paginate:         5
+paginate: 5
 
 # Custom vars
-version:          2.1.0
+version: 2.1.0
 
 github:
-  repo:           https://github.com/poole/hyde
+  repo: https://github.com/poole/hyde
 
 assets:
-  resume:         /assets/Twarit_Waikar_Resume.pdf
+  resume: /assets/Twarit_Waikar_Resume.pdf
