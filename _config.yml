@@ -19,8 +19,8 @@ plugins:
 title: Twarit Waikar
 tagline: "Portfolio"
 description: "Software Engineer at Salesforce"
-url: https://twaritwaikar.github.io/
-baseurl: https://twaritwaikar.github.io/
+url: https://twarit.cc
+baseurl: /
 
 author:
   name: "Mark Otto"
