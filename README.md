@@ -1,118 +1,110 @@
-# Hyde
+# twarit.cc
 
-Hyde is a brazen two-column [Jekyll](http://jekyllrb.com) theme that pairs a prominent sidebar with uncomplicated content. It's based on [Poole](http://getpoole.com), the Jekyll butler.
+Personal site for [Twarit Waikar](https://twarit.cc). Brutalist React/Vite frontend. All copy lives in markdown under `content/`.
 
-![Hyde screenshot](https://f.cloud.github.com/assets/98681/1831228/42af6c6a-7384-11e3-98fb-e0b923ee0468.png)
+## Local
 
-
-## Contents
-
-- [Usage](#usage)
-- [Options](#options)
-  - [Sidebar menu](#sidebar-menu)
-  - [Sticky sidebar content](#sticky-sidebar-content)
-  - [Themes](#themes)
-  - [Reverse layout](#reverse-layout)
-- [Development](#development)
-- [Author](#author)
-- [License](#license)
-
-
-## Usage
-
-Hyde is a theme built on top of [Poole](https://github.com/poole/poole), which provides a fully furnished Jekyll setup—just download and start the Jekyll server. See [the Poole usage guidelines](https://github.com/poole/poole#usage) for how to install and use Jekyll.
-
-
-## Options
-
-Hyde includes some customizable options, typically applied via classes on the `<body>` element.
-
-
-### Sidebar menu
-
-Create a list of nav links in the sidebar by assigning each Jekyll page the correct layout in the page's [front-matter](http://jekyllrb.com/docs/frontmatter/).
-
+```bash
+npm install
+npm run dev
 ```
+
+Opens at http://localhost:3000/. Markdown edits hot-reload.
+
+```bash
+npm run build
+npm run preview
+```
+
+## Adding content
+
+You should not need to touch React for new copy. Edit files in `content/`.
+
+### Profile, site, contact, stack
+
+| File | Purpose |
+| --- | --- |
+| `content/site.md` | Brand, email, social URLs, avatar, resume path, footer, home tiles |
+| `content/profile.md` | Name, role, tagline, bio, education, terminal boot lines |
+| `content/contact.md` | Contact heading and intro |
+| `content/stack.md` | Tech list. Use `## Category` then `- item` |
+
+`site.md` and `profile.md` use YAML front matter between `---` fences. The markdown body of `profile.md` is the bio (paragraphs, links, bold).
+
+### New job / experience
+
+Add `content/experience/06-short-name.md`. Filename order is display order (`01-` first).
+
+```markdown
 ---
-layout: page
-title: About
+period: 2024—PRES
+role: Title
+company: Company
+location: CITY
 ---
+
+- Bullet one
+- Bullet two
 ```
 
-**Why require a specific layout?** Jekyll will return *all* pages, including the `atom.xml`, and with an alphabetical sort order. To ensure the first link is *Home*, we exclude the `index.html` page from this list by specifying the `page` layout.
+If you skip bullets, the body is used as a paragraph.
 
+### New project
 
-### Sticky sidebar content
+Add `content/projects/06-short-name.md`. Lower numbers appear first. The first paragraph is the card blurb. The rest of the body is the detail modal (headings, lists, links, images).
 
-By default Hyde ships with a sidebar that affixes it's content to the bottom of the sidebar. You can optionally disable this by removing the `.sidebar-sticky` class from the sidebar's `.container`. Sidebar content will then normally flow from top to bottom.
+```markdown
+---
+id: my-tool
+filename: my-tool.cpp
+title: My Tool
+version: v1.0.0
+status: LIVE
+featured: false
+role: AUTHOR
+stack_line: C++, RUST
+tags: [C++, RUST]
+source: https://github.com/you/my-tool
+source_label: SOURCE
+live: https://example.com
+live_label: LIVE
+images:
+  - /assets/my-tool.png
+links:
+  - Extra writeup|https://example.com/blog
+architecture: One-line architecture note
+highlights:
+  - Highlight one
+  - Highlight two
+---
 
-```html
-<!-- Default sidebar -->
-<div class="sidebar">
-  <div class="container sidebar-sticky">
-    ...
-  </div>
-</div>
+Short card description goes here.
 
-<!-- Modified sidebar -->
-<div class="sidebar">
-  <div class="container">
-    ...
-  </div>
-</div>
+## Details
+
+Longer story, lists, and `code` all work in the modal.
+
+![Screenshot](/assets/my-tool.png)
 ```
 
+`status` may be `LIVE`, `OFFLINE`, `PRIVATE`, or `BUILD_FAIL`.
 
-### Themes
+Set `featured: true` on exactly one project to pin it on the home "latest deployment" card.
 
-Hyde ships with eight optional themes based on the [base16 color scheme](https://github.com/chriskempson/base16). Apply a theme to change the color scheme (mostly applies to sidebar and links).
+Put screenshots in `public/assets/` and reference them as `/assets/filename.png`.
 
-![Hyde in red](https://f.cloud.github.com/assets/98681/1831229/42b0b354-7384-11e3-8462-31b8df193fe5.png)
+An optional fenced code block at the **end** of the file becomes the snippet in the project modal:
 
-There are eight themes available at this time.
-
-![Hyde theme classes](https://f.cloud.github.com/assets/98681/1817044/e5b0ec06-6f68-11e3-83d7-acd1942797a1.png)
-
-To use a theme, add anyone of the available theme classes to the `<body>` element in the `default.html` layout, like so:
-
-```html
-<body class="theme-base-08">
-  ...
-</body>
+````markdown
+```cpp
+int main() { return 0; }
 ```
+````
 
-To create your own theme, look to the Themes section of [included CSS file](https://github.com/poole/hyde/blob/master/public/css/hyde.css). Copy any existing theme (they're only a few lines of CSS), rename it, and change the provided colors.
+### Resume PDF
 
-### Reverse layout
+Replace `public/assets/Twarit_Waikar_Resume.pdf` and keep `resume:` in `content/site.md` pointing at that path.
 
-![Hyde with reverse layout](https://f.cloud.github.com/assets/98681/1831230/42b0d3ac-7384-11e3-8d54-2065afd03f9e.png)
+## Deploy
 
-Hyde's page orientation can be reversed with a single class.
-
-```html
-<body class="layout-reverse">
-  ...
-</body>
-```
-
-
-## Development
-
-Hyde has two branches, but only one is used for active development.
-
-- `master` for development.  **All pull requests should be submitted against `master`.**
-- `gh-pages` for our hosted site, which includes our analytics tracking code. **Please avoid using this branch.**
-
-
-## Author
-
-**Mark Otto**
-- <https://github.com/mdo>
-- <https://twitter.com/mdo>
-
-
-## License
-
-Open sourced under the [MIT license](LICENSE.md).
-
-<3
+Pushes to `master` build with GitHub Actions and publish to GitHub Pages (custom domain `twarit.cc`).
