@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { PORTFOLIO_DATA } from '../data/portfolioData';
-import { X, Check, Copy, Play } from 'lucide-react';
+import { X, Check, Copy, Play, ExternalLink } from 'lucide-react';
 import { MarkdownArticle } from './MarkdownArticle';
 
 interface ProjectDetailModalProps {
@@ -52,6 +52,22 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
     }, 1100);
   };
 
+  const popupLinks = (() => {
+    const seen = new Set<string>();
+    const links: { label: string; url: string }[] = [];
+    const push = (label: string, url?: string) => {
+      if (!url || seen.has(url)) return;
+      seen.add(url);
+      links.push({ label, url });
+    };
+    for (const link of project.links || []) {
+      push(link.label, link.url);
+    }
+    push(project.liveLabel || 'LIVE', project.liveUrl);
+    push(project.sourceLabel || 'SOURCE', project.sourceUrl);
+    return links;
+  })();
+
   return (
     <div
       id="project_modal_backdrop"
@@ -79,6 +95,23 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
           </button>
         </div>
 
+        {popupLinks.length > 0 && (
+          <div className="px-3 sm:px-4 py-2.5 bg-[#111] border-b border-[#262626] flex flex-wrap gap-2 shrink-0">
+            {popupLinks.map((link) => (
+              <a
+                key={link.url}
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="py-1.5 px-3 border border-[#5CE883] text-[#5CE883] hover:bg-[#5CE883] hover:text-black bg-[#161616] flex items-center justify-center gap-1.5 text-xs tracking-wider"
+              >
+                <ExternalLink className="w-3.5 h-3.5 shrink-0" />
+                <span>{link.label}</span>
+              </a>
+            ))}
+          </div>
+        )}
+
         {/* Modal Body */}
         <div className="p-4 sm:p-6 overflow-y-auto space-y-5 text-xs">
           {/* Overview */}
@@ -99,22 +132,6 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
             <div className="space-y-3">
               {project.images.map((src) => (
                 <img key={src} src={src} alt={project.title} className="w-full border border-[#262626]" />
-              ))}
-            </div>
-          )}
-
-          {project.links && project.links.length > 0 && (
-            <div className="flex flex-wrap gap-2">
-              {project.links.map((link) => (
-                <a
-                  key={link.url}
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-2 py-1 border border-[#333] hover:border-[#5CE883] hover:text-[#5CE883] text-[10px] tracking-wider"
-                >
-                  {link.label}
-                </a>
               ))}
             </div>
           )}
