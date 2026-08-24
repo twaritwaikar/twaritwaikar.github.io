@@ -5,6 +5,8 @@ const linkClass =
   'text-accent underline underline-offset-2 hover:opacity-80';
 const codeClass = 'text-accent font-mono text-[0.9em]';
 
+const PROJECT_LINK_PREFIX = '#project-';
+
 function MarkdownLink({
   href,
   children,
@@ -13,13 +15,24 @@ function MarkdownLink({
   children?: React.ReactNode;
 }) {
   const isMail = href?.startsWith('mailto:');
+  const projectId = href?.startsWith(PROJECT_LINK_PREFIX)
+    ? href.slice(PROJECT_LINK_PREFIX.length)
+    : null;
+
   return (
     <a
       href={href}
-      target={isMail ? undefined : '_blank'}
-      rel={isMail ? undefined : 'noopener noreferrer'}
+      target={isMail || projectId ? undefined : '_blank'}
+      rel={isMail || projectId ? undefined : 'noopener noreferrer'}
       className={linkClass}
-      onClick={(event) => event.stopPropagation()}
+      onClick={(event) => {
+        event.stopPropagation();
+        if (!projectId) return;
+        event.preventDefault();
+        window.dispatchEvent(
+          new CustomEvent('portfolio:open-project', { detail: { id: projectId } })
+        );
+      }}
     >
       {children}
     </a>

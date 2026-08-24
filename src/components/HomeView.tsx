@@ -87,7 +87,16 @@ export const HomeView: React.FC<HomeViewProps> = ({
         >
           <div className="px-4 py-2 bg-[#111111] border-b border-[#262626] flex items-center justify-between font-mono text-xs text-neutral-400 shrink-0">
             <span className="group-hover:text-[#5CE883] transition-colors">LATEST_DEPLOYMENT.sh</span>
-            <span className="text-neutral-500">{currentRole?.period}</span>
+            <span className="flex items-center gap-2">
+              <span className="text-neutral-500">{currentRole?.period}</span>
+              <span
+                id="btn_expand_latest_deployment"
+                title="Open details"
+                className="w-7 h-7 border border-[#333333] group-hover:border-[#5CE883] group-hover:text-[#5CE883] bg-[#161616] text-neutral-300 flex items-center justify-center"
+              >
+                <Maximize2 className="w-3.5 h-3.5" />
+              </span>
+            </span>
           </div>
 
           <div className="p-3 sm:p-5 grid grid-cols-1 md:grid-cols-12 gap-4 items-center flex-1 min-h-0">
@@ -173,14 +182,16 @@ export const HomeView: React.FC<HomeViewProps> = ({
               key={exp.id}
               type="button"
               onClick={() => onOpenExperienceModal(exp.id)}
-              className="w-full text-left px-4 py-3 grid grid-cols-1 sm:grid-cols-12 gap-1 sm:gap-4 cursor-pointer hover:bg-[#1a1a1a] transition-colors group"
+              className="w-full text-left px-4 py-2 grid grid-cols-1 sm:grid-cols-12 gap-1 sm:gap-4 sm:items-center cursor-pointer hover:bg-[#1a1a1a] transition-colors group"
             >
-              <span className="sm:col-span-3 font-mono text-[11px] text-neutral-500">{exp.period}</span>
-              <span className="sm:col-span-8 flex flex-col sm:flex-row sm:items-baseline sm:gap-3 min-w-0">
-                <span className="font-mono text-sm font-bold text-white">
+              <span className="sm:col-span-3 font-mono text-[11px] text-neutral-500 leading-none flex items-center">
+                {exp.period}
+              </span>
+              <span className="sm:col-span-8 flex flex-col sm:flex-row sm:items-center sm:gap-3 min-w-0">
+                <span className="font-mono text-sm font-bold text-white leading-none">
                   {exp.role}
                 </span>
-                <span className="font-mono text-xs text-[#5CE883] truncate">
+                <span className="font-mono text-xs text-[#5CE883] truncate leading-none">
                   {exp.company} // {exp.location}
                 </span>
               </span>

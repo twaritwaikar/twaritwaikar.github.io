@@ -7,6 +7,6 @@ company: Godot Engine
 location: REMOTE
 ---
 
-- Built Godot VCS integration so users can version-control projects without leaving the editor.
-- Mentored a feature expansion of the VCS Integration project in Google Summer of Code 2020.
+- Built [Godot VCS](#project-godot-vcs) integration so users can version-control projects without leaving the editor.
+- Mentored a feature expansion of the [Godot VCS](#project-godot-vcs) project in Google Summer of Code 2020.
 - C++, CMake, SCons.

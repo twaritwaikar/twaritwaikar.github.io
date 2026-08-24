@@ -15,19 +15,21 @@ export const ExperienceView: React.FC<ExperienceViewProps> = ({
 
   return (
     <div id="experience_view_container" className="h-auto lg:h-full lg:min-h-0 flex flex-col gap-3 max-w-[1280px] mx-auto overflow-visible lg:overflow-hidden">
-      <section id="experience_header_section" className="space-y-0.5 shrink-0">
-        <div className="flex items-center gap-3">
-          <span className="w-1.5 h-6 sm:h-7 bg-white" />
-          <h1
-            id="experience_heading"
-            className="font-mono text-2xl sm:text-3xl font-extrabold tracking-tight uppercase text-white"
-          >
-            BUILD/EXPERIENCE
-          </h1>
+      <section id="experience_header_section" className="shrink-0">
+        <div className="flex items-stretch gap-3">
+          <span className="w-1.5 bg-white shrink-0" />
+          <div className="flex flex-col justify-center gap-1.5 py-0.5">
+            <h1
+              id="experience_heading"
+              className="font-mono text-2xl sm:text-3xl font-extrabold tracking-tight uppercase text-white leading-none"
+            >
+              BUILD/EXPERIENCE
+            </h1>
+            <p className="font-mono text-xs text-[#5CE883] leading-none">
+              ~ $ cat ./execution_log
+            </p>
+          </div>
         </div>
-        <p className="font-mono text-xs text-[#5CE883] pl-4">
-          ~ $ cat ./execution_log
-        </p>
       </section>
 
       <section
@@ -41,11 +43,18 @@ export const ExperienceView: React.FC<ExperienceViewProps> = ({
 
         <div className="space-y-2 overflow-visible lg:overflow-y-auto min-h-0 pr-1">
           {experience.map((exp) => (
-            <button
-              type="button"
+            <div
+              role="button"
+              tabIndex={0}
               key={exp.id}
               id={`experience_entry_${exp.id}`}
               onClick={() => onOpenExperienceModal(exp.id)}
+              onKeyDown={(event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                  event.preventDefault();
+                  onOpenExperienceModal(exp.id);
+                }
+              }}
               className="group w-full text-left grid grid-cols-1 sm:grid-cols-12 gap-2 sm:gap-4 p-3 border border-transparent hover:border-[#5CE883] cursor-pointer transition-colors hover:bg-[#1a1a1a]"
             >
               <div className="sm:col-span-3 font-mono text-xs text-neutral-400 tracking-wider flex items-start gap-2">
@@ -73,7 +82,7 @@ export const ExperienceView: React.FC<ExperienceViewProps> = ({
                   <Maximize2 className="w-3.5 h-3.5" />
                 </span>
               </div>
-            </button>
+            </div>
           ))}
         </div>
       </section>

@@ -15,19 +15,21 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
 
   return (
     <div id="projects_view_container" className="h-auto lg:h-full lg:min-h-0 flex flex-col gap-3 max-w-[1280px] mx-auto overflow-visible lg:overflow-hidden">
-      <section id="projects_header_section" className="space-y-0.5 shrink-0">
-        <div className="flex items-center gap-3">
-          <span className="w-1.5 h-6 sm:h-7 bg-white" />
-          <h1
-            id="projects_heading"
-            className="font-mono text-2xl sm:text-3xl font-extrabold tracking-tight uppercase text-white"
-          >
-            SRC/PROJECTS
-          </h1>
+      <section id="projects_header_section" className="shrink-0">
+        <div className="flex items-stretch gap-3">
+          <span className="w-1.5 bg-white shrink-0" />
+          <div className="flex flex-col justify-center gap-1.5 py-0.5">
+            <h1
+              id="projects_heading"
+              className="font-mono text-2xl sm:text-3xl font-extrabold tracking-tight uppercase text-white leading-none"
+            >
+              SRC/PROJECTS
+            </h1>
+            <p className="font-mono text-xs text-[#5CE883] leading-none">
+              ~ $ ls -la ./src/projects
+            </p>
+          </div>
         </div>
-        <p className="font-mono text-xs text-[#5CE883] pl-4">
-          ~ $ ls -la ./deployments
-        </p>
       </section>
 
       <section

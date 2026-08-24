@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { TabType } from './types';
 import { Header } from './components/Header';
 import { Sidebar } from './components/Sidebar';
@@ -39,6 +39,21 @@ export default function App() {
   const handleCloseExperienceModal = () => {
     setSelectedExperienceId(null);
   };
+
+  useEffect(() => {
+    const onOpenProject = (event: Event) => {
+      const id = (event as CustomEvent<{ id: string }>).detail?.id;
+      if (!id || !PORTFOLIO_DATA.projects.some((project) => project.id === id)) {
+        return;
+      }
+      setSelectedExperienceId(null);
+      setActiveTab('PROJECTS');
+      setSelectedProjectId(id);
+    };
+
+    window.addEventListener('portfolio:open-project', onOpenProject);
+    return () => window.removeEventListener('portfolio:open-project', onOpenProject);
+  }, []);
 
   return (
     <div
