@@ -10,4 +10,9 @@ linkedin: https://www.linkedin.com/in/twaritwaikar/
 home_tiles: [SEARCH, AGENTS]
 status_label: ADX
 location_short: HYD
+home_focus_label: CURRENT FOCUS
+home_highlights:
+  - CODE SEARCH
+  - AI DEV-XP
+  - CONTEXT ENG
 ---

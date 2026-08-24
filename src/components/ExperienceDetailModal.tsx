@@ -45,7 +45,7 @@ export const ExperienceDetailModal: React.FC<ExperienceDetailModalProps> = ({
           </button>
         </div>
 
-        <div className="p-6 overflow-y-auto space-y-5 text-xs">
+        <div className="p-4 sm:p-6 overflow-y-auto space-y-5 text-xs">
           <div>
             <div className="text-[11px] font-bold text-[#5CE883] uppercase tracking-widest mb-2">
               [ 01 // ROLE ]

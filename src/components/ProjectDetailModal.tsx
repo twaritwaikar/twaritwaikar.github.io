@@ -68,11 +68,11 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="px-4 py-3 bg-[#111] border-b border-[#262626] flex items-center justify-between text-xs select-none">
-          <div className="flex items-center gap-2 text-white font-bold tracking-wider">
-            <span className="text-[#5CE883]">■</span>
-            <span>SPEC_INSPECTOR // {project.name}</span>
-            <span className="text-neutral-500 font-normal">({project.version})</span>
+        <div className="px-3 sm:px-4 py-3 bg-[#111] border-b border-[#262626] flex items-center justify-between text-xs select-none gap-2">
+          <div className="flex items-center gap-2 text-white font-bold tracking-wider min-w-0">
+            <span className="text-[#5CE883] shrink-0">■</span>
+            <span className="truncate">SPEC_INSPECTOR // {project.name}</span>
+            <span className="text-neutral-500 font-normal shrink-0">({project.version})</span>
           </div>
 
           <button
@@ -84,7 +84,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
         </div>
 
         {/* Modal Body */}
-        <div className="p-6 overflow-y-auto space-y-5 text-xs">
+        <div className="p-4 sm:p-6 overflow-y-auto space-y-5 text-xs">
           {/* Overview */}
           <div>
             <div className="text-[11px] font-bold text-[#5CE883] uppercase tracking-widest mb-1">
@@ -196,14 +196,14 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
 
           {/* Interactive Simulation Sandbox */}
           <div className="space-y-2 pt-2 border-t border-[#262626]">
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
               <div className="text-[11px] font-bold text-[#5CE883] uppercase tracking-widest">
                 [ 04 // RUNTIME_SIMULATOR ]
               </div>
               <button
                 onClick={handleRunSimulation}
                 disabled={simulationRunning}
-                className="px-3 py-1 bg-[#161616] border border-[#5CE883] hover:bg-[#5CE883] hover:text-black text-[#5CE883] text-[11px] flex items-center gap-1.5 cursor-pointer disabled:opacity-50"
+                className="px-3 py-1 bg-[#161616] border border-[#5CE883] hover:bg-[#5CE883] hover:text-black text-[#5CE883] text-[11px] flex items-center justify-center gap-1.5 cursor-pointer disabled:opacity-50 shrink-0"
               >
                 <Play className="w-3 h-3" />
                 <span>{simulationRunning ? 'EXECUTING...' : 'RUN_TEST_BENCHMARK'}</span>
@@ -221,8 +221,8 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
         </div>
 
         {/* Footer */}
-        <div className="px-4 py-3 bg-[#111] border-t border-[#262626] flex items-center justify-between text-xs">
-          <div className="flex gap-2">
+        <div className="px-4 py-3 bg-[#111] border-t border-[#262626] flex items-center justify-between text-xs gap-3">
+          <div className="flex flex-wrap gap-2 min-w-0">
             {project.tags.map((t) => (
               <span key={t} className="px-1.5 py-0.5 border border-[#333] text-[10px] text-neutral-400">
                 {t}

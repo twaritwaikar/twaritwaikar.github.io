@@ -46,7 +46,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
   return (
     <aside
       id="portfolio_sidebar"
-      className={`w-full lg:w-64 xl:w-72 shrink-0 min-h-0 overflow-y-auto border-b lg:border-b-0 lg:border-r transition-colors flex flex-col ${
+      className={`hidden lg:flex w-full lg:w-64 xl:w-72 shrink-0 min-h-0 overflow-y-auto border-b lg:border-b-0 lg:border-r transition-colors flex-col ${
         isDarkMode
           ? 'bg-[#0f0f0f] border-[#262626] text-neutral-300'
           : 'bg-[#EDEDED] border-[#D4D4D4] text-neutral-800'

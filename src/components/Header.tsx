@@ -16,12 +16,12 @@ export const Header: React.FC<HeaderProps> = ({
   isDarkMode,
   setIsDarkMode,
 }) => {
-  const navTabs: { id: TabType; label: string }[] = [
-    { id: 'HOME', label: 'HOME' },
-    { id: 'EXPERIENCE', label: 'EXPERIENCE' },
-    { id: 'PROJECTS', label: 'PROJECTS' },
-    { id: 'STACK', label: 'STACK' },
-    { id: 'CONTACT', label: 'CONTACT' },
+  const navTabs: { id: TabType; label: string; mobileLabel: string }[] = [
+    { id: 'HOME', label: 'HOME', mobileLabel: 'HOME' },
+    { id: 'EXPERIENCE', label: 'EXPERIENCE', mobileLabel: 'EXP' },
+    { id: 'PROJECTS', label: 'PROJECTS', mobileLabel: 'PROJ' },
+    { id: 'STACK', label: 'STACK', mobileLabel: 'STACK' },
+    { id: 'CONTACT', label: 'CONTACT', mobileLabel: 'PING' },
   ];
 
   return (
@@ -117,7 +117,7 @@ export const Header: React.FC<HeaderProps> = ({
               key={`mob_${tab.id}`}
               id={`mobile_tab_${tab.id.toLowerCase()}`}
               onClick={() => setActiveTab(tab.id)}
-              className={`flex-1 py-2 text-center font-mono text-xs whitespace-nowrap px-3 transition-colors ${
+              className={`flex-1 min-w-0 py-2.5 text-center font-mono text-[10px] whitespace-nowrap px-1.5 transition-colors ${
                 isActive
                   ? 'bg-[#5CE883] text-black font-bold'
                   : isDarkMode
@@ -125,11 +125,6 @@ export const Header: React.FC<HeaderProps> = ({
                   : 'text-neutral-700 hover:text-black'
               }`}
             >
-              {tab.label}
-            </button>
-          );
-        })}
-      </div>
-    </header>
+              {tab.mobileLabel}
   );
 };

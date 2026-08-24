@@ -16,7 +16,7 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
   const { projects } = PORTFOLIO_DATA;
 
   return (
-    <div id="projects_view_container" className="h-full min-h-0 flex flex-col gap-3 max-w-[1280px] mx-auto overflow-hidden">
+    <div id="projects_view_container" className="h-auto lg:h-full lg:min-h-0 flex flex-col gap-3 max-w-[1280px] mx-auto overflow-visible lg:overflow-hidden">
       <section id="projects_header_section" className="space-y-0.5 shrink-0">
         <div className="flex items-center gap-3">
           <span className="w-1.5 h-6 sm:h-7 bg-white" />
@@ -36,7 +36,7 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
 
       <section
         id="projects_grid"
-        className="grid grid-cols-1 lg:grid-cols-2 gap-4 min-h-0 overflow-y-auto pr-1"
+        className="grid grid-cols-1 lg:grid-cols-2 gap-4 min-h-0 lg:flex-1 lg:overflow-y-auto pr-1"
       >
         {projects.map((project) => {
           return (

@@ -1,7 +1,7 @@
 import React from 'react';
 import { TabType } from '../types';
 import { PORTFOLIO_DATA } from '../data/portfolioData';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Maximize2 } from 'lucide-react';
 import { MarkdownInline } from './MarkdownArticle';
 
 interface HomeViewProps {
@@ -24,7 +24,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
   const stack = currentRole?.technologies?.slice(0, 6).join(', ') || currentRole?.company || '';
 
   return (
-    <div id="home_view_container" className="h-full min-h-0 flex flex-col gap-3 md:gap-4 max-w-[1280px] mx-auto overflow-hidden">
+    <div id="home_view_container" className="h-auto lg:h-full lg:min-h-0 flex flex-col gap-3 md:gap-4 max-w-[1280px] mx-auto lg:overflow-hidden">
       <section id="hero_headline_section" className="space-y-2 shrink-0">
         <div>
           <h1
@@ -52,6 +52,22 @@ export const HomeView: React.FC<HomeViewProps> = ({
           {profile.tagline}
         </p>
 
+        {profile.education && (
+          <p
+            id="hero_education"
+            className={`font-mono text-xs sm:text-sm tracking-wide ${
+              isDarkMode ? 'text-neutral-500' : 'text-neutral-600'
+            }`}
+          >
+            <span className="text-neutral-500">EDU:</span>{' '}
+            <span className={isDarkMode ? 'text-neutral-300' : 'text-neutral-800'}>
+              {profile.education.degree}
+            </span>
+            <span className="hidden sm:inline text-neutral-600"> // </span>
+            <span className="block sm:inline text-[#5CE883]">{profile.education.detail}</span>
+          </p>
+        )}
+
         <div id="hero_action_buttons" className="flex flex-wrap items-center gap-3 pt-1">
           <button
             id="btn_deploy_resume"
@@ -75,7 +91,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
         </div>
       </section>
 
-      <section className="flex-1 min-h-0 grid grid-cols-1 lg:grid-cols-12 gap-0 border border-[#262626] overflow-hidden">
+      <section className="lg:flex-1 min-h-0 grid grid-cols-1 lg:grid-cols-12 gap-0 border border-[#262626] overflow-hidden">
         <article
           id="latest_deployment_card"
           onClick={() => currentRole && onOpenExperienceModal(currentRole.id)}
@@ -105,62 +121,55 @@ export const HomeView: React.FC<HomeViewProps> = ({
               </div>
               <div className="flex justify-between md:flex-col gap-1">
                 <span className="text-neutral-500 tracking-wider">STACK</span>
-                <span className="text-[#5CE883] font-semibold">{stack}</span>
+                <span className="text-[#5CE883] font-semibold break-words text-right md:text-left">{stack}</span>
               </div>
             </div>
           </div>
         </article>
 
-        <div className="lg:col-span-4 flex flex-col">
-          <div className="grid grid-cols-2 border-b border-[#262626]">
-            <div
-              id="tile_backend_stack"
-              onClick={() => setActiveTab('STACK')}
-              className={`p-4 border-r border-[#262626] flex flex-col items-center justify-center gap-2 cursor-pointer transition-colors ${
-                isDarkMode ? `${panel} hover:bg-[#1c1c1c]` : `${panel} hover:bg-[#DCDCDC]`
-              }`}
-            >
-              <div className="font-mono text-sm font-bold text-neutral-300">&lt; &gt;</div>
-              <span className="font-mono text-xs font-semibold tracking-wider text-neutral-400 uppercase">
-                {PORTFOLIO_DATA.site.homeTiles[0]}
-              </span>
-            </div>
-
-            <div
-              id="tile_infra_stack"
-              onClick={() => setActiveTab('STACK')}
-              className={`p-4 flex flex-col items-center justify-center gap-2 cursor-pointer transition-colors ${
-                isDarkMode ? `${panel} hover:bg-[#1c1c1c]` : `${panel} hover:bg-[#DCDCDC]`
-              }`}
-            >
-              <div className="font-mono text-sm font-bold text-neutral-300">[ :: ]</div>
-              <span className="font-mono text-xs font-semibold tracking-wider text-neutral-400 uppercase">
-                {PORTFOLIO_DATA.site.homeTiles[1]}
-              </span>
-            </div>
-          </div>
-
-          <div
-            id="status_available_tile"
-            onClick={() => setActiveTab('CONTACT')}
-            className="p-3 bg-[#5CE883] text-black flex items-center justify-between cursor-pointer hover:bg-[#3FCF68] transition-all select-none group flex-1 min-h-[64px]"
-          >
+        <button
+          type="button"
+          id="focus_areas_tile"
+          onClick={() => setActiveTab('STACK')}
+          className="lg:col-span-4 bg-[#5CE883] text-black p-3 sm:p-4 lg:p-5 flex flex-col justify-between gap-3 lg:gap-4 cursor-pointer hover:bg-[#3FCF68] transition-all select-none group text-left w-full min-h-0 lg:min-h-[160px]"
+        >
+          <div className="flex items-start justify-between gap-3">
             <div>
-              <div className="font-mono text-[11px] font-bold tracking-widest uppercase text-black/70">
-                STATUS
+              <div className="font-mono text-[11px] font-bold tracking-widest uppercase text-black/60">
+                {PORTFOLIO_DATA.site.homeFocusLabel}
               </div>
-              <div className="font-mono text-xl sm:text-2xl font-black tracking-wider uppercase text-black mt-0.5">
-                {PORTFOLIO_DATA.site.statusLabel}
+              <div className="mt-0.5 font-mono text-[10px] font-semibold tracking-widest uppercase text-black/50">
+                {PORTFOLIO_DATA.site.homeTiles.join(' · ')}
               </div>
             </div>
-            <ArrowRight className="w-7 h-7 text-black stroke-[2.5] transform group-hover:translate-x-1.5 transition-transform" />
+            <div className="flex items-center gap-2 shrink-0">
+              <span className="lg:hidden font-mono text-[10px] font-bold tracking-widest uppercase text-black/70">
+                OPEN_BIO
+              </span>
+              <ArrowRight className="w-5 h-5 lg:w-6 lg:h-6 text-black stroke-[2.5] transform group-hover:translate-x-1.5 transition-transform" />
+            </div>
           </div>
-        </div>
+
+          <ul className="flex flex-wrap lg:flex-col gap-x-3 gap-y-1 lg:gap-1">
+            {PORTFOLIO_DATA.site.homeHighlights.map((item) => (
+              <li
+                key={item}
+                className="font-mono text-sm sm:text-base lg:text-2xl font-black tracking-tight uppercase text-black leading-none"
+              >
+                {item}
+              </li>
+            ))}
+          </ul>
+
+          <div className="hidden lg:block font-mono text-[11px] font-bold tracking-widest uppercase text-black/60">
+            OPEN_BIO
+          </div>
+        </button>
       </section>
 
       <section
         id="build_experience_section"
-        className={`border border-[#262626] flex-1 min-h-0 overflow-hidden flex flex-col ${panel}`}
+        className={`border border-[#262626] lg:flex-1 lg:min-h-0 lg:overflow-hidden flex flex-col ${panel}`}
       >
         <div className="px-4 py-2 bg-[#111111] border-b border-[#262626] flex items-center justify-between font-mono text-xs text-neutral-400 shrink-0">
           <span>BUILD/EXPERIENCE</span>
@@ -178,16 +187,22 @@ export const HomeView: React.FC<HomeViewProps> = ({
               key={exp.id}
               type="button"
               onClick={() => onOpenExperienceModal(exp.id)}
-              className="w-full text-left px-4 py-3 grid grid-cols-1 sm:grid-cols-12 gap-1 sm:gap-4 cursor-pointer hover:bg-[#1a1a1a] transition-colors"
+              className="w-full text-left px-4 py-3 grid grid-cols-1 sm:grid-cols-12 gap-1 sm:gap-4 cursor-pointer hover:bg-[#1a1a1a] transition-colors group"
             >
               <span className="sm:col-span-3 font-mono text-[11px] text-neutral-500">{exp.period}</span>
-              <span className="sm:col-span-9 flex flex-col sm:flex-row sm:items-baseline sm:gap-3 min-w-0">
+              <span className="sm:col-span-8 flex flex-col sm:flex-row sm:items-baseline sm:gap-3 min-w-0">
                 <span className={`font-mono text-sm font-bold ${isDarkMode ? 'text-white' : 'text-neutral-900'}`}>
                   {exp.role}
                 </span>
                 <span className="font-mono text-xs text-[#5CE883] truncate">
                   {exp.company} // {exp.location}
                 </span>
+              </span>
+              <span
+                title="Open details"
+                className="sm:col-span-1 w-8 h-8 ml-auto border border-[#333333] group-hover:border-[#5CE883] group-hover:text-[#5CE883] bg-[#161616] text-neutral-300 flex items-center justify-center"
+              >
+                <Maximize2 className="w-3.5 h-3.5" />
               </span>
             </button>
           ))}

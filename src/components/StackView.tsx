@@ -13,15 +13,15 @@ export const StackView: React.FC<StackViewProps> = ({ setActiveTab, isDarkMode }
   const { profile, techStack } = PORTFOLIO_DATA;
 
   return (
-    <div id="stack_view_container" className="h-full min-h-0 grid grid-cols-1 lg:grid-cols-12 gap-3 max-w-[1280px] mx-auto overflow-hidden">
+    <div id="stack_view_container" className="h-auto lg:h-full lg:min-h-0 grid grid-cols-1 lg:grid-cols-12 gap-3 max-w-[1280px] mx-auto overflow-visible lg:overflow-hidden">
       {/* Left Column: SYS.INFO // PROFILE_DATA */}
       <section
         id="sys_info_panel"
-        className={`lg:col-span-5 border border-[#2a2a2a] p-4 sm:p-5 flex flex-col min-h-0 overflow-hidden ${
+        className={`lg:col-span-5 border border-[#2a2a2a] p-4 sm:p-5 flex flex-col min-h-0 overflow-visible lg:overflow-hidden ${
           isDarkMode ? 'bg-[#141414]' : 'bg-[#EAEAEA]'
         }`}
       >
-        <div className="space-y-3 min-h-0 overflow-y-auto">
+        <div className="space-y-3 min-h-0 overflow-visible lg:overflow-y-auto">
           <div className="flex items-center gap-2 font-mono text-xs text-neutral-400">
             <span className="w-2.5 h-2.5 bg-[#5CE883] inline-block" />
             <span className="tracking-widest uppercase">SYS.INFO // PROFILE_DATA</span>
@@ -40,15 +40,11 @@ export const StackView: React.FC<StackViewProps> = ({ setActiveTab, isDarkMode }
           </div>
 
           {/* Telemetry metadata */}
-          <div className="space-y-1.5 font-mono text-xs pt-1 border-y border-[#262626] py-3">
-            <div className="flex items-center gap-2">
-              <span className="text-neutral-500">LOC:</span>
-              <span className="text-[#5CE883] font-semibold">{profile.location}</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="text-neutral-500">STATUS:</span>
-              <span className="text-[#5CE883] font-semibold">{profile.status}</span>
-            </div>
+          <div className="grid grid-cols-[auto_1fr] items-baseline gap-x-3 gap-y-1.5 font-mono text-xs border-y border-[#262626] py-3">
+            <span className="text-neutral-500">LOC:</span>
+            <span className="text-[#5CE883] font-semibold">{profile.location}</span>
+            <span className="text-neutral-500">STATUS:</span>
+            <span className="text-[#5CE883] font-semibold">{profile.status}</span>
           </div>
 
           {/* Bio text in Inter font */}
@@ -70,7 +66,7 @@ export const StackView: React.FC<StackViewProps> = ({ setActiveTab, isDarkMode }
       </section>
 
       {/* Right Column: TECH_STACK.JSON + EXECUTION_LOG */}
-      <section id="tech_and_log_panel" className="lg:col-span-7 flex flex-col gap-3 min-h-0 overflow-hidden">
+      <section id="tech_and_log_panel" className="lg:col-span-7 flex flex-col gap-3 min-h-0 overflow-visible lg:overflow-hidden">
         {/* Top: TECH_STACK.JSON Box */}
         <div
           id="box_tech_stack"
@@ -84,14 +80,13 @@ export const StackView: React.FC<StackViewProps> = ({ setActiveTab, isDarkMode }
             <span className="tracking-widest uppercase">TECH_STACK.JSON</span>
           </div>
 
-          {/* 6 Category Columns Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-y-3 gap-x-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-y-5 gap-x-4">
             {techStack.map((category) => (
-              <div key={category.category} className="space-y-2">
+              <div key={category.category} className="space-y-1.5">
                 <div className="font-mono text-[11px] font-bold tracking-widest text-[#5CE883] uppercase">
                   {category.category}
                 </div>
-                <ul className="space-y-1 font-mono text-xs text-neutral-700 dark:text-neutral-300">
+                <ul className="space-y-0.5 font-mono text-xs text-neutral-700 dark:text-neutral-300">
                   {category.items.map((item) => (
                     <li
                       key={item}

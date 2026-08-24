@@ -12,6 +12,8 @@ export interface SiteConfig {
   homeTiles: [string, string];
   statusLabel: string;
   locationShort: string;
+  homeFocusLabel: string;
+  homeHighlights: string[];
 }
 
 export interface ProjectItem {

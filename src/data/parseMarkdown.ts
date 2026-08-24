@@ -159,6 +159,8 @@ export function asSite(data: Record<string, unknown>, body: string): SiteConfig 
     homeTiles: [tiles[0] || 'SYSTEMS', tiles[1] || 'GRAPHICS'],
     statusLabel: str(data, 'status_label', 'OPERATIONAL'),
     locationShort: str(data, 'location_short', 'INDIA'),
+    homeFocusLabel: str(data, 'home_focus_label', 'FOCUS'),
+    homeHighlights: strList(data, 'home_highlights'),
   };
 }
 
