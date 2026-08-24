@@ -13,7 +13,6 @@ import { ProjectIcon, ExperienceIcon } from './projectIcons';
 interface SidebarProps {
   activeTab: TabType;
   setActiveTab: (tab: TabType) => void;
-  isDarkMode: boolean;
   onOpenResume?: () => void;
   onOpenProjectModal?: (projectId: string) => void;
   onOpenExperienceModal?: (experienceId: string) => void;
@@ -22,7 +21,6 @@ interface SidebarProps {
 export const Sidebar: React.FC<SidebarProps> = ({
   activeTab,
   setActiveTab,
-  isDarkMode,
   onOpenResume,
   onOpenProjectModal,
   onOpenExperienceModal,
@@ -46,18 +44,12 @@ export const Sidebar: React.FC<SidebarProps> = ({
   return (
     <aside
       id="portfolio_sidebar"
-      className={`hidden lg:flex w-full lg:w-64 xl:w-72 shrink-0 min-h-0 overflow-y-auto border-b lg:border-b-0 lg:border-r transition-colors flex-col ${
-        isDarkMode
-          ? 'bg-[#0f0f0f] border-[#262626] text-neutral-300'
-          : 'bg-[#EDEDED] border-[#D4D4D4] text-neutral-800'
-      }`}
+      className="hidden lg:flex w-full lg:w-64 xl:w-72 shrink-0 min-h-0 overflow-y-auto border-b lg:border-b-0 lg:border-r flex-col bg-[#0f0f0f] border-[#262626] text-neutral-300"
     >
       {/* Profile Header Box */}
       <div
         id="profile_identity_box"
-        className={`p-4 border-b flex flex-col gap-3 ${
-          isDarkMode ? 'border-[#262626]' : 'border-[#D4D4D4]'
-        }`}
+        className="p-4 border-b flex flex-col gap-3 border-[#262626]"
       >
         <div className="flex items-center gap-3">
           <div className="relative w-12 h-12 bg-black border border-[#333333] p-0.5 overflow-hidden flex items-center justify-center shrink-0">
@@ -91,7 +83,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
           <div>
             <h2
               id="sidebar_user_name"
-              className="font-mono font-bold text-sm tracking-tight text-neutral-900 dark:text-white"
+              className="font-mono font-bold text-sm tracking-tight text-white"
             >
               {PORTFOLIO_DATA.profile.handle}
             </h2>
@@ -120,9 +112,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
             className={`w-full text-left px-2 py-1.5 flex items-center gap-2 transition-all cursor-pointer ${
               activeTab === 'HOME'
                 ? 'bg-[#5CE883] text-black font-bold'
-                : isDarkMode
-                ? 'hover:bg-[#1a1a1a] text-neutral-300'
-                : 'hover:bg-neutral-200 text-neutral-800'
+                : 'hover:bg-[#1a1a1a] text-neutral-300'
             }`}
           >
             <ChevronDown className="w-3.5 h-3.5" />
@@ -142,9 +132,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
             className={`w-full text-left px-2 py-1.5 flex items-center gap-2 transition-all cursor-pointer ${
               activeTab === 'EXPERIENCE'
                 ? 'bg-[#5CE883] text-black font-bold'
-                : isDarkMode
-                ? 'hover:bg-[#1a1a1a] text-neutral-300'
-                : 'hover:bg-neutral-200 text-neutral-800'
+                : 'hover:bg-[#1a1a1a] text-neutral-300'
             }`}
           >
             {openFolders.experience ? (
@@ -165,11 +153,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                     toggleFolder('salesforce');
                     setActiveTab('EXPERIENCE');
                   }}
-                  className={`w-full text-left px-2 py-1 flex items-center gap-2 transition-colors cursor-pointer ${
-                    isDarkMode
-                      ? 'text-neutral-300 hover:text-[#5CE883] hover:bg-[#161616]'
-                      : 'text-neutral-800 hover:text-black hover:bg-neutral-200'
-                  }`}
+                    className="w-full text-left px-2 py-1 flex items-center gap-2 transition-colors cursor-pointer text-neutral-300 hover:text-[#5CE883] hover:bg-[#161616]"
                 >
                   {openFolders.salesforce ? (
                     <ChevronDown className="w-3.5 h-3.5 shrink-0" />
@@ -192,11 +176,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                             setActiveTab('EXPERIENCE');
                             onOpenExperienceModal?.(exp.id);
                           }}
-                          className={`w-full text-left px-2 py-1 flex items-center gap-2 transition-colors cursor-pointer ${
-                            isDarkMode
-                              ? 'text-neutral-400 hover:text-[#5CE883] hover:bg-[#161616]'
-                              : 'text-neutral-600 hover:text-black hover:bg-neutral-200'
-                          }`}
+                          className="w-full text-left px-2 py-1 flex items-center gap-2 transition-colors cursor-pointer text-neutral-400 hover:text-[#5CE883] hover:bg-[#161616]"
                         >
                           <ExperienceIcon id={exp.id} />
                           <span className="font-mono truncate">{exp.filename}</span>
@@ -216,11 +196,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                       setActiveTab('EXPERIENCE');
                       onOpenExperienceModal?.(exp.id);
                     }}
-                    className={`w-full text-left px-2 py-1 flex items-center gap-2 transition-colors cursor-pointer ${
-                      isDarkMode
-                        ? 'text-neutral-400 hover:text-[#5CE883] hover:bg-[#161616]'
-                        : 'text-neutral-600 hover:text-black hover:bg-neutral-200'
-                    }`}
+                    className="w-full text-left px-2 py-1 flex items-center gap-2 transition-colors cursor-pointer text-neutral-400 hover:text-[#5CE883] hover:bg-[#161616]"
                   >
                     <ExperienceIcon id={exp.id} />
                     <span className="font-mono truncate">{exp.filename}</span>
@@ -241,9 +217,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
             className={`w-full text-left px-2 py-1.5 flex items-center gap-2 transition-all cursor-pointer ${
               activeTab === 'PROJECTS'
                 ? 'bg-[#5CE883] text-black font-bold'
-                : isDarkMode
-                ? 'hover:bg-[#1a1a1a] text-neutral-300'
-                : 'hover:bg-neutral-200 text-neutral-800'
+                : 'hover:bg-[#1a1a1a] text-neutral-300'
             }`}
           >
             {openFolders.projects ? (
@@ -265,11 +239,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                     setActiveTab('PROJECTS');
                     onOpenProjectModal?.(project.id);
                   }}
-                  className={`w-full text-left px-2 py-1 flex items-center gap-2 transition-colors cursor-pointer ${
-                    isDarkMode
-                      ? 'text-neutral-400 hover:text-[#5CE883] hover:bg-[#161616]'
-                      : 'text-neutral-600 hover:text-black hover:bg-neutral-200'
-                  }`}
+                  className="w-full text-left px-2 py-1 flex items-center gap-2 transition-colors cursor-pointer text-neutral-400 hover:text-[#5CE883] hover:bg-[#161616]"
                 >
                   <ProjectIcon id={project.id} />
                   <span className="font-mono truncate">{project.name}</span>
@@ -290,9 +260,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
             className={`w-full text-left px-2 py-1.5 flex items-center gap-2 transition-all cursor-pointer ${
               activeTab === 'STACK'
                 ? 'bg-[#5CE883] text-black font-bold'
-                : isDarkMode
-                ? 'hover:bg-[#1a1a1a] text-neutral-300'
-                : 'hover:bg-neutral-200 text-neutral-800'
+                : 'hover:bg-[#1a1a1a] text-neutral-300'
             }`}
           >
             {openFolders.about ? (
@@ -312,11 +280,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                   if (onOpenResume) onOpenResume();
                   else setActiveTab('STACK');
                 }}
-                className={`w-full text-left px-2 py-1 flex items-center gap-2 transition-colors cursor-pointer ${
-                  isDarkMode
-                    ? 'text-neutral-400 hover:text-[#5CE883] hover:bg-[#161616]'
-                    : 'text-neutral-600 hover:text-black hover:bg-neutral-200'
-                }`}
+                className="w-full text-left px-2 py-1 flex items-center gap-2 transition-colors cursor-pointer text-neutral-400 hover:text-[#5CE883] hover:bg-[#161616]"
               >
                 <FileText className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
                 <span className="font-mono">resume.pdf</span>
@@ -327,9 +291,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 className={`w-full text-left px-2 py-1 flex items-center gap-2 transition-colors cursor-pointer ${
                   activeTab === 'STACK'
                     ? 'text-[#5CE883] font-semibold'
-                    : isDarkMode
-                    ? 'text-neutral-400 hover:text-[#5CE883] hover:bg-[#161616]'
-                    : 'text-neutral-600 hover:text-black hover:bg-neutral-200'
+                    : 'text-neutral-400 hover:text-[#5CE883] hover:bg-[#161616]'
                 }`}
               >
                 <FileText className="w-3.5 h-3.5 text-neutral-400 shrink-0" />
@@ -350,9 +312,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
             className={`w-full text-left px-2 py-1.5 flex items-center gap-2 transition-all cursor-pointer ${
               activeTab === 'CONTACT'
                 ? 'bg-[#5CE883] text-black font-bold'
-                : isDarkMode
-                ? 'hover:bg-[#1a1a1a] text-neutral-300'
-                : 'hover:bg-neutral-200 text-neutral-800'
+                : 'hover:bg-[#1a1a1a] text-neutral-300'
             }`}
           >
             {openFolders.contact ? (
@@ -372,9 +332,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 className={`w-full text-left px-2 py-1 flex items-center gap-2 transition-colors cursor-pointer ${
                   activeTab === 'CONTACT'
                     ? 'text-[#5CE883] font-semibold'
-                    : isDarkMode
-                    ? 'text-neutral-400 hover:text-[#5CE883] hover:bg-[#161616]'
-                    : 'text-neutral-600 hover:text-black hover:bg-neutral-200'
+                    : 'text-neutral-400 hover:text-[#5CE883] hover:bg-[#161616]'
                 }`}
               >
                 <Terminal className="w-3.5 h-3.5 text-amber-400 shrink-0" />

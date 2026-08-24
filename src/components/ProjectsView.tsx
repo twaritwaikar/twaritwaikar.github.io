@@ -5,12 +5,10 @@ import { MarkdownInline } from './MarkdownArticle';
 import { ProjectIcon } from './projectIcons';
 
 interface ProjectsViewProps {
-  isDarkMode: boolean;
   onOpenProjectModal: (projectId: string) => void;
 }
 
 export const ProjectsView: React.FC<ProjectsViewProps> = ({
-  isDarkMode,
   onOpenProjectModal,
 }) => {
   const { projects } = PORTFOLIO_DATA;
@@ -22,9 +20,7 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
           <span className="w-1.5 h-6 sm:h-7 bg-white" />
           <h1
             id="projects_heading"
-            className={`font-mono text-2xl sm:text-3xl font-extrabold tracking-tight uppercase ${
-              isDarkMode ? 'text-white' : 'text-neutral-900'
-            }`}
+            className="font-mono text-2xl sm:text-3xl font-extrabold tracking-tight uppercase text-white"
           >
             SRC/PROJECTS
           </h1>
@@ -44,9 +40,7 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
               key={project.id}
               id={`project_card_${project.id}`}
               onClick={() => onOpenProjectModal(project.id)}
-              className={`border border-[#2a2a2a] flex flex-col justify-between min-h-0 cursor-pointer transition-colors ${
-                isDarkMode ? 'bg-[#141414] hover:border-[#5CE883]' : 'bg-[#EAEAEA] hover:border-black'
-              }`}
+              className="border border-[#2a2a2a] flex flex-col justify-between min-h-0 cursor-pointer transition-colors bg-[#141414] hover:border-[#5CE883]"
             >
               <div className="min-h-0 flex flex-col">
                 <div className="px-4 py-2.5 bg-[#111111] border-b border-[#2a2a2a] flex items-center justify-between font-mono text-xs text-neutral-300">
@@ -58,7 +52,7 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
                 </div>
 
                 <div className="p-4 sm:p-5 flex-1 min-h-0">
-                  <p className="font-sans text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
+                  <p className="font-sans text-sm text-neutral-400 leading-relaxed">
                     <MarkdownInline markdown={project.description} />
                   </p>
 

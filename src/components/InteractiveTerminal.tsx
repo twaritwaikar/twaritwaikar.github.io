@@ -4,13 +4,11 @@ import { PORTFOLIO_DATA } from '../data/portfolioData';
 
 interface InteractiveTerminalProps {
   setActiveTab: (tab: TabType) => void;
-  isDarkMode: boolean;
   onOpenResume?: () => void;
 }
 
 export const InteractiveTerminal: React.FC<InteractiveTerminalProps> = ({
   setActiveTab,
-  isDarkMode,
   onOpenResume,
 }) => {
   const bootLogs = PORTFOLIO_DATA.profile.terminalBoot.length
@@ -201,11 +199,7 @@ Follow the white rabbit -> ${PORTFOLIO_DATA.site.brand} initialized.`,
   return (
     <div
       id="terminal_system_init"
-      className={`flex flex-col font-mono text-xs transition-colors h-[170px] md:h-[190px] border-0 ${
-        isDarkMode
-          ? 'bg-[#181818] text-neutral-200'
-          : 'bg-[#1f1f1f] text-neutral-100'
-      }`}
+      className="flex flex-col font-mono text-xs h-[170px] md:h-[190px] border-0 bg-[#181818] text-neutral-200"
       onClick={() => inputRef.current?.focus()}
     >
       {/* Title Bar matching screenshot: "bash - system_init" + 3 colored blocks */}

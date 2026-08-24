@@ -6,10 +6,9 @@ import { MarkdownArticle } from './MarkdownArticle';
 
 interface StackViewProps {
   setActiveTab: (tab: TabType) => void;
-  isDarkMode: boolean;
 }
 
-export const StackView: React.FC<StackViewProps> = ({ setActiveTab, isDarkMode }) => {
+export const StackView: React.FC<StackViewProps> = ({ setActiveTab }) => {
   const { profile, techStack } = PORTFOLIO_DATA;
 
   return (
@@ -17,9 +16,7 @@ export const StackView: React.FC<StackViewProps> = ({ setActiveTab, isDarkMode }
       {/* Left Column: SYS.INFO // PROFILE_DATA */}
       <section
         id="sys_info_panel"
-        className={`lg:col-span-5 border border-[#2a2a2a] p-4 sm:p-5 flex flex-col min-h-0 overflow-visible lg:overflow-hidden ${
-          isDarkMode ? 'bg-[#141414]' : 'bg-[#EAEAEA]'
-        }`}
+        className="lg:col-span-5 border border-[#2a2a2a] p-4 sm:p-5 flex flex-col min-h-0 overflow-visible lg:overflow-hidden bg-[#141414]"
       >
         <div className="space-y-3 min-h-0 overflow-visible lg:overflow-y-auto">
           <div className="flex items-center gap-2 font-mono text-xs text-neutral-400">
@@ -31,9 +28,7 @@ export const StackView: React.FC<StackViewProps> = ({ setActiveTab, isDarkMode }
           <div>
             <h1
               id="profile_system_title"
-              className={`font-mono text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight ${
-                isDarkMode ? 'text-white' : 'text-neutral-900'
-              }`}
+              className="font-mono text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-white"
             >
               &gt; {profile.title}
             </h1>
@@ -70,9 +65,7 @@ export const StackView: React.FC<StackViewProps> = ({ setActiveTab, isDarkMode }
         {/* Top: TECH_STACK.JSON Box */}
         <div
           id="box_tech_stack"
-          className={`border border-[#2a2a2a] p-4 flex-1 min-h-0 overflow-y-auto ${
-            isDarkMode ? 'bg-[#141414]' : 'bg-[#EAEAEA]'
-          }`}
+          className="border border-[#2a2a2a] p-4 flex-1 min-h-0 overflow-y-auto bg-[#141414]"
         >
           {/* Header */}
           <div className="flex items-center gap-2 font-mono text-xs text-neutral-400 pb-4 border-b border-[#262626] mb-4">
@@ -86,11 +79,11 @@ export const StackView: React.FC<StackViewProps> = ({ setActiveTab, isDarkMode }
                 <div className="font-mono text-[11px] font-bold tracking-widest text-[#5CE883] uppercase">
                   {category.category}
                 </div>
-                <ul className="space-y-0.5 font-mono text-xs text-neutral-700 dark:text-neutral-300">
+                <ul className="space-y-0.5 font-mono text-xs text-neutral-300">
                   {category.items.map((item) => (
                     <li
                       key={item}
-                      className="hover:text-neutral-900 dark:hover:text-white transition-colors flex items-center gap-1.5"
+                      className="hover:text-white transition-colors flex items-center gap-1.5"
                     >
                       <span className="text-neutral-600 text-[10px]">•</span>
                       <span>{item}</span>

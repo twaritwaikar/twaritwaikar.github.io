@@ -6,13 +6,11 @@ import { MarkdownArticle } from './MarkdownArticle';
 interface ProjectDetailModalProps {
   projectId: string | null;
   onClose: () => void;
-  isDarkMode: boolean;
 }
 
 export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
   projectId,
   onClose,
-  isDarkMode,
 }) => {
   if (!projectId) return null;
 
@@ -62,9 +60,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
     >
       <div
         id="project_modal_window"
-        className={`w-full max-w-3xl border-2 border-[#5CE883] shadow-2xl relative my-auto font-mono flex flex-col max-h-[90vh] ${
-          isDarkMode ? 'bg-[#0f0f0f] text-neutral-200' : 'bg-white text-black'
-        }`}
+        className="w-full max-w-3xl border-2 border-[#5CE883] shadow-2xl relative my-auto font-mono flex flex-col max-h-[90vh] bg-[#0f0f0f] text-neutral-200"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}

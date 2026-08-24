@@ -1,21 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { TabType } from '../types';
-import { Moon, Sun } from 'lucide-react';
+import { Moon, X } from 'lucide-react';
 import { PORTFOLIO_DATA } from '../data/portfolioData';
 
 interface HeaderProps {
   activeTab: TabType;
   setActiveTab: (tab: TabType) => void;
-  isDarkMode: boolean;
-  setIsDarkMode: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const Header: React.FC<HeaderProps> = ({
   activeTab,
   setActiveTab,
-  isDarkMode,
-  setIsDarkMode,
 }) => {
+  const [lightModeDenied, setLightModeDenied] = useState(false);
   const navTabs: { id: TabType; label: string; mobileLabel: string }[] = [
     { id: 'HOME', label: 'HOME', mobileLabel: 'HOME' },
     { id: 'EXPERIENCE', label: 'EXPERIENCE', mobileLabel: 'EXP' },
@@ -27,14 +24,9 @@ export const Header: React.FC<HeaderProps> = ({
   return (
     <header
       id="header_nav"
-      className={`w-full shrink-0 border-b transition-colors ${
-        isDarkMode
-          ? 'bg-[#111111] border-[#262626] text-white'
-          : 'bg-[#F2F2F2] border-[#D4D4D4] text-black'
-      }`}
+      className="w-full shrink-0 border-b bg-[#111111] border-[#262626] text-white"
     >
       <div className="max-w-[1500px] mx-auto px-4 md:px-6 h-14 flex items-center justify-between">
-        {/* Left Branding */}
         <div
           id="brand_logo"
           onClick={() => setActiveTab('HOME')}
@@ -48,7 +40,6 @@ export const Header: React.FC<HeaderProps> = ({
           </span>
         </div>
 
-        {/* Center/Right Navigation Tabs */}
         <nav id="nav_links" className="hidden sm:flex items-center gap-4 md:gap-6 font-mono text-xs md:text-sm">
           {navTabs.map((tab) => {
             const isActive = activeTab === tab.id;
@@ -59,12 +50,8 @@ export const Header: React.FC<HeaderProps> = ({
                 onClick={() => setActiveTab(tab.id)}
                 className={`relative py-1 tracking-wider uppercase transition-colors cursor-pointer ${
                   isActive
-                    ? isDarkMode
-                      ? 'text-white font-bold'
-                      : 'text-black font-bold'
-                    : isDarkMode
-                    ? 'text-neutral-400 hover:text-white'
-                    : 'text-neutral-600 hover:text-black'
+                    ? 'text-white font-bold'
+                    : 'text-neutral-400 hover:text-white'
                 }`}
               >
                 {tab.label}
@@ -76,39 +63,23 @@ export const Header: React.FC<HeaderProps> = ({
           })}
         </nav>
 
-        {/* Right Mode Toggle */}
         <div className="flex items-center gap-3">
           <button
             id="theme_toggle_btn"
-            onClick={() => setIsDarkMode((prev) => !prev)}
-            className={`font-mono text-xs px-2.5 py-1.5 border flex items-center gap-2 transition-all cursor-pointer select-none ${
-              isDarkMode
-                ? 'border-[#333333] hover:border-[#5CE883] hover:text-[#5CE883] bg-[#161616] text-neutral-300'
-                : 'border-[#CCCCCC] hover:border-black bg-white text-black'
-            }`}
-            title="Toggle color theme"
+            type="button"
+            onClick={() => setLightModeDenied(true)}
+            className="font-mono text-xs p-1.5 border flex items-center justify-center transition-all cursor-pointer select-none border-[#333333] hover:border-red-500 hover:text-red-400 bg-[#161616] text-neutral-300"
+            title="Light mode is not available"
+            aria-label="Theme"
           >
-            {isDarkMode ? (
-              <>
-                <Moon className="w-3.5 h-3.5 text-[#5CE883]" />
-                <span className="hidden xs:inline">dark_mode</span>
-              </>
-            ) : (
-              <>
-                <Sun className="w-3.5 h-3.5 text-amber-600" />
-                <span className="hidden xs:inline">light_mode</span>
-              </>
-            )}
+            <Moon className="w-3.5 h-3.5 text-[#5CE883]" />
           </button>
         </div>
       </div>
 
-      {/* Mobile subnav bar */}
       <div
         id="mobile_subnav"
-        className={`sm:hidden flex border-t overflow-x-auto ${
-          isDarkMode ? 'border-[#262626] bg-[#0e0e0e]' : 'border-[#D4D4D4] bg-[#E8E8E8]'
-        }`}
+        className="sm:hidden flex border-t overflow-x-auto border-[#262626] bg-[#0e0e0e]"
       >
         {navTabs.map((tab) => {
           const isActive = activeTab === tab.id;
@@ -120,9 +91,7 @@ export const Header: React.FC<HeaderProps> = ({
               className={`flex-1 min-w-0 py-2.5 text-center font-mono text-[10px] whitespace-nowrap px-1.5 transition-colors ${
                 isActive
                   ? 'bg-[#5CE883] text-black font-bold'
-                  : isDarkMode
-                  ? 'text-neutral-400 hover:text-white'
-                  : 'text-neutral-700 hover:text-black'
+                  : 'text-neutral-400 hover:text-white'
               }`}
             >
               {tab.mobileLabel}
@@ -130,6 +99,42 @@ export const Header: React.FC<HeaderProps> = ({
           );
         })}
       </div>
+
+      {lightModeDenied && (
+        <div
+          id="light_mode_denied_overlay"
+          className="fixed inset-0 z-[100] bg-black/85 flex items-center justify-center p-4"
+          onClick={() => setLightModeDenied(false)}
+        >
+          <div
+            className="w-full max-w-md border-2 border-red-500 bg-[#0f0f0f] p-5 font-mono shadow-2xl"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className="flex items-start justify-between gap-3">
+              <div className="text-red-500 font-bold tracking-widest text-xs sm:text-sm">
+                ERROR // LIGHT_MODE_DENIED
+              </div>
+              <button
+                type="button"
+                onClick={() => setLightModeDenied(false)}
+                className="p-1 border border-[#333] hover:border-red-500 hover:text-red-500 text-neutral-400 cursor-pointer"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+            <p className="mt-4 text-sm text-neutral-200 leading-relaxed">
+              This website is never going to have a light mode.
+            </p>
+            <button
+              type="button"
+              onClick={() => setLightModeDenied(false)}
+              className="mt-5 px-3 py-1.5 border border-red-500 text-red-400 hover:bg-red-500 hover:text-black text-xs tracking-wider cursor-pointer"
+            >
+              ACKNOWLEDGE
+            </button>
+          </div>
+        </div>
+      )}
     </header>
   );
 };

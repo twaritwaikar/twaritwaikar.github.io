@@ -11,9 +11,12 @@ import { ProjectDetailModal } from './components/ProjectDetailModal';
 import { ExperienceDetailModal } from './components/ExperienceDetailModal';
 import { PORTFOLIO_DATA } from './data/portfolioData';
 
+const CONTACT_SENT_HASH = '#contact-sent';
+
 export default function App() {
-  const [activeTab, setActiveTab] = useState<TabType>('HOME');
-  const [isDarkMode, setIsDarkMode] = useState<boolean>(true);
+  const [activeTab, setActiveTab] = useState<TabType>(
+    window.location.hash === CONTACT_SENT_HASH ? 'CONTACT' : 'HOME'
+  );
   const [selectedProjectId, setSelectedProjectId] = useState<string | null>(null);
   const [selectedExperienceId, setSelectedExperienceId] = useState<string | null>(null);
 
@@ -40,24 +43,17 @@ export default function App() {
   return (
     <div
       id="app_root"
-      className={`h-dvh max-h-dvh overflow-hidden flex flex-col font-mono selection:bg-[#5CE883] selection:text-black transition-colors ${
-        isDarkMode
-          ? 'dark bg-black text-neutral-200 bg-drafting-grid-dark'
-          : 'bg-[#F4F4F4] text-neutral-900 bg-drafting-grid-light'
-      }`}
+      className="h-dvh max-h-dvh overflow-hidden flex flex-col font-mono selection:bg-[#5CE883] selection:text-black bg-black text-neutral-200 bg-drafting-grid-dark"
     >
       <Header
         activeTab={activeTab}
         setActiveTab={setActiveTab}
-        isDarkMode={isDarkMode}
-        setIsDarkMode={setIsDarkMode}
       />
 
       <div className="flex-1 min-h-0 max-w-[1500px] w-full mx-auto flex flex-col lg:flex-row border-x border-[#262626]/50 overflow-hidden">
         <Sidebar
           activeTab={activeTab}
           setActiveTab={setActiveTab}
-          isDarkMode={isDarkMode}
           onOpenResume={openResume}
           onOpenProjectModal={handleOpenProjectModal}
           onOpenExperienceModal={handleOpenExperienceModal}
@@ -70,7 +66,6 @@ export default function App() {
           {activeTab === 'HOME' && (
             <HomeView
               setActiveTab={setActiveTab}
-              isDarkMode={isDarkMode}
               onOpenResume={openResume}
               onOpenExperienceModal={handleOpenExperienceModal}
             />
@@ -78,14 +73,12 @@ export default function App() {
 
           {activeTab === 'PROJECTS' && (
             <ProjectsView
-              isDarkMode={isDarkMode}
               onOpenProjectModal={handleOpenProjectModal}
             />
           )}
 
           {activeTab === 'EXPERIENCE' && (
             <ExperienceView
-              isDarkMode={isDarkMode}
               onOpenExperienceModal={handleOpenExperienceModal}
             />
           )}
@@ -93,12 +86,11 @@ export default function App() {
           {activeTab === 'STACK' && (
             <StackView
               setActiveTab={setActiveTab}
-              isDarkMode={isDarkMode}
             />
           )}
 
           {activeTab === 'CONTACT' && (
-            <ContactView isDarkMode={isDarkMode} />
+            <ContactView />
           )}
         </main>
       </div>
@@ -106,12 +98,10 @@ export default function App() {
       <ProjectDetailModal
         projectId={selectedProjectId}
         onClose={handleCloseProjectModal}
-        isDarkMode={isDarkMode}
       />
       <ExperienceDetailModal
         experienceId={selectedExperienceId}
         onClose={handleCloseExperienceModal}
-        isDarkMode={isDarkMode}
       />
     </div>
   );

@@ -2,8 +2,8 @@ import React from 'react';
 import ReactMarkdown, { type Components } from 'react-markdown';
 
 const linkClass =
-  'text-emerald-800 dark:text-accent underline underline-offset-2 hover:opacity-80';
-const codeClass = 'text-emerald-800 dark:text-accent font-mono text-[0.9em]';
+  'text-accent underline underline-offset-2 hover:opacity-80';
+const codeClass = 'text-accent font-mono text-[0.9em]';
 
 function MarkdownLink({
   href,
@@ -29,7 +29,7 @@ function MarkdownLink({
 const sharedComponents: Components = {
   a: ({ href, children }) => <MarkdownLink href={href}>{children}</MarkdownLink>,
   strong: ({ children }) => (
-    <strong className="text-neutral-900 dark:text-neutral-100 font-semibold">
+    <strong className="text-neutral-100 font-semibold">
       {children}
     </strong>
   ),
@@ -54,17 +54,17 @@ const articleComponents: Components = {
   ...sharedComponents,
   p: ({ children }) => <p className="mb-3 last:mb-0">{children}</p>,
   h1: ({ children }) => (
-    <h3 className="font-mono text-xs font-bold tracking-widest text-emerald-800 dark:text-accent uppercase pt-2 mb-2">
+    <h3 className="font-mono text-xs font-bold tracking-widest text-accent uppercase pt-2 mb-2">
       {children}
     </h3>
   ),
   h2: ({ children }) => (
-    <h3 className="font-mono text-xs font-bold tracking-widest text-emerald-800 dark:text-accent uppercase pt-2 mb-2">
+    <h3 className="font-mono text-xs font-bold tracking-widest text-accent uppercase pt-2 mb-2">
       {children}
     </h3>
   ),
   h3: ({ children }) => (
-    <h4 className="font-mono text-xs font-bold tracking-widest text-emerald-800 dark:text-accent uppercase pt-2 mb-2">
+    <h4 className="font-mono text-xs font-bold tracking-widest text-accent uppercase pt-2 mb-2">
       {children}
     </h4>
   ),
@@ -112,7 +112,7 @@ export function MarkdownArticle({
 }) {
   return (
     <div
-      className={`font-sans text-sm leading-relaxed text-neutral-700 dark:text-neutral-300 ${className ?? ''}`}
+      className={`font-sans text-sm leading-relaxed text-neutral-300 ${className ?? ''}`}
     >
       <ReactMarkdown components={articleComponents}>{markdown}</ReactMarkdown>
     </div>

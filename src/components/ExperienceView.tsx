@@ -5,12 +5,10 @@ import { ExperienceIcon } from './projectIcons';
 import { MarkdownInline } from './MarkdownArticle';
 
 interface ExperienceViewProps {
-  isDarkMode: boolean;
   onOpenExperienceModal: (experienceId: string) => void;
 }
 
 export const ExperienceView: React.FC<ExperienceViewProps> = ({
-  isDarkMode,
   onOpenExperienceModal,
 }) => {
   const { experience } = PORTFOLIO_DATA;
@@ -22,9 +20,7 @@ export const ExperienceView: React.FC<ExperienceViewProps> = ({
           <span className="w-1.5 h-6 sm:h-7 bg-white" />
           <h1
             id="experience_heading"
-            className={`font-mono text-2xl sm:text-3xl font-extrabold tracking-tight uppercase ${
-              isDarkMode ? 'text-white' : 'text-neutral-900'
-            }`}
+            className="font-mono text-2xl sm:text-3xl font-extrabold tracking-tight uppercase text-white"
           >
             BUILD/EXPERIENCE
           </h1>
@@ -36,9 +32,7 @@ export const ExperienceView: React.FC<ExperienceViewProps> = ({
 
       <section
         id="box_execution_log"
-        className={`border border-[#2a2a2a] p-4 lg:flex-1 lg:min-h-0 lg:overflow-hidden flex flex-col ${
-          isDarkMode ? 'bg-[#141414]' : 'bg-[#EAEAEA]'
-        }`}
+        className="border border-[#2a2a2a] p-4 lg:flex-1 lg:min-h-0 lg:overflow-hidden flex flex-col bg-[#141414]"
       >
         <div className="flex items-center gap-2 font-mono text-xs text-neutral-400 pb-3 border-b border-[#262626] mb-3 shrink-0">
           <RefreshCw className="w-3.5 h-3.5 text-[#5CE883]" />
@@ -52,9 +46,7 @@ export const ExperienceView: React.FC<ExperienceViewProps> = ({
               key={exp.id}
               id={`experience_entry_${exp.id}`}
               onClick={() => onOpenExperienceModal(exp.id)}
-              className={`group w-full text-left grid grid-cols-1 sm:grid-cols-12 gap-2 sm:gap-4 p-3 border border-transparent hover:border-[#5CE883] cursor-pointer transition-colors ${
-                isDarkMode ? 'hover:bg-[#1a1a1a]' : 'hover:bg-neutral-200'
-              }`}
+              className="group w-full text-left grid grid-cols-1 sm:grid-cols-12 gap-2 sm:gap-4 p-3 border border-transparent hover:border-[#5CE883] cursor-pointer transition-colors hover:bg-[#1a1a1a]"
             >
               <div className="sm:col-span-3 font-mono text-xs text-neutral-400 tracking-wider flex items-start gap-2">
                 <ExperienceIcon id={exp.id} />
@@ -62,16 +54,14 @@ export const ExperienceView: React.FC<ExperienceViewProps> = ({
               </div>
               <div className="sm:col-span-8 space-y-1 min-w-0">
                 <h3
-                  className={`font-mono text-sm sm:text-base font-bold tracking-tight ${
-                    isDarkMode ? 'text-white' : 'text-neutral-900'
-                  }`}
+                  className="font-mono text-sm sm:text-base font-bold tracking-tight text-white"
                 >
                   {exp.role}
                 </h3>
                 <div className="font-mono text-xs text-[#5CE883]">
                   {exp.company} // {exp.location}
                 </div>
-                <p className="font-sans text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed line-clamp-2">
+                <p className="font-sans text-sm text-neutral-400 leading-relaxed line-clamp-2">
                   <MarkdownInline markdown={exp.bullets[0] || exp.description} />
                 </p>
               </div>

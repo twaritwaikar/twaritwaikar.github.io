@@ -6,13 +6,11 @@ import { MarkdownInline } from './MarkdownArticle';
 interface ResumeModalProps {
   isOpen: boolean;
   onClose: () => void;
-  isDarkMode: boolean;
 }
 
 export const ResumeModal: React.FC<ResumeModalProps> = ({
   isOpen,
   onClose,
-  isDarkMode,
 }) => {
   if (!isOpen) return null;
 
@@ -34,9 +32,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({
     >
       <div
         id="resume_modal_window"
-        className={`w-full max-w-4xl border-2 border-[#5CE883] shadow-2xl relative my-auto font-mono flex flex-col max-h-[90vh] ${
-          isDarkMode ? 'bg-[#0f0f0f] text-neutral-200' : 'bg-white text-black'
-        }`}
+        className="w-full max-w-4xl border-2 border-[#5CE883] shadow-2xl relative my-auto font-mono flex flex-col max-h-[90vh] bg-[#0f0f0f] text-neutral-200"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Modal Title Bar */}
@@ -69,7 +65,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({
           {/* Header section */}
           <div className="border-b border-[#333] pb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
             <div>
-              <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white dark:text-white">
+              <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
                 {profile.handle}
               </h1>
               <div className="text-sm font-bold text-[#5CE883] tracking-wider mt-0.5">

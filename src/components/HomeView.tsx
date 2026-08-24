@@ -6,20 +6,18 @@ import { MarkdownInline } from './MarkdownArticle';
 
 interface HomeViewProps {
   setActiveTab: (tab: TabType) => void;
-  isDarkMode: boolean;
   onOpenResume: () => void;
   onOpenExperienceModal: (experienceId: string) => void;
 }
 
 export const HomeView: React.FC<HomeViewProps> = ({
   setActiveTab,
-  isDarkMode,
   onOpenResume,
   onOpenExperienceModal,
 }) => {
   const { profile, experience } = PORTFOLIO_DATA;
   const currentRole = profile.currentRole;
-  const panel = isDarkMode ? 'bg-[#141414]' : 'bg-[#EAEAEA]';
+  const panel = 'bg-[#141414]';
   const summary = currentRole?.bullets[0] || currentRole?.description || profile.tagline;
   const stack = currentRole?.technologies?.slice(0, 6).join(', ') || currentRole?.company || '';
 
@@ -29,9 +27,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
         <div>
           <h1
             id="hero_main_handle"
-            className={`font-mono text-2xl sm:text-4xl md:text-5xl font-extrabold tracking-tight leading-none ${
-              isDarkMode ? 'text-white' : 'text-neutral-900'
-            }`}
+            className="font-mono text-2xl sm:text-4xl md:text-5xl font-extrabold tracking-tight leading-none text-white"
           >
             {profile.handle}
           </h1>
@@ -45,9 +41,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
 
         <p
           id="hero_tagline"
-          className={`font-sans text-sm md:text-base max-w-3xl leading-relaxed ${
-            isDarkMode ? 'text-neutral-400' : 'text-neutral-600'
-          }`}
+            className="font-sans text-sm md:text-base max-w-3xl leading-relaxed text-neutral-400"
         >
           {profile.tagline}
         </p>
@@ -55,12 +49,10 @@ export const HomeView: React.FC<HomeViewProps> = ({
         {profile.education && (
           <p
             id="hero_education"
-            className={`font-mono text-xs sm:text-sm tracking-wide ${
-              isDarkMode ? 'text-neutral-500' : 'text-neutral-600'
-            }`}
+            className="font-mono text-xs sm:text-sm tracking-wide text-neutral-500"
           >
             <span className="text-neutral-500">EDU:</span>{' '}
-            <span className={isDarkMode ? 'text-neutral-300' : 'text-neutral-800'}>
+            <span className="text-neutral-300">
               {profile.education.degree}
             </span>
             <span className="hidden sm:inline text-neutral-600"> // </span>
@@ -80,11 +72,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
           <button
             id="btn_init_contact"
             onClick={() => setActiveTab('CONTACT')}
-            className={`px-5 py-2.5 font-mono text-xs sm:text-sm font-semibold tracking-wider border transition-all flex items-center gap-2 cursor-pointer btn-brutalist ${
-              isDarkMode
-                ? 'border-neutral-500 text-neutral-200 hover:bg-white hover:text-black hover:border-white'
-                : 'border-neutral-800 text-neutral-900 hover:bg-black hover:text-white'
-            }`}
+            className="px-5 py-2.5 font-mono text-xs sm:text-sm font-semibold tracking-wider border transition-all flex items-center gap-2 cursor-pointer btn-brutalist border-neutral-500 text-neutral-200 hover:bg-white hover:text-black hover:border-white"
           >
             <span>INIT_CONTACT</span>
           </button>
@@ -95,9 +83,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
         <article
           id="latest_deployment_card"
           onClick={() => currentRole && onOpenExperienceModal(currentRole.id)}
-          className={`lg:col-span-8 border-b lg:border-b-0 lg:border-r border-[#262626] transition-all cursor-pointer group flex flex-col min-h-0 ${
-            isDarkMode ? `${panel} hover:border-[#5CE883]` : `${panel} hover:border-black`
-          }`}
+          className={`lg:col-span-8 border-b lg:border-b-0 lg:border-r border-[#262626] transition-all cursor-pointer group flex flex-col min-h-0 ${panel} hover:border-[#5CE883]`}
         >
           <div className="px-4 py-2 bg-[#111111] border-b border-[#262626] flex items-center justify-between font-mono text-xs text-neutral-400 shrink-0">
             <span className="group-hover:text-[#5CE883] transition-colors">LATEST_DEPLOYMENT.sh</span>
@@ -106,7 +92,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
 
           <div className="p-3 sm:p-5 grid grid-cols-1 md:grid-cols-12 gap-4 items-center flex-1 min-h-0">
             <div className="md:col-span-8 space-y-2 min-w-0">
-              <h3 className="font-mono text-lg sm:text-xl font-bold tracking-tight text-neutral-900 dark:text-white group-hover:text-[#5CE883] transition-colors">
+              <h3 className="font-mono text-lg sm:text-xl font-bold tracking-tight text-white group-hover:text-[#5CE883] transition-colors">
                 {currentRole?.role}
               </h3>
               <p className="font-sans text-sm text-neutral-400 leading-relaxed">
@@ -191,7 +177,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
             >
               <span className="sm:col-span-3 font-mono text-[11px] text-neutral-500">{exp.period}</span>
               <span className="sm:col-span-8 flex flex-col sm:flex-row sm:items-baseline sm:gap-3 min-w-0">
-                <span className={`font-mono text-sm font-bold ${isDarkMode ? 'text-white' : 'text-neutral-900'}`}>
+                <span className="font-mono text-sm font-bold text-white">
                   {exp.role}
                 </span>
                 <span className="font-mono text-xs text-[#5CE883] truncate">
