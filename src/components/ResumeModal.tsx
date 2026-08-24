@@ -33,14 +33,14 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({
     >
       <div
         id="resume_modal_window"
-        className={`w-full max-w-4xl border-2 border-[#00FF41] shadow-2xl relative my-auto font-mono flex flex-col max-h-[90vh] ${
+        className={`w-full max-w-4xl border-2 border-[#5CE883] shadow-2xl relative my-auto font-mono flex flex-col max-h-[90vh] ${
           isDarkMode ? 'bg-[#0f0f0f] text-neutral-200' : 'bg-white text-black'
         }`}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Modal Title Bar */}
         <div className="px-4 py-3 bg-[#111] border-b border-[#262626] flex items-center justify-between text-xs select-none">
-          <div className="flex items-center gap-2 text-[#00FF41] font-bold tracking-wider">
+          <div className="flex items-center gap-2 text-[#5CE883] font-bold tracking-wider">
             <FileText className="w-4 h-4" />
             <span>DEPLOY_RESUME.PDF // ARCHITECT_PROFILE</span>
           </div>
@@ -48,7 +48,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({
           <div className="flex items-center gap-3">
             <button
               onClick={handlePrint}
-              className="px-2.5 py-1 border border-[#333] hover:border-[#00FF41] hover:text-[#00FF41] text-[11px] flex items-center gap-1.5 cursor-pointer"
+              className="px-2.5 py-1 border border-[#333] hover:border-[#5CE883] hover:text-[#5CE883] text-[11px] flex items-center gap-1.5 cursor-pointer"
               title="Print / Save as PDF"
             >
               <Printer className="w-3.5 h-3.5" />
@@ -71,20 +71,20 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({
               <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white dark:text-white">
                 {profile.handle}
               </h1>
-              <div className="text-sm font-bold text-[#00FF41] tracking-wider mt-0.5">
-                // {profile.role}
+              <div className="text-sm font-bold text-[#5CE883] tracking-wider mt-0.5">
+                // {profile.headline}
               </div>
             </div>
             <div className="text-right text-[11px] text-neutral-400 space-y-1">
               <div>LOC: {profile.location}</div>
               <div>EXPERIENCE: {profile.experienceYears}+ YEARS</div>
-              <div className="text-[#00FF41]">STATUS: {profile.status} // {site.statusLabel}</div>
+              <div className="text-[#5CE883]">STATUS: {profile.status} // {site.statusLabel}</div>
             </div>
           </div>
 
           {/* Summary */}
           <div className="space-y-2">
-            <div className="text-[11px] font-bold text-[#00FF41] uppercase tracking-widest">
+            <div className="text-[11px] font-bold text-[#5CE883] uppercase tracking-widest">
               [ 01 // ARCHITECTURAL_PHILOSOPHY ]
             </div>
             <p className="font-sans text-sm text-neutral-300 leading-relaxed">
@@ -94,12 +94,12 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({
 
           {/* Work Experience */}
           <div className="space-y-4">
-            <div className="text-[11px] font-bold text-[#00FF41] uppercase tracking-widest">
+            <div className="text-[11px] font-bold text-[#5CE883] uppercase tracking-widest">
               [ 02 // EXECUTION_LOG & WORK_EXPERIENCE ]
             </div>
 
             {experience.map((exp, idx) => (
-            <div key={`${exp.company}-${exp.period}`} className={`border-l-2 pl-4 space-y-2 ${idx === 0 ? 'border-[#00FF41]' : 'border-[#333]'}`}>
+            <div key={`${exp.company}-${exp.period}`} className={`border-l-2 pl-4 space-y-2 ${idx === 0 ? 'border-[#5CE883]' : 'border-[#333]'}`}>
               <div className="flex justify-between items-baseline flex-wrap">
                 <span className="font-bold text-sm text-white">
                   {exp.role.toUpperCase()} — {exp.company.toUpperCase()}
@@ -117,13 +117,13 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({
 
           {/* Technical Skills */}
           <div className="space-y-3">
-            <div className="text-[11px] font-bold text-[#00FF41] uppercase tracking-widest">
+            <div className="text-[11px] font-bold text-[#5CE883] uppercase tracking-widest">
               [ 03 // CORE_CAPABILITIES & STACK ]
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
               {techStack.map((category) => (
               <div key={category.category} className="p-2.5 bg-[#141414] border border-[#262626]">
-                <div className="text-[#00FF41] font-bold mb-1">{category.category}</div>
+                <div className="text-[#5CE883] font-bold mb-1">{category.category}</div>
                 <div className="text-neutral-300">{category.items.join(', ')}</div>
               </div>
               ))}
@@ -132,7 +132,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({
 
           {/* Education */}
           <div className="space-y-2 pt-2 border-t border-[#333]">
-            <div className="text-[11px] font-bold text-[#00FF41] uppercase tracking-widest">
+            <div className="text-[11px] font-bold text-[#5CE883] uppercase tracking-widest">
               [ 04 // ACADEMIC_CREDENTIALS ]
             </div>
             {profile.education && (
@@ -151,7 +151,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({
           <span className="text-neutral-500 font-mono">MD5: e7b2...9f41 // VERIFIED</span>
           <button
             onClick={onClose}
-            className="px-4 py-1.5 bg-[#00FF41] text-black font-bold tracking-wider uppercase cursor-pointer hover:bg-[#00e639]"
+            className="px-4 py-1.5 bg-[#5CE883] text-black font-bold tracking-wider uppercase cursor-pointer hover:bg-[#3FCF68]"
           >
             CLOSE_DOCUMENT
           </button>

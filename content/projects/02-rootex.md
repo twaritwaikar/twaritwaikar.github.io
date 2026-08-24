@@ -19,14 +19,17 @@ images:
 links:
   - View code|https://github.com/sdslabs/Rootex
   - View documentation|https://rootex.readthedocs.io/
-architecture: Modified entity-component-system engine with DirectX 11 rendering, Bullet physics, OpenAL audio, and an embedded Lua gameplay API.
+  - GameFromScratch review|https://gamefromscratch.com/rootex-game-engine-review/
+architecture: High-performance C++17 ECS with cache-friendly memory layout, DirectX 11 rendering, Bullet physics, OpenAL audio, and an embedded Lua gameplay API.
 highlights:
   - Led a small team at SDSLabs, IIT Roorkee
-  - Dear ImGui editor with live scene editing
-  - Lua bindings via Sol3 for faster gameplay iteration
+  - CPU and cache-efficient ECS mixed with careful C++ memory management
+  - Featured on GameFromScratch
 ---
 
-**Rootex Engine** is an advanced 3D game engine written in C++ made by a small team which I led at [SDSLabs, IIT Roorkee](https://sdslabs.co/). It comes with an editor written in C++ using [Dear ImGui](https://github.com/ocornut/imgui).
+**Rootex Engine** is a high-performance C++17 3D game engine made by a small team I led at [SDSLabs, IIT Roorkee](https://sdslabs.co/). Performance comes from a CPU- and cache-efficient ECS plus careful memory management, with a healthy amount of object orientation. It ships with an editor written in C++ using [Dear ImGui](https://github.com/ocornut/imgui).
+
+It was [featured on GameFromScratch](https://gamefromscratch.com/rootex-game-engine-review/).
 
 ## Features
 

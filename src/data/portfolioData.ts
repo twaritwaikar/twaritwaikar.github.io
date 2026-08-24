@@ -79,6 +79,7 @@ export const PORTFOLIO_DATA = {
   profile: {
     handle: str(profileMeta, 'handle'),
     role: str(profileMeta, 'role'),
+    headline: str(profileMeta, 'headline') || str(profileMeta, 'role'),
     title: str(profileMeta, 'title'),
     tagline: str(profileMeta, 'tagline'),
     location: str(profileMeta, 'location'),

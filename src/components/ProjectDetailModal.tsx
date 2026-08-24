@@ -62,7 +62,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
     >
       <div
         id="project_modal_window"
-        className={`w-full max-w-3xl border-2 border-[#00FF41] shadow-2xl relative my-auto font-mono flex flex-col max-h-[90vh] ${
+        className={`w-full max-w-3xl border-2 border-[#5CE883] shadow-2xl relative my-auto font-mono flex flex-col max-h-[90vh] ${
           isDarkMode ? 'bg-[#0f0f0f] text-neutral-200' : 'bg-white text-black'
         }`}
         onClick={(e) => e.stopPropagation()}
@@ -70,7 +70,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
         {/* Header */}
         <div className="px-4 py-3 bg-[#111] border-b border-[#262626] flex items-center justify-between text-xs select-none">
           <div className="flex items-center gap-2 text-white font-bold tracking-wider">
-            <span className="text-[#00FF41]">■</span>
+            <span className="text-[#5CE883]">■</span>
             <span>SPEC_INSPECTOR // {project.name}</span>
             <span className="text-neutral-500 font-normal">({project.version})</span>
           </div>
@@ -87,7 +87,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
         <div className="p-6 overflow-y-auto space-y-5 text-xs">
           {/* Overview */}
           <div>
-            <div className="text-[11px] font-bold text-[#00FF41] uppercase tracking-widest mb-1">
+            <div className="text-[11px] font-bold text-[#5CE883] uppercase tracking-widest mb-1">
               [ 01 // OVERVIEW ]
             </div>
             {project.article ? (
@@ -115,7 +115,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-2 py-1 border border-[#333] hover:border-[#00FF41] hover:text-[#00FF41] text-[10px] tracking-wider"
+                  className="px-2 py-1 border border-[#333] hover:border-[#5CE883] hover:text-[#5CE883] text-[10px] tracking-wider"
                 >
                   {link.label}
                 </a>
@@ -126,7 +126,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
           {/* Architecture & Metrics */}
           {project.details && (
             <div className="space-y-3">
-              <div className="text-[11px] font-bold text-[#00FF41] uppercase tracking-widest">
+              <div className="text-[11px] font-bold text-[#5CE883] uppercase tracking-widest">
                 [ 02 // SYSTEM_ARCHITECTURE & BENCHMARKS ]
               </div>
 
@@ -138,13 +138,13 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
                 {project.details.throughput && (
                   <div>
                     <span className="text-neutral-500 font-bold">THROUGHPUT: </span>
-                    <span className="text-[#00FF41]">{project.details.throughput}</span>
+                    <span className="text-[#5CE883]">{project.details.throughput}</span>
                   </div>
                 )}
                 {project.details.latency && (
                   <div>
                     <span className="text-neutral-500 font-bold">LATENCY: </span>
-                    <span className="text-[#00FF41]">{project.details.latency}</span>
+                    <span className="text-[#5CE883]">{project.details.latency}</span>
                   </div>
                 )}
               </div>
@@ -167,17 +167,17 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
           {project.details?.codeSnippet && (
             <div className="space-y-2">
               <div className="flex items-center justify-between">
-                <div className="text-[11px] font-bold text-[#00FF41] uppercase tracking-widest">
+                <div className="text-[11px] font-bold text-[#5CE883] uppercase tracking-widest">
                   [ 03 // CORE_IMPLEMENTATION_SNIPPET ]
                 </div>
                 <button
                   onClick={handleCopy}
-                  className="px-2 py-0.5 border border-[#333] hover:border-[#00FF41] text-[10px] text-neutral-300 flex items-center gap-1 cursor-pointer"
+                  className="px-2 py-0.5 border border-[#333] hover:border-[#5CE883] text-[10px] text-neutral-300 flex items-center gap-1 cursor-pointer"
                 >
                   {copied ? (
                     <>
-                      <Check className="w-3 h-3 text-[#00FF41]" />
-                      <span className="text-[#00FF41]">COPIED</span>
+                      <Check className="w-3 h-3 text-[#5CE883]" />
+                      <span className="text-[#5CE883]">COPIED</span>
                     </>
                   ) : (
                     <>
@@ -188,7 +188,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
                 </button>
               </div>
 
-              <pre className="p-3 bg-[#0a0a0a] border border-[#222] text-[#00FF41] overflow-x-auto text-[11px] leading-relaxed font-mono">
+              <pre className="p-3 bg-[#0a0a0a] border border-[#222] text-[#5CE883] overflow-x-auto text-[11px] leading-relaxed font-mono">
                 <code>{project.details.codeSnippet}</code>
               </pre>
             </div>
@@ -197,13 +197,13 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
           {/* Interactive Simulation Sandbox */}
           <div className="space-y-2 pt-2 border-t border-[#262626]">
             <div className="flex items-center justify-between">
-              <div className="text-[11px] font-bold text-[#00FF41] uppercase tracking-widest">
+              <div className="text-[11px] font-bold text-[#5CE883] uppercase tracking-widest">
                 [ 04 // RUNTIME_SIMULATOR ]
               </div>
               <button
                 onClick={handleRunSimulation}
                 disabled={simulationRunning}
-                className="px-3 py-1 bg-[#161616] border border-[#00FF41] hover:bg-[#00FF41] hover:text-black text-[#00FF41] text-[11px] flex items-center gap-1.5 cursor-pointer disabled:opacity-50"
+                className="px-3 py-1 bg-[#161616] border border-[#5CE883] hover:bg-[#5CE883] hover:text-black text-[#5CE883] text-[11px] flex items-center gap-1.5 cursor-pointer disabled:opacity-50"
               >
                 <Play className="w-3 h-3" />
                 <span>{simulationRunning ? 'EXECUTING...' : 'RUN_TEST_BENCHMARK'}</span>
@@ -211,7 +211,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
             </div>
 
             {simOutput.length > 0 && (
-              <div className="p-3 bg-[#050505] border border-[#222] text-[10px] text-[#00FF41] space-y-1 font-mono">
+              <div className="p-3 bg-[#050505] border border-[#222] text-[10px] text-[#5CE883] space-y-1 font-mono">
                 {simOutput.map((line, idx) => (
                   <div key={idx}>{line}</div>
                 ))}

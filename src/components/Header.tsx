@@ -26,7 +26,7 @@ export const Header: React.FC<HeaderProps> = ({
   return (
     <header
       id="header_nav"
-      className={`w-full border-b transition-colors ${
+      className={`w-full shrink-0 border-b transition-colors ${
         isDarkMode
           ? 'bg-[#111111] border-[#262626] text-white'
           : 'bg-[#F2F2F2] border-[#D4D4D4] text-black'
@@ -40,7 +40,7 @@ export const Header: React.FC<HeaderProps> = ({
           className="flex items-center gap-2 cursor-pointer group select-none"
         >
           <span className="font-mono font-bold tracking-tight text-sm md:text-base flex items-center gap-1.5">
-            <span className="text-[#00FF41] font-extrabold group-hover:animate-pulse">
+            <span className="text-[#5CE883] font-extrabold group-hover:animate-pulse">
               ■
             </span>
             {PORTFOLIO_DATA.site.brand}
@@ -68,7 +68,7 @@ export const Header: React.FC<HeaderProps> = ({
               >
                 {tab.label}
                 {isActive && (
-                  <span className="absolute bottom-[-17px] left-0 right-0 h-[2px] bg-[#00FF41]" />
+                  <span className="absolute bottom-[-17px] left-0 right-0 h-[2px] bg-[#5CE883]" />
                 )}
               </button>
             );
@@ -82,14 +82,14 @@ export const Header: React.FC<HeaderProps> = ({
             onClick={() => setIsDarkMode((prev) => !prev)}
             className={`font-mono text-xs px-2.5 py-1.5 border flex items-center gap-2 transition-all cursor-pointer select-none ${
               isDarkMode
-                ? 'border-[#333333] hover:border-[#00FF41] hover:text-[#00FF41] bg-[#161616] text-neutral-300'
+                ? 'border-[#333333] hover:border-[#5CE883] hover:text-[#5CE883] bg-[#161616] text-neutral-300'
                 : 'border-[#CCCCCC] hover:border-black bg-white text-black'
             }`}
             title="Toggle color theme"
           >
             {isDarkMode ? (
               <>
-                <Moon className="w-3.5 h-3.5 text-[#00FF41]" />
+                <Moon className="w-3.5 h-3.5 text-[#5CE883]" />
                 <span className="hidden xs:inline">dark_mode</span>
               </>
             ) : (
@@ -118,7 +118,7 @@ export const Header: React.FC<HeaderProps> = ({
               onClick={() => setActiveTab(tab.id)}
               className={`flex-1 py-2 text-center font-mono text-xs whitespace-nowrap px-3 transition-colors ${
                 isActive
-                  ? 'bg-[#00FF41] text-black font-bold'
+                  ? 'bg-[#5CE883] text-black font-bold'
                   : isDarkMode
                   ? 'text-neutral-400 hover:text-white'
                   : 'text-neutral-700 hover:text-black'

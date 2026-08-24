@@ -1,31 +1,43 @@
 # Stack
 
 ## LANG
-- C++17
-- Lua
+- Python
+- C++
+- Go
+- TypeScript
+- Java
 - C
+
+## CLOUD
+- Kubernetes
+- Docker
+- Terraform
+- AWS
+- GCP
+
+## AI / DX
+- Code search
+- MCP
+- FastAPI
+- Redis
+- Neptune
 
 ## GRAPHICS
 - DirectX 11
-- OpenGL 3.3
-- Unreal / Godot
-
-## ENGINES
-- Rootex
-- Rubeus
-- UE4 / Godot
-
-## CLOUD
-- AWS
-- GCP
-- Salesforce
+- OpenGL 3
+- Unreal 4
+- Godot
 
 ## TOOLS
-- Git / libgit2
-- Dear ImGui
+- Claude Code
+- Cursor
 - Perforce
+- CMake
+- GitHub
 
 ## SYS
 - Linux
-- C++ systems
-- CI / VCS
+- macOS
+- Windows
+- Helix Core
+- Flask

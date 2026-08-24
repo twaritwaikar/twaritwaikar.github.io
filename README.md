@@ -103,7 +103,9 @@ int main() { return 0; }
 
 ### Resume PDF
 
-Replace `public/assets/Twarit_Waikar_Resume.pdf` and keep `resume:` in `content/site.md` pointing at that path.
+The live PDF is served at [`/resume`](https://twarit.cc/resume) (also [`/resume.pdf`](https://twarit.cc/resume.pdf)).
+
+Replace `public/assets/Twarit_Waikar_Resume.pdf` to update it. `content/site.md` should keep `resume: /resume`.
 
 ## Deploy
 

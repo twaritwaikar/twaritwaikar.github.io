@@ -1,9 +1,10 @@
 ---
 handle: TWARIT_WAIKAR
-role: SOFTWARE_ENGINEER
+role: SENIOR_MTS
+headline: "Senior MTS @ Salesforce"
 title: "TWARIT WAIKAR"
-tagline: Building high-performance systems, game engines, and developer tools. Precision engineering from graphics pipelines to cloud-scale version control.
-location: INDIA
+tagline: High-performance, highly available systems. Code search, AI developer experience, and AI context engineering.
+location: HYDERABAD
 status: OPERATIONAL
 experience_years: "05"
 education_degree: B.Tech in Computer Science and Engineering
@@ -13,11 +14,11 @@ terminal_boot:
   - "> Loading core modules... [OK]"
   - "> Establishing secure connection... [OK]"
   - "> Locating developer..."
-  - "> Done. [India]"
+  - "> Done. [Hyderabad]"
 ---
 
-Software engineer at Salesforce. B.Tech in Computer Science and Engineering from Indian Institute of Technology Roorkee (2021).
+Senior Member of Technical Staff at Salesforce in the AI Developer XP (ADX) organization. I work on high-performance and highly available systems, code search, AI Dev-XP, and AI context engineering.
 
-I read and build around operating systems, cloud, computer graphics, game development (including VR), and high-performance low-level systems programming.
+B.Tech in Computer Science and Engineering from Indian Institute of Technology Roorkee (2021).
 
-During college I was part of IIT Roorkee's software group [SDSLabs](https://sdslabs.co/) from 2018 to 2021, building game engines, web portals, and cloud systems. I also co-led design for IIT Roorkee's technical magazine [Geek Gazette](https://geekgazette.iitr.ac.in/).
+On days off I am a gamer, open-source maintainer, and hip-hop dancer. During college I was part of IIT Roorkee's software group [SDSLabs](https://sdslabs.co/) from 2018 to 2021, and I co-led design for [Geek Gazette](https://geekgazette.iitr.ac.in/).

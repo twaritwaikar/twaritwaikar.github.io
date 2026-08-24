@@ -99,7 +99,7 @@ LOCATION: ${PORTFOLIO_DATA.profile.location}`,
       newLogs.push({
         text: `drwxr-xr-x  ROOT/
   drwxr-xr-x  SRC/PROJECTS/ (${PORTFOLIO_DATA.projects.map((project) => project.name).join(', ')})
-  drwxr-xr-x  DOCS/ABOUT/   (resume.md, bio.txt)
+  drwxr-xr-x  DOCS/ABOUT/   (resume.pdf, bio.txt)
   drwxr-xr-x  BIN/CONTACT/  (mail.sh)`,
         isOutput: true,
       });
@@ -109,7 +109,7 @@ LOCATION: ${PORTFOLIO_DATA.profile.location}`,
           text: PORTFOLIO_DATA.profile.bio.join('\n\n'),
           isOutput: true,
         });
-      } else if (arg === 'resume.md') {
+      } else if (arg === 'resume.pdf' || arg === 'resume.md') {
         newLogs.push({
           text: `## ${PORTFOLIO_DATA.profile.handle} — ${PORTFOLIO_DATA.profile.role}
 ${PORTFOLIO_DATA.profile.tagline}
@@ -128,7 +128,7 @@ Experience: ${PORTFOLIO_DATA.profile.experienceYears} Yrs | Location: ${PORTFOLI
           });
         } else {
           newLogs.push({
-            text: `cat: ${arg || 'filename'}: No such file or directory. Try: cat bio.txt, cat resume.md`,
+            text: `cat: ${arg || 'filename'}: No such file or directory. Try: cat bio.txt, cat resume.pdf`,
             isError: true,
           });
         }
@@ -197,10 +197,10 @@ Follow the white rabbit -> ${PORTFOLIO_DATA.site.brand} initialized.`,
   return (
     <div
       id="terminal_system_init"
-      className={`border flex flex-col font-mono text-xs transition-colors h-[230px] md:h-[250px] ${
+      className={`flex flex-col font-mono text-xs transition-colors h-[170px] md:h-[190px] border-0 ${
         isDarkMode
-          ? 'bg-[#181818] border-[#333333] text-neutral-200'
-          : 'bg-[#1f1f1f] border-[#222222] text-neutral-100'
+          ? 'bg-[#181818] text-neutral-200'
+          : 'bg-[#1f1f1f] text-neutral-100'
       }`}
       onClick={() => inputRef.current?.focus()}
     >
@@ -226,7 +226,7 @@ Follow the white rabbit -> ${PORTFOLIO_DATA.site.brand} initialized.`,
             key={idx}
             className={`whitespace-pre-wrap leading-relaxed ${
               line.isGreen
-                ? 'text-[#00FF41]'
+                ? 'text-[#5CE883]'
                 : line.isError
                 ? 'text-red-400'
                 : 'text-neutral-300'
@@ -238,7 +238,7 @@ Follow the white rabbit -> ${PORTFOLIO_DATA.site.brand} initialized.`,
 
         {/* Input prompt line */}
         <div className="flex items-center gap-2 pt-1">
-          <span className="text-[#00FF41] font-bold select-none">$</span>
+          <span className="text-[#5CE883] font-bold select-none">$</span>
           <input
             ref={inputRef}
             type="text"
@@ -265,7 +265,7 @@ Follow the white rabbit -> ${PORTFOLIO_DATA.site.brand} initialized.`,
               e.stopPropagation();
               handleCommand(cmd);
             }}
-            className="px-1.5 py-0.5 border border-[#333333] hover:border-[#00FF41] hover:text-[#00FF41] bg-[#1a1a1a] transition-colors cursor-pointer shrink-0"
+            className="px-1.5 py-0.5 border border-[#333333] hover:border-[#5CE883] hover:text-[#5CE883] bg-[#1a1a1a] transition-colors cursor-pointer shrink-0"
           >
             {cmd}
           </button>

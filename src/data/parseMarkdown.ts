@@ -226,7 +226,7 @@ export function asProject(data: Record<string, unknown>, body: string): ProjectI
 export function asContact(data: Record<string, unknown>, body: string): ContactContent {
   return {
     heading: str(data, 'heading', 'ESTABLISH_CONNECTION'),
-    body: paragraphs(body).join(' '),
+    body: body.trim(),
   };
 }
 

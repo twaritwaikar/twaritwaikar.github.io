@@ -21,9 +21,9 @@ throughput: ~100x vs stock git-p4.py
 highlights:
   - Converts large P4 monorepos into Git with far less wall-clock time than git-p4.py
   - Open-sourced at Salesforce and later integrated into Sourcegraph as their primary P4 clone path
-  - Used as a production migration tool across large internal codebases
+  - Unlocked Sourcegraph on the Salesforce Perforce monorepo for thousands of developers
 ---
 
-**p4-fusion** is a fast Perforce to Git conversion tool that I wrote and open-sourced at Salesforce. It converts a large P4 monorepo into a Git repository with 100x the performance of the standard `git-p4.py` tool distributed with Git.
+**p4-fusion** is a multi-threaded Perforce to Git conversion tool that I wrote and still maintain at Salesforce. It converts a large P4 monorepo into a Git repository with about 100x the performance of stock `git-p4.py`.
 
 It became one of the most successful tools built at Salesforce for P4 migrations. It was later integrated into Sourcegraph and became their primary way of cloning Perforce code.
