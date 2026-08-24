@@ -3,6 +3,8 @@ import { TabType } from '../types';
 import { Moon, X } from 'lucide-react';
 import { PORTFOLIO_DATA } from '../data/portfolioData';
 import { accentLabel, cycleAccent, initAccent } from '../theme/accent';
+import { UiGravityOverlay } from '../gravity/UiGravityOverlay';
+import { playRandomMysterySfx } from '../sfx/mysterySfx';
 
 interface HeaderProps {
   activeTab: TabType;
@@ -15,6 +17,7 @@ export const Header: React.FC<HeaderProps> = ({
 }) => {
   const [lightModeDenied, setLightModeDenied] = useState(false);
   const [accent, setAccent] = useState(initAccent);
+  const [gravityOn, setGravityOn] = useState(false);
   const navTabs: { id: TabType; label: string; mobileLabel: string }[] = [
     { id: 'HOME', label: 'HOME', mobileLabel: 'HOME' },
     { id: 'EXPERIENCE', label: 'EXPERIENCE', mobileLabel: 'EXP' },
@@ -89,6 +92,19 @@ export const Header: React.FC<HeaderProps> = ({
           >
             <Moon className="w-3.5 h-3.5 text-[var(--accent)]" />
           </button>
+          <button
+            id="pixel_burst_btn"
+            type="button"
+            onClick={() => {
+              playRandomMysterySfx();
+              setGravityOn(true);
+            }}
+            className="font-mono text-xs p-1.5 border flex items-center justify-center transition-all cursor-pointer select-none border-[#333333] hover:border-[var(--accent)] bg-[#161616] text-[var(--accent)]"
+            title="Don't click"
+            aria-label="Don't click"
+          >
+            ?
+          </button>
         </div>
       </div>
 
@@ -150,6 +166,11 @@ export const Header: React.FC<HeaderProps> = ({
           </div>
         </div>
       )}
+      <UiGravityOverlay
+        active={gravityOn}
+        kickId="pixel_burst_btn"
+        onStop={() => setGravityOn(false)}
+      />
     </header>
   );
 };
