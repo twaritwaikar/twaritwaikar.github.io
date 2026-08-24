@@ -33,7 +33,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
           </h1>
           <div
             id="hero_main_role"
-            className="font-mono text-xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-[#5CE883] tracking-tight leading-tight mt-0.5"
+            className="font-mono text-xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-[var(--accent)] tracking-tight leading-tight mt-0.5"
           >
             // {profile.headline}
           </div>
@@ -56,7 +56,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
               {profile.education.degree}
             </span>
             <span className="hidden sm:inline text-neutral-600"> // </span>
-            <span className="block sm:inline text-[#5CE883]">{profile.education.detail}</span>
+            <span className="block sm:inline text-[var(--accent)]">{profile.education.detail}</span>
           </p>
         )}
 
@@ -64,7 +64,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
           <button
             id="btn_deploy_resume"
             onClick={onOpenResume}
-            className="px-5 py-2.5 font-mono text-xs sm:text-sm font-semibold tracking-wider border border-[#5CE883] text-[#5CE883] hover:bg-[#5CE883] hover:text-black transition-all flex items-center gap-2 cursor-pointer btn-brutalist"
+            className="px-5 py-2.5 font-mono text-xs sm:text-sm font-semibold tracking-wider border border-[var(--accent)] text-[var(--accent)] hover:bg-[var(--accent)] hover:text-black transition-all flex items-center gap-2 cursor-pointer btn-brutalist"
           >
             <span>DEPLOY_RESUME.PDF</span>
           </button>
@@ -83,16 +83,16 @@ export const HomeView: React.FC<HomeViewProps> = ({
         <article
           id="latest_deployment_card"
           onClick={() => currentRole && onOpenExperienceModal(currentRole.id)}
-          className={`lg:col-span-8 border-b lg:border-b-0 lg:border-r border-[#262626] transition-all cursor-pointer group flex flex-col min-h-0 ${panel} hover:border-[#5CE883]`}
+          className={`lg:col-span-8 border-b lg:border-b-0 lg:border-r border-[#262626] transition-all cursor-pointer group flex flex-col min-h-0 ${panel} hover:border-[var(--accent)]`}
         >
           <div className="px-4 py-2 bg-[#111111] border-b border-[#262626] flex items-center justify-between font-mono text-xs text-neutral-400 shrink-0">
-            <span className="group-hover:text-[#5CE883] transition-colors">LATEST_DEPLOYMENT.sh</span>
+            <span className="group-hover:text-[var(--accent)] transition-colors">LATEST_DEPLOYMENT.sh</span>
             <span className="flex items-center gap-2">
               <span className="text-neutral-500">{currentRole?.period}</span>
               <span
                 id="btn_expand_latest_deployment"
                 title="Open details"
-                className="w-7 h-7 border border-[#333333] group-hover:border-[#5CE883] group-hover:text-[#5CE883] bg-[#161616] text-neutral-300 flex items-center justify-center"
+                className="w-7 h-7 border border-[#333333] group-hover:border-[var(--accent)] group-hover:text-[var(--accent)] bg-[#161616] text-neutral-300 flex items-center justify-center"
               >
                 <Maximize2 className="w-3.5 h-3.5" />
               </span>
@@ -101,7 +101,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
 
           <div className="p-3 sm:p-5 grid grid-cols-1 md:grid-cols-12 gap-4 items-center flex-1 min-h-0">
             <div className="md:col-span-8 space-y-2 min-w-0">
-              <h3 className="font-mono text-lg sm:text-xl font-bold tracking-tight text-white group-hover:text-[#5CE883] transition-colors">
+              <h3 className="font-mono text-lg sm:text-xl font-bold tracking-tight text-white group-hover:text-[var(--accent)] transition-colors">
                 {currentRole?.role}
               </h3>
               <p className="font-sans text-sm text-neutral-400 leading-relaxed">
@@ -116,7 +116,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
               </div>
               <div className="flex justify-between md:flex-col gap-1">
                 <span className="text-neutral-500 tracking-wider">STACK</span>
-                <span className="text-[#5CE883] font-semibold break-words text-right md:text-left">{stack}</span>
+                <span className="text-[var(--accent)] font-semibold break-words text-right md:text-left">{stack}</span>
               </div>
             </div>
           </div>
@@ -126,7 +126,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
           type="button"
           id="focus_areas_tile"
           onClick={() => setActiveTab('STACK')}
-          className="lg:col-span-4 bg-[#5CE883] text-black p-3 sm:p-4 lg:p-5 flex flex-col justify-between gap-3 lg:gap-4 cursor-pointer hover:bg-[#3FCF68] transition-all select-none group text-left w-full min-h-0 lg:min-h-[160px]"
+          className="lg:col-span-4 bg-[var(--accent)] text-black p-3 sm:p-4 lg:p-5 flex flex-col justify-between gap-3 lg:gap-4 cursor-pointer hover:bg-[var(--accent-hover)] transition-all select-none group text-left w-full min-h-0 lg:min-h-[160px]"
         >
           <div className="flex items-start justify-between gap-3">
             <div>
@@ -134,7 +134,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 {PORTFOLIO_DATA.site.homeFocusLabel}
               </div>
               <div className="mt-0.5 font-mono text-[10px] font-semibold tracking-widest uppercase text-black/50">
-                {PORTFOLIO_DATA.site.homeTiles.join(' · ')}
+                {PORTFOLIO_DATA.site.homeTiles.join(' Â· ')}
               </div>
             </div>
             <div className="flex items-center gap-2 shrink-0">
@@ -171,7 +171,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
           <button
             type="button"
             onClick={() => setActiveTab('EXPERIENCE')}
-            className="text-[#5CE883] hover:underline cursor-pointer"
+            className="text-[var(--accent)] hover:underline cursor-pointer"
           >
             OPEN_LOG
           </button>
@@ -191,13 +191,13 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 <span className="font-mono text-sm font-bold text-white leading-none">
                   {exp.role}
                 </span>
-                <span className="font-mono text-xs text-[#5CE883] truncate leading-none">
+                <span className="font-mono text-xs text-[var(--accent)] truncate leading-none">
                   {exp.company} // {exp.location}
                 </span>
               </span>
               <span
                 title="Open details"
-                className="sm:col-span-1 w-8 h-8 ml-auto border border-[#333333] group-hover:border-[#5CE883] group-hover:text-[#5CE883] bg-[#161616] text-neutral-300 flex items-center justify-center"
+                className="sm:col-span-1 w-8 h-8 ml-auto border border-[#333333] group-hover:border-[var(--accent)] group-hover:text-[var(--accent)] bg-[#161616] text-neutral-300 flex items-center justify-center"
               >
                 <Maximize2 className="w-3.5 h-3.5" />
               </span>

@@ -24,7 +24,7 @@ export const ExperienceDetailModal: React.FC<ExperienceDetailModalProps> = ({
     >
       <div
         id="experience_modal_window"
-        className="w-full max-w-3xl border-2 border-[#5CE883] shadow-2xl relative my-auto font-mono flex flex-col max-h-[90vh] bg-[#0f0f0f] text-neutral-200"
+        className="w-full max-w-3xl border-2 border-[var(--accent)] shadow-2xl relative my-auto font-mono flex flex-col max-h-[90vh] bg-[#0f0f0f] text-neutral-200"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="px-4 py-3 bg-[#111] border-b border-[#262626] flex items-center justify-between text-xs select-none">
@@ -43,7 +43,7 @@ export const ExperienceDetailModal: React.FC<ExperienceDetailModalProps> = ({
 
         <div className="p-4 sm:p-6 overflow-y-auto space-y-5 text-xs">
           <div>
-            <div className="text-[11px] font-bold text-[#5CE883] uppercase tracking-widest mb-2">
+            <div className="text-[11px] font-bold text-[var(--accent)] uppercase tracking-widest mb-2">
               [ 01 // ROLE ]
             </div>
             <h3
@@ -51,13 +51,13 @@ export const ExperienceDetailModal: React.FC<ExperienceDetailModalProps> = ({
             >
               {exp.role}
             </h3>
-            <div className="font-mono text-xs text-[#5CE883] mt-1">
+            <div className="font-mono text-xs text-[var(--accent)] mt-1">
               {exp.company} // {exp.location}
             </div>
           </div>
 
           <div>
-            <div className="text-[11px] font-bold text-[#5CE883] uppercase tracking-widest mb-2">
+            <div className="text-[11px] font-bold text-[var(--accent)] uppercase tracking-widest mb-2">
               [ 02 // EXECUTION_LOG ]
             </div>
             <ul className="font-sans text-sm text-neutral-300 leading-relaxed space-y-2 list-disc list-inside">

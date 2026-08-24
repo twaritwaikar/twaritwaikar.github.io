@@ -224,7 +224,7 @@ Follow the white rabbit -> ${PORTFOLIO_DATA.site.brand} initialized.`,
             key={idx}
             className={`whitespace-pre-wrap leading-relaxed ${
               line.isGreen
-                ? 'text-[#5CE883]'
+                ? 'text-[var(--accent)]'
                 : line.isError
                 ? 'text-red-400'
                 : 'text-neutral-300'
@@ -236,7 +236,7 @@ Follow the white rabbit -> ${PORTFOLIO_DATA.site.brand} initialized.`,
 
         {/* Input prompt line */}
         <div className="flex items-center gap-2 pt-1">
-          <span className="text-[#5CE883] font-bold select-none">$</span>
+          <span className="text-[var(--accent)] font-bold select-none">$</span>
           <input
             ref={inputRef}
             type="text"
@@ -263,7 +263,7 @@ Follow the white rabbit -> ${PORTFOLIO_DATA.site.brand} initialized.`,
               e.stopPropagation();
               handleCommand(cmd);
             }}
-            className="px-1.5 py-0.5 border border-[#333333] hover:border-[#5CE883] hover:text-[#5CE883] bg-[#1a1a1a] transition-colors cursor-pointer shrink-0"
+            className="px-1.5 py-0.5 border border-[#333333] hover:border-[var(--accent)] hover:text-[var(--accent)] bg-[#1a1a1a] transition-colors cursor-pointer shrink-0"
           >
             {cmd}
           </button>

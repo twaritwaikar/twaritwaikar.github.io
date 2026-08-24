@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { TabType } from '../types';
 import { Moon, X } from 'lucide-react';
 import { PORTFOLIO_DATA } from '../data/portfolioData';
+import { accentLabel, cycleAccent, initAccent } from '../theme/accent';
 
 interface HeaderProps {
   activeTab: TabType;
@@ -13,6 +14,7 @@ export const Header: React.FC<HeaderProps> = ({
   setActiveTab,
 }) => {
   const [lightModeDenied, setLightModeDenied] = useState(false);
+  const [accent, setAccent] = useState(initAccent);
   const navTabs: { id: TabType; label: string; mobileLabel: string }[] = [
     { id: 'HOME', label: 'HOME', mobileLabel: 'HOME' },
     { id: 'EXPERIENCE', label: 'EXPERIENCE', mobileLabel: 'EXP' },
@@ -33,7 +35,7 @@ export const Header: React.FC<HeaderProps> = ({
           className="flex items-center gap-2 cursor-pointer group select-none"
         >
           <span className="font-mono font-bold tracking-tight text-sm md:text-base flex items-center gap-1.5">
-            <span className="text-[#5CE883] font-extrabold group-hover:animate-pulse">
+            <span className="text-[var(--accent)] font-extrabold group-hover:animate-pulse">
               ■
             </span>
             {PORTFOLIO_DATA.site.brand}
@@ -56,14 +58,27 @@ export const Header: React.FC<HeaderProps> = ({
               >
                 {tab.label}
                 {isActive && (
-                  <span className="absolute bottom-[-17px] left-0 right-0 h-[2px] bg-[#5CE883]" />
+                  <span className="absolute bottom-[-17px] left-0 right-0 h-[2px] bg-[var(--accent)]" />
                 )}
               </button>
             );
           })}
         </nav>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2">
+          <button
+            id="accent_toggle_btn"
+            type="button"
+            onClick={() => setAccent((current) => cycleAccent(current))}
+            className="font-mono text-xs p-1.5 border flex items-center justify-center transition-all cursor-pointer select-none border-[#333333] hover:border-[var(--accent)] bg-[#161616]"
+            title={`Accent: ${accentLabel(accent)} — click to cycle`}
+            aria-label="Change accent color"
+          >
+            <span
+              className="block w-3.5 h-3.5 border border-black/40"
+              style={{ backgroundColor: accent }}
+            />
+          </button>
           <button
             id="theme_toggle_btn"
             type="button"
@@ -72,7 +87,7 @@ export const Header: React.FC<HeaderProps> = ({
             title="Light mode is not available"
             aria-label="Theme"
           >
-            <Moon className="w-3.5 h-3.5 text-[#5CE883]" />
+            <Moon className="w-3.5 h-3.5 text-[var(--accent)]" />
           </button>
         </div>
       </div>
@@ -90,7 +105,7 @@ export const Header: React.FC<HeaderProps> = ({
               onClick={() => setActiveTab(tab.id)}
               className={`flex-1 min-w-0 py-2.5 text-center font-mono text-[10px] whitespace-nowrap px-1.5 transition-colors ${
                 isActive
-                  ? 'bg-[#5CE883] text-black font-bold'
+                  ? 'bg-[var(--accent)] text-black font-bold'
                   : 'text-neutral-400 hover:text-white'
               }`}
             >

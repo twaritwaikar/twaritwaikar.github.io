@@ -25,7 +25,7 @@ export const ExperienceView: React.FC<ExperienceViewProps> = ({
             >
               BUILD/EXPERIENCE
             </h1>
-            <p className="font-mono text-xs text-[#5CE883] leading-none">
+            <p className="font-mono text-xs text-[var(--accent)] leading-none">
               ~ $ cat ./execution_log
             </p>
           </div>
@@ -37,7 +37,7 @@ export const ExperienceView: React.FC<ExperienceViewProps> = ({
         className="border border-[#2a2a2a] p-4 lg:flex-1 lg:min-h-0 lg:overflow-hidden flex flex-col bg-[#141414]"
       >
         <div className="flex items-center gap-2 font-mono text-xs text-neutral-400 pb-3 border-b border-[#262626] mb-3 shrink-0">
-          <RefreshCw className="w-3.5 h-3.5 text-[#5CE883]" />
+          <RefreshCw className="w-3.5 h-3.5 text-[var(--accent)]" />
           <span className="tracking-widest uppercase">EXECUTION_LOG</span>
         </div>
 
@@ -55,7 +55,7 @@ export const ExperienceView: React.FC<ExperienceViewProps> = ({
                   onOpenExperienceModal(exp.id);
                 }
               }}
-              className="group w-full text-left grid grid-cols-1 sm:grid-cols-12 gap-2 sm:gap-4 p-3 border border-transparent hover:border-[#5CE883] cursor-pointer transition-colors hover:bg-[#1a1a1a]"
+              className="group w-full text-left grid grid-cols-1 sm:grid-cols-12 gap-2 sm:gap-4 p-3 border border-transparent hover:border-[var(--accent)] cursor-pointer transition-colors hover:bg-[#1a1a1a]"
             >
               <div className="sm:col-span-3 font-mono text-xs text-neutral-400 tracking-wider flex items-start gap-2">
                 <ExperienceIcon id={exp.id} />
@@ -67,7 +67,7 @@ export const ExperienceView: React.FC<ExperienceViewProps> = ({
                 >
                   {exp.role}
                 </h3>
-                <div className="font-mono text-xs text-[#5CE883]">
+                <div className="font-mono text-xs text-[var(--accent)]">
                   {exp.company} // {exp.location}
                 </div>
                 <p className="font-sans text-sm text-neutral-400 leading-relaxed line-clamp-2">
@@ -77,7 +77,7 @@ export const ExperienceView: React.FC<ExperienceViewProps> = ({
               <div className="sm:col-span-1 flex items-end justify-end">
                 <span
                   title="Open details"
-                  className="w-8 h-8 border border-[#333333] group-hover:border-[#5CE883] group-hover:text-[#5CE883] bg-[#161616] text-neutral-300 flex items-center justify-center"
+                  className="w-8 h-8 border border-[#333333] group-hover:border-[var(--accent)] group-hover:text-[var(--accent)] bg-[#161616] text-neutral-300 flex items-center justify-center"
                 >
                   <Maximize2 className="w-3.5 h-3.5" />
                 </span>

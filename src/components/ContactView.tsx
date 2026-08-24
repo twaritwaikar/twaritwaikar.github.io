@@ -91,10 +91,10 @@ export const ContactView: React.FC = () => {
                   target={node.url.startsWith('mailto:') ? undefined : '_blank'}
                   rel={node.url.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
                   id={`link_node_${node.name.toLowerCase()}`}
-                  className="px-4 py-2.5 flex items-center justify-between font-mono text-xs tracking-wider transition-all group text-neutral-300 hover:bg-[#1a1a1a] hover:text-[#5CE883]"
+                  className="px-4 py-2.5 flex items-center justify-between font-mono text-xs tracking-wider transition-all group text-neutral-300 hover:bg-[#1a1a1a] hover:text-[var(--accent)]"
                 >
                   <span>{node.name}</span>
-                  <ArrowRight className="w-4 h-4 text-neutral-500 group-hover:text-[#5CE883] group-hover:translate-x-1 transition-all" />
+                  <ArrowRight className="w-4 h-4 text-neutral-500 group-hover:text-[var(--accent)] group-hover:translate-x-1 transition-all" />
                 </a>
               ))}
             </div>
@@ -106,15 +106,15 @@ export const ContactView: React.FC = () => {
           >
             <div className="space-y-2.5">
               <div className="flex items-center gap-2 text-neutral-200 font-bold">
-                <span className="text-[#5CE883]">&gt;</span>
+                <span className="text-[var(--accent)]">&gt;</span>
                 <span>STATUS: ONLINE</span>
               </div>
               <div className="flex items-center gap-2 text-neutral-200 font-bold">
-                <span className="text-[#5CE883]">&gt;</span>
+                <span className="text-[var(--accent)]">&gt;</span>
                 <span>UPTIME: 99.99%</span>
               </div>
               <div className="flex items-center gap-2 text-neutral-200 font-bold">
-                <span className="text-[#5CE883]">&gt;</span>
+                <span className="text-[var(--accent)]">&gt;</span>
                 <span>LOC: {PORTFOLIO_DATA.profile.location}</span>
               </div>
             </div>
@@ -122,7 +122,7 @@ export const ContactView: React.FC = () => {
             <div className="pt-4 border-t border-[#262626] mt-4 space-y-2">
               <div className="flex items-center justify-between text-[11px] text-neutral-400">
                 <span>PING_LATENCY:</span>
-                <span className="text-[#5CE883] font-bold">
+                <span className="text-[var(--accent)] font-bold">
                   {pingLatency !== null ? `${pingLatency} ms` : 'IDLE'}
                 </span>
               </div>
@@ -132,7 +132,7 @@ export const ContactView: React.FC = () => {
                 id="btn_test_ping"
                 onClick={handleTestPing}
                 disabled={isPinging}
-                className="w-full py-2 border border-[#333] hover:border-[#5CE883] hover:text-[#5CE883] text-[11px] font-mono tracking-wider transition-colors cursor-pointer bg-[#111] text-neutral-300 disabled:opacity-50"
+                className="w-full py-2 border border-[#333] hover:border-[var(--accent)] hover:text-[var(--accent)] text-[11px] font-mono tracking-wider transition-colors cursor-pointer bg-[#111] text-neutral-300 disabled:opacity-50"
               >
                 {isPinging ? '[ PINGING_NODE... ]' : '[ TEST_ROUTE_LATENCY ]'}
               </button>
@@ -149,7 +149,7 @@ export const ContactView: React.FC = () => {
               id="transmission_success_box"
               className="py-8 px-4 flex flex-col items-center justify-center text-center space-y-4 font-mono"
             >
-              <div className="w-12 h-12 bg-[#5CE883]/10 border border-[#5CE883] flex items-center justify-center text-[#5CE883]">
+              <div className="w-12 h-12 bg-[var(--accent)]/10 border border-[var(--accent)] flex items-center justify-center text-[var(--accent)]">
                 <CheckCircle2 className="w-6 h-6" />
               </div>
               <h3 className="text-xl font-bold text-white tracking-tight">
@@ -159,7 +159,7 @@ export const ContactView: React.FC = () => {
                 Your message was delivered to {PORTFOLIO_DATA.site.email} after the captcha check. The first send may also ask you to confirm a one-time activation email.
               </p>
 
-              <div className="w-full max-w-md p-3 bg-[#0a0a0a] border border-[#262626] text-left text-[11px] text-[#5CE883] space-y-1">
+              <div className="w-full max-w-md p-3 bg-[#0a0a0a] border border-[#262626] text-left text-[11px] text-[var(--accent)] space-y-1">
                 {transmissionLogs.map((log, i) => (
                   <div key={i}>{log}</div>
                 ))}
@@ -168,7 +168,7 @@ export const ContactView: React.FC = () => {
               <button
                 type="button"
                 onClick={resetForm}
-                className="mt-4 px-5 py-2 border border-[#333] hover:border-[#5CE883] hover:text-[#5CE883] text-xs transition-colors cursor-pointer"
+                className="mt-4 px-5 py-2 border border-[#333] hover:border-[var(--accent)] hover:text-[var(--accent)] text-xs transition-colors cursor-pointer"
               >
                 [ SEND_ANOTHER_PACKET ]
               </button>
@@ -205,7 +205,7 @@ export const ContactView: React.FC = () => {
                     setFormData((prev) => ({ ...prev, sysId: e.target.value }))
                   }
                   placeholder="Enter identifier..."
-                  className="w-full px-3.5 py-2.5 text-xs border focus:border-2 focus:border-[#5CE883] outline-none transition-all bg-[#0d0d0d] border-[#333333] text-white placeholder-neutral-600"
+                  className="w-full px-3.5 py-2.5 text-xs border focus:border-2 focus:border-[var(--accent)] outline-none transition-all bg-[#0d0d0d] border-[#333333] text-white placeholder-neutral-600"
                 />
               </div>
 
@@ -226,7 +226,7 @@ export const ContactView: React.FC = () => {
                     setFormData((prev) => ({ ...prev, pingAddr: e.target.value }))
                   }
                   placeholder="Enter return route..."
-                  className="w-full px-3.5 py-2.5 text-xs border focus:border-2 focus:border-[#5CE883] outline-none transition-all bg-[#0d0d0d] border-[#333333] text-white placeholder-neutral-600"
+                  className="w-full px-3.5 py-2.5 text-xs border focus:border-2 focus:border-[var(--accent)] outline-none transition-all bg-[#0d0d0d] border-[#333333] text-white placeholder-neutral-600"
                 />
               </div>
 
@@ -247,7 +247,7 @@ export const ContactView: React.FC = () => {
                     setFormData((prev) => ({ ...prev, payload: e.target.value }))
                   }
                   placeholder="Construct data packet..."
-                  className="w-full px-3.5 py-2.5 text-xs border focus:border-2 focus:border-[#5CE883] outline-none transition-all resize-none bg-[#0d0d0d] border-[#333333] text-white placeholder-neutral-600"
+                  className="w-full px-3.5 py-2.5 text-xs border focus:border-2 focus:border-[var(--accent)] outline-none transition-all resize-none bg-[#0d0d0d] border-[#333333] text-white placeholder-neutral-600"
                 />
               </div>
 
@@ -256,7 +256,7 @@ export const ContactView: React.FC = () => {
                   id="btn_execute_transmit"
                   type="submit"
                   disabled={transmissionState === 'TRANSMITTING'}
-                  className="px-6 py-2.5 border border-[#5CE883] text-[#5CE883] hover:bg-[#5CE883] hover:text-black font-mono text-xs sm:text-sm font-bold tracking-wider transition-all flex items-center gap-2 cursor-pointer btn-brutalist disabled:opacity-50"
+                  className="px-6 py-2.5 border border-[var(--accent)] text-[var(--accent)] hover:bg-[var(--accent)] hover:text-black font-mono text-xs sm:text-sm font-bold tracking-wider transition-all flex items-center gap-2 cursor-pointer btn-brutalist disabled:opacity-50"
                 >
                   {transmissionState === 'TRANSMITTING' ? (
                     <>
@@ -273,7 +273,7 @@ export const ContactView: React.FC = () => {
               </div>
 
               {transmissionLogs.length > 0 && transmissionState !== 'IDLE' && (
-                <div className="mt-4 p-3 bg-[#0a0a0a] border border-[#262626] text-[11px] text-[#5CE883] space-y-1">
+                <div className="mt-4 p-3 bg-[#0a0a0a] border border-[#262626] text-[11px] text-[var(--accent)] space-y-1">
                   {transmissionLogs.map((log, i) => (
                     <div key={i}>{log}</div>
                   ))}

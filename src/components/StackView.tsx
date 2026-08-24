@@ -20,7 +20,7 @@ export const StackView: React.FC<StackViewProps> = ({ setActiveTab }) => {
       >
         <div className="space-y-3 min-h-0 overflow-visible lg:overflow-y-auto">
           <div className="flex items-center gap-2 font-mono text-xs text-neutral-400">
-            <span className="w-2.5 h-2.5 bg-[#5CE883] inline-block" />
+            <span className="w-2.5 h-2.5 bg-[var(--accent)] inline-block" />
             <span className="tracking-widest uppercase">SYS.INFO // PROFILE_DATA</span>
           </div>
 
@@ -37,9 +37,9 @@ export const StackView: React.FC<StackViewProps> = ({ setActiveTab }) => {
           {/* Telemetry metadata */}
           <div className="grid grid-cols-[auto_1fr] items-baseline gap-x-3 gap-y-1.5 font-mono text-xs border-y border-[#262626] py-3">
             <span className="text-neutral-500">LOC:</span>
-            <span className="text-[#5CE883] font-semibold">{profile.location}</span>
+            <span className="text-[var(--accent)] font-semibold">{profile.location}</span>
             <span className="text-neutral-500">STATUS:</span>
-            <span className="text-[#5CE883] font-semibold">{profile.status}</span>
+            <span className="text-[var(--accent)] font-semibold">{profile.status}</span>
           </div>
 
           {/* Bio text in Inter font */}
@@ -53,7 +53,7 @@ export const StackView: React.FC<StackViewProps> = ({ setActiveTab }) => {
           <button
             id="btn_init_contact_protocol"
             onClick={() => setActiveTab('CONTACT')}
-            className="w-full py-3 px-4 font-mono text-xs font-bold tracking-widest uppercase border border-[#333333] hover:border-[#5CE883] hover:text-[#5CE883] bg-[#161616] text-neutral-200 transition-all flex items-center justify-center gap-2 cursor-pointer btn-brutalist"
+            className="w-full py-3 px-4 font-mono text-xs font-bold tracking-widest uppercase border border-[#333333] hover:border-[var(--accent)] hover:text-[var(--accent)] bg-[#161616] text-neutral-200 transition-all flex items-center justify-center gap-2 cursor-pointer btn-brutalist"
           >
             <span>[ INIT_CONTACT_PROTOCOL ]</span>
           </button>
@@ -69,14 +69,14 @@ export const StackView: React.FC<StackViewProps> = ({ setActiveTab }) => {
         >
           {/* Header */}
           <div className="flex items-center gap-2 font-mono text-xs text-neutral-400 pb-4 border-b border-[#262626] mb-4">
-            <LayoutGrid className="w-3.5 h-3.5 text-[#5CE883]" />
+            <LayoutGrid className="w-3.5 h-3.5 text-[var(--accent)]" />
             <span className="tracking-widest uppercase">TECH_STACK.JSON</span>
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-y-5 gap-x-4">
             {techStack.map((category) => (
               <div key={category.category} className="space-y-1.5">
-                <div className="font-mono text-[11px] font-bold tracking-widest text-[#5CE883] uppercase">
+                <div className="font-mono text-[11px] font-bold tracking-widest text-[var(--accent)] uppercase">
                   {category.category}
                 </div>
                 <ul className="space-y-0.5 font-mono text-xs text-neutral-300">

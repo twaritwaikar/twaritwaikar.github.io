@@ -58,7 +58,7 @@ export default function App() {
   return (
     <div
       id="app_root"
-      className="h-dvh max-h-dvh overflow-hidden flex flex-col font-mono selection:bg-[#5CE883] selection:text-black bg-black text-neutral-200 bg-drafting-grid-dark"
+      className="h-dvh max-h-dvh overflow-hidden flex flex-col font-mono selection:bg-[var(--accent)] selection:text-black bg-black text-neutral-200 bg-drafting-grid-dark"
     >
       <Header
         activeTab={activeTab}

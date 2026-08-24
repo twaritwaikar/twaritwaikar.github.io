@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  --color-accent: #5ce883;
+  --color-accent: var(--accent);
 }
 
 @layer base {
@@ -9,6 +9,7 @@
     --font-mono: 'JetBrains Mono', monospace;
     --font-sans: 'Inter', sans-serif;
     --accent: #5ce883;
+    --accent-hover: color-mix(in srgb, var(--accent) 78%, black);
   }
 
   html,
@@ -62,7 +63,7 @@
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #5CE883;
+  background: var(--accent);
 }
 
 /* Scanline effect optional toggle */
@@ -86,10 +87,10 @@
 }
 .btn-brutalist:hover {
   transform: translate(-1px, -1px);
-  box-shadow: 2px 2px 0px 0px #5CE883;
+  box-shadow: 2px 2px 0px 0px var(--accent);
 }
 .btn-brutalist:active {
   transform: translate(0px, 0px);
-  box-shadow: 0px 0px 0px 0px #5CE883;
+  box-shadow: 0px 0px 0px 0px var(--accent);
 }
 

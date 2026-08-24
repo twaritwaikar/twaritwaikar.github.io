@@ -25,7 +25,7 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
             >
               SRC/PROJECTS
             </h1>
-            <p className="font-mono text-xs text-[#5CE883] leading-none">
+            <p className="font-mono text-xs text-[var(--accent)] leading-none">
               ~ $ ls -la ./src/projects
             </p>
           </div>
@@ -42,7 +42,7 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
               key={project.id}
               id={`project_card_${project.id}`}
               onClick={() => onOpenProjectModal(project.id)}
-              className="border border-[#2a2a2a] flex flex-col justify-between min-h-0 cursor-pointer transition-colors bg-[#141414] hover:border-[#5CE883]"
+              className="border border-[#2a2a2a] flex flex-col justify-between min-h-0 cursor-pointer transition-colors bg-[#141414] hover:border-[var(--accent)]"
             >
               <div className="min-h-0 flex flex-col">
                 <div className="px-4 py-2.5 bg-[#111111] border-b border-[#2a2a2a] flex items-center justify-between font-mono text-xs text-neutral-300">
@@ -82,7 +82,7 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
                       window.open(project.sourceUrl, '_blank', 'noopener,noreferrer');
                     }
                   }}
-                  className="flex-1 py-1.5 px-2 border border-[#333333] hover:border-[#5CE883] hover:text-[#5CE883] bg-[#161616] text-neutral-300 flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
+                  className="flex-1 py-1.5 px-2 border border-[#333333] hover:border-[var(--accent)] hover:text-[var(--accent)] bg-[#161616] text-neutral-300 flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
                 >
                   <span>&lt; &gt;</span>
                   <span className="truncate">{project.sourceLabel || 'SOURCE'}</span>
@@ -96,7 +96,7 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
                         window.open(project.liveUrl, '_blank', 'noopener,noreferrer');
                       }
                     }}
-                    className="flex-1 py-1.5 px-2 border border-[#5CE883] text-[#5CE883] hover:bg-[#5CE883] hover:text-black bg-[#161616] flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
+                    className="flex-1 py-1.5 px-2 border border-[var(--accent)] text-[var(--accent)] hover:bg-[var(--accent)] hover:text-black bg-[#161616] flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
                   >
                     <ExternalLink className="w-3 h-3 shrink-0" />
                     <span className="truncate">{project.liveLabel || 'LIVE'}</span>
@@ -137,7 +137,7 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
                   id={`btn_more_${project.id}`}
                   onClick={() => onOpenProjectModal(project.id)}
                   title="More details"
-                  className="shrink-0 w-8 h-8 border border-[#333333] hover:border-[#5CE883] hover:text-[#5CE883] bg-[#161616] text-neutral-300 flex items-center justify-center transition-colors cursor-pointer"
+                  className="shrink-0 w-8 h-8 border border-[#333333] hover:border-[var(--accent)] hover:text-[var(--accent)] bg-[#161616] text-neutral-300 flex items-center justify-center transition-colors cursor-pointer"
                 >
                   <Maximize2 className="w-3.5 h-3.5" />
                 </button>

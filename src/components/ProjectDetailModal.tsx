@@ -51,13 +51,13 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
     >
       <div
         id="project_modal_window"
-        className="w-full max-w-3xl border-2 border-[#5CE883] shadow-2xl relative my-auto font-mono flex flex-col max-h-[90vh] bg-[#0f0f0f] text-neutral-200"
+        className="w-full max-w-3xl border-2 border-[var(--accent)] shadow-2xl relative my-auto font-mono flex flex-col max-h-[90vh] bg-[#0f0f0f] text-neutral-200"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
         <div className="px-3 sm:px-4 py-3 bg-[#111] border-b border-[#262626] flex items-center justify-between text-xs select-none gap-2">
           <div className="flex items-center gap-2 text-white font-bold tracking-wider min-w-0">
-            <span className="text-[#5CE883] shrink-0">■</span>
+            <span className="text-[var(--accent)] shrink-0">■</span>
             <span className="truncate">SPEC_INSPECTOR // {project.name}</span>
             <span className="text-neutral-500 font-normal shrink-0">({project.version})</span>
           </div>
@@ -78,7 +78,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
                 href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="py-1.5 px-3 border border-[#5CE883] text-[#5CE883] hover:bg-[#5CE883] hover:text-black bg-[#161616] flex items-center justify-center gap-1.5 text-xs tracking-wider"
+                className="py-1.5 px-3 border border-[var(--accent)] text-[var(--accent)] hover:bg-[var(--accent)] hover:text-black bg-[#161616] flex items-center justify-center gap-1.5 text-xs tracking-wider"
               >
                 <ExternalLink className="w-3.5 h-3.5 shrink-0" />
                 <span>{link.label}</span>
@@ -91,7 +91,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
         <div className="p-4 sm:p-6 overflow-y-auto space-y-5 text-xs">
           {/* Overview */}
           <div>
-            <div className="text-[11px] font-bold text-[#5CE883] uppercase tracking-widest mb-1">
+            <div className="text-[11px] font-bold text-[var(--accent)] uppercase tracking-widest mb-1">
               [ 01 // OVERVIEW ]
             </div>
             {project.article ? (
@@ -114,7 +114,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
           {/* Architecture & Metrics */}
           {project.details && (
             <div className="space-y-3">
-              <div className="text-[11px] font-bold text-[#5CE883] uppercase tracking-widest">
+              <div className="text-[11px] font-bold text-[var(--accent)] uppercase tracking-widest">
                 [ 02 // SYSTEM_ARCHITECTURE & BENCHMARKS ]
               </div>
 
@@ -126,13 +126,13 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
                 {project.details.throughput && (
                   <div>
                     <span className="text-neutral-500 font-bold">THROUGHPUT: </span>
-                    <span className="text-[#5CE883]">{project.details.throughput}</span>
+                    <span className="text-[var(--accent)]">{project.details.throughput}</span>
                   </div>
                 )}
                 {project.details.latency && (
                   <div>
                     <span className="text-neutral-500 font-bold">LATENCY: </span>
-                    <span className="text-[#5CE883]">{project.details.latency}</span>
+                    <span className="text-[var(--accent)]">{project.details.latency}</span>
                   </div>
                 )}
               </div>
@@ -155,17 +155,17 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
           {project.details?.codeSnippet && (
             <div className="space-y-2">
               <div className="flex items-center justify-between">
-                <div className="text-[11px] font-bold text-[#5CE883] uppercase tracking-widest">
+                <div className="text-[11px] font-bold text-[var(--accent)] uppercase tracking-widest">
                   [ 03 // CORE_IMPLEMENTATION_SNIPPET ]
                 </div>
                 <button
                   onClick={handleCopy}
-                  className="px-2 py-0.5 border border-[#333] hover:border-[#5CE883] text-[10px] text-neutral-300 flex items-center gap-1 cursor-pointer"
+                  className="px-2 py-0.5 border border-[#333] hover:border-[var(--accent)] text-[10px] text-neutral-300 flex items-center gap-1 cursor-pointer"
                 >
                   {copied ? (
                     <>
-                      <Check className="w-3 h-3 text-[#5CE883]" />
-                      <span className="text-[#5CE883]">COPIED</span>
+                      <Check className="w-3 h-3 text-[var(--accent)]" />
+                      <span className="text-[var(--accent)]">COPIED</span>
                     </>
                   ) : (
                     <>
@@ -176,7 +176,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
                 </button>
               </div>
 
-              <pre className="p-3 bg-[#0a0a0a] border border-[#222] text-[#5CE883] overflow-x-auto text-[11px] leading-relaxed font-mono">
+              <pre className="p-3 bg-[#0a0a0a] border border-[#222] text-[var(--accent)] overflow-x-auto text-[11px] leading-relaxed font-mono">
                 <code>{project.details.codeSnippet}</code>
               </pre>
             </div>

@@ -61,7 +61,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
               />
             ) : (
               <>
-                <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#5CE883_1px,transparent_1px)] [background-size:4px_4px]" />
+                <div className="absolute inset-0 opacity-20 bg-[radial-gradient(var(--accent)_1px,transparent_1px)] [background-size:4px_4px]" />
                 <svg
                   className="w-10 h-10 text-neutral-400"
                   viewBox="0 0 48 48"
@@ -69,15 +69,15 @@ export const Sidebar: React.FC<SidebarProps> = ({
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <rect x="14" y="8" width="20" height="14" fill="#222" stroke="#555" strokeWidth="1" />
-                  <circle cx="20" cy="14" r="2" fill="#5CE883" />
-                  <circle cx="28" cy="14" r="2" fill="#5CE883" />
-                  <rect x="22" y="18" width="4" height="2" fill="#5CE883" />
+                  <circle cx="20" cy="14" r="2" fill="var(--accent)" />
+                  <circle cx="28" cy="14" r="2" fill="var(--accent)" />
+                  <rect x="22" y="18" width="4" height="2" fill="var(--accent)" />
                   <path d="M8 40 C8 30, 16 26, 24 26 C32 26, 40 30, 40 40 Z" fill="#1a1a1a" stroke="#444" strokeWidth="1" />
                 </svg>
               </>
             )}
-            <div className="absolute top-0 left-0 w-1.5 h-1.5 border-t-2 border-l-2 border-[#5CE883]" />
-            <div className="absolute bottom-0 right-0 w-1.5 h-1.5 border-b-2 border-r-2 border-[#5CE883]" />
+            <div className="absolute top-0 left-0 w-1.5 h-1.5 border-t-2 border-l-2 border-[var(--accent)]" />
+            <div className="absolute bottom-0 right-0 w-1.5 h-1.5 border-b-2 border-r-2 border-[var(--accent)]" />
           </div>
 
           <div>
@@ -89,7 +89,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
             </h2>
             <div
               id="sidebar_user_role"
-              className="font-mono text-[11px] font-semibold text-[#5CE883] tracking-wider"
+              className="font-mono text-[11px] font-semibold text-[var(--accent)] tracking-wider"
             >
               {PORTFOLIO_DATA.profile.role}
             </div>
@@ -101,7 +101,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
       <div id="file_explorer_tree" className="p-2 flex-1 flex flex-col font-mono text-xs select-none">
         <div className="px-2 py-1.5 text-[10px] uppercase font-bold tracking-wider text-neutral-500 flex items-center justify-between">
           <span>EXPLORER // SYS_TREE</span>
-          <span className="text-[#5CE883] text-[9px]">[ACTIVE]</span>
+          <span className="text-[var(--accent)] text-[9px]">[ACTIVE]</span>
         </div>
 
         {/* ROOT ITEM */}
@@ -111,7 +111,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
             onClick={() => setActiveTab('HOME')}
             className={`w-full text-left px-2 py-1.5 flex items-center gap-2 transition-all cursor-pointer ${
               activeTab === 'HOME'
-                ? 'bg-[#5CE883] text-black font-bold'
+                ? 'bg-[var(--accent)] text-black font-bold'
                 : 'hover:bg-[#1a1a1a] text-neutral-300'
             }`}
           >
@@ -131,7 +131,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
             }}
             className={`w-full text-left px-2 py-1.5 flex items-center gap-2 transition-all cursor-pointer ${
               activeTab === 'EXPERIENCE'
-                ? 'bg-[#5CE883] text-black font-bold'
+                ? 'bg-[var(--accent)] text-black font-bold'
                 : 'hover:bg-[#1a1a1a] text-neutral-300'
             }`}
           >
@@ -153,7 +153,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                     toggleFolder('salesforce');
                     setActiveTab('EXPERIENCE');
                   }}
-                    className="w-full text-left px-2 py-1 flex items-center gap-2 transition-colors cursor-pointer text-neutral-300 hover:text-[#5CE883] hover:bg-[#161616]"
+                    className="w-full text-left px-2 py-1 flex items-center gap-2 transition-colors cursor-pointer text-neutral-300 hover:text-[var(--accent)] hover:bg-[#161616]"
                 >
                   {openFolders.salesforce ? (
                     <ChevronDown className="w-3.5 h-3.5 shrink-0" />
@@ -176,7 +176,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                             setActiveTab('EXPERIENCE');
                             onOpenExperienceModal?.(exp.id);
                           }}
-                          className="w-full text-left px-2 py-1 flex items-center gap-2 transition-colors cursor-pointer text-neutral-400 hover:text-[#5CE883] hover:bg-[#161616]"
+                          className="w-full text-left px-2 py-1 flex items-center gap-2 transition-colors cursor-pointer text-neutral-400 hover:text-[var(--accent)] hover:bg-[#161616]"
                         >
                           <ExperienceIcon id={exp.id} />
                           <span className="font-mono truncate">{exp.filename}</span>
@@ -196,7 +196,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                       setActiveTab('EXPERIENCE');
                       onOpenExperienceModal?.(exp.id);
                     }}
-                    className="w-full text-left px-2 py-1 flex items-center gap-2 transition-colors cursor-pointer text-neutral-400 hover:text-[#5CE883] hover:bg-[#161616]"
+                    className="w-full text-left px-2 py-1 flex items-center gap-2 transition-colors cursor-pointer text-neutral-400 hover:text-[var(--accent)] hover:bg-[#161616]"
                   >
                     <ExperienceIcon id={exp.id} />
                     <span className="font-mono truncate">{exp.filename}</span>
@@ -216,7 +216,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
             }}
             className={`w-full text-left px-2 py-1.5 flex items-center gap-2 transition-all cursor-pointer ${
               activeTab === 'PROJECTS'
-                ? 'bg-[#5CE883] text-black font-bold'
+                ? 'bg-[var(--accent)] text-black font-bold'
                 : 'hover:bg-[#1a1a1a] text-neutral-300'
             }`}
           >
@@ -239,7 +239,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                     setActiveTab('PROJECTS');
                     onOpenProjectModal?.(project.id);
                   }}
-                  className="w-full text-left px-2 py-1 flex items-center gap-2 transition-colors cursor-pointer text-neutral-400 hover:text-[#5CE883] hover:bg-[#161616]"
+                  className="w-full text-left px-2 py-1 flex items-center gap-2 transition-colors cursor-pointer text-neutral-400 hover:text-[var(--accent)] hover:bg-[#161616]"
                 >
                   <ProjectIcon id={project.id} />
                   <span className="font-mono truncate">{project.name}</span>
@@ -259,7 +259,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
             }}
             className={`w-full text-left px-2 py-1.5 flex items-center gap-2 transition-all cursor-pointer ${
               activeTab === 'STACK'
-                ? 'bg-[#5CE883] text-black font-bold'
+                ? 'bg-[var(--accent)] text-black font-bold'
                 : 'hover:bg-[#1a1a1a] text-neutral-300'
             }`}
           >
@@ -280,7 +280,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                   if (onOpenResume) onOpenResume();
                   else setActiveTab('STACK');
                 }}
-                className="w-full text-left px-2 py-1 flex items-center gap-2 transition-colors cursor-pointer text-neutral-400 hover:text-[#5CE883] hover:bg-[#161616]"
+                className="w-full text-left px-2 py-1 flex items-center gap-2 transition-colors cursor-pointer text-neutral-400 hover:text-[var(--accent)] hover:bg-[#161616]"
               >
                 <FileText className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
                 <span className="font-mono">resume.pdf</span>
@@ -290,8 +290,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 onClick={() => setActiveTab('STACK')}
                 className={`w-full text-left px-2 py-1 flex items-center gap-2 transition-colors cursor-pointer ${
                   activeTab === 'STACK'
-                    ? 'text-[#5CE883] font-semibold'
-                    : 'text-neutral-400 hover:text-[#5CE883] hover:bg-[#161616]'
+                    ? 'text-[var(--accent)] font-semibold'
+                    : 'text-neutral-400 hover:text-[var(--accent)] hover:bg-[#161616]'
                 }`}
               >
                 <FileText className="w-3.5 h-3.5 text-neutral-400 shrink-0" />
@@ -311,7 +311,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
             }}
             className={`w-full text-left px-2 py-1.5 flex items-center gap-2 transition-all cursor-pointer ${
               activeTab === 'CONTACT'
-                ? 'bg-[#5CE883] text-black font-bold'
+                ? 'bg-[var(--accent)] text-black font-bold'
                 : 'hover:bg-[#1a1a1a] text-neutral-300'
             }`}
           >
@@ -331,8 +331,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 onClick={() => setActiveTab('CONTACT')}
                 className={`w-full text-left px-2 py-1 flex items-center gap-2 transition-colors cursor-pointer ${
                   activeTab === 'CONTACT'
-                    ? 'text-[#5CE883] font-semibold'
-                    : 'text-neutral-400 hover:text-[#5CE883] hover:bg-[#161616]'
+                    ? 'text-[var(--accent)] font-semibold'
+                    : 'text-neutral-400 hover:text-[var(--accent)] hover:bg-[#161616]'
                 }`}
               >
                 <Terminal className="w-3.5 h-3.5 text-amber-400 shrink-0" />
@@ -350,7 +350,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
           </div>
           <div className="flex justify-between">
             <span>SECURITY:</span>
-            <span className="text-[#5CE883]">ENCRYPTED_SHA256</span>
+            <span className="text-[var(--accent)]">ENCRYPTED_SHA256</span>
           </div>
           <div className="flex justify-between">
             <span>LOCATION:</span>
