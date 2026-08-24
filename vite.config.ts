@@ -14,13 +14,17 @@ function resumePdfPlugin(): Plugin {
     fs.createReadStream(resumePdf).pipe(res);
   };
 
-  const isResumePath = (url?: string) => {
-    const pathname = url?.split('?')[0];
-    return pathname === '/resume' || pathname === '/resume/';
-  };
+  const pathnameOf = (url?: string) => url?.split('?')[0];
 
   const middleware = (req: IncomingMessage, res: ServerResponse, next: () => void) => {
-    if (isResumePath(req.url)) {
+    const pathname = pathnameOf(req.url);
+    if (pathname === '/resume' || pathname === '/resume/') {
+      res.statusCode = 302;
+      res.setHeader('Location', '/resume.pdf');
+      res.end();
+      return;
+    }
+    if (pathname === '/resume.pdf') {
       sendPdf(res);
       return;
     }
@@ -39,7 +43,6 @@ function resumePdfPlugin(): Plugin {
       const dist = path.resolve(__dirname, 'dist');
       if (!fs.existsSync(resumePdf) || !fs.existsSync(dist)) return;
       fs.copyFileSync(resumePdf, path.join(dist, 'resume.pdf'));
-      fs.copyFileSync(resumePdf, path.join(dist, 'resume'));
     },
   };
 }
