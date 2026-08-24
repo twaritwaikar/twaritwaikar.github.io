@@ -126,5 +126,10 @@ export const Header: React.FC<HeaderProps> = ({
               }`}
             >
               {tab.mobileLabel}
+            </button>
+          );
+        })}
+      </div>
+    </header>
   );
 };
