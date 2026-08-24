@@ -2,18 +2,20 @@ import React, { useState } from 'react';
 import { TabType } from './types';
 import { Header } from './components/Header';
 import { Sidebar } from './components/Sidebar';
-import { Footer } from './components/Footer';
 import { HomeView } from './components/HomeView';
 import { ProjectsView } from './components/ProjectsView';
+import { ExperienceView } from './components/ExperienceView';
 import { StackView } from './components/StackView';
 import { ContactView } from './components/ContactView';
 import { ProjectDetailModal } from './components/ProjectDetailModal';
+import { ExperienceDetailModal } from './components/ExperienceDetailModal';
 import { PORTFOLIO_DATA } from './data/portfolioData';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<TabType>('HOME');
   const [isDarkMode, setIsDarkMode] = useState<boolean>(true);
   const [selectedProjectId, setSelectedProjectId] = useState<string | null>(null);
+  const [selectedExperienceId, setSelectedExperienceId] = useState<string | null>(null);
 
   const openResume = () => {
     window.open(PORTFOLIO_DATA.site.resumeUrl || '/resume.pdf', '_blank', 'noopener,noreferrer');
@@ -25,6 +27,14 @@ export default function App() {
 
   const handleCloseProjectModal = () => {
     setSelectedProjectId(null);
+  };
+
+  const handleOpenExperienceModal = (experienceId: string) => {
+    setSelectedExperienceId(experienceId);
+  };
+
+  const handleCloseExperienceModal = () => {
+    setSelectedExperienceId(null);
   };
 
   return (
@@ -50,6 +60,7 @@ export default function App() {
           isDarkMode={isDarkMode}
           onOpenResume={openResume}
           onOpenProjectModal={handleOpenProjectModal}
+          onOpenExperienceModal={handleOpenExperienceModal}
         />
 
         <main
@@ -61,7 +72,7 @@ export default function App() {
               setActiveTab={setActiveTab}
               isDarkMode={isDarkMode}
               onOpenResume={openResume}
-              onOpenProjectModal={handleOpenProjectModal}
+              onOpenExperienceModal={handleOpenExperienceModal}
             />
           )}
 
@@ -69,6 +80,13 @@ export default function App() {
             <ProjectsView
               isDarkMode={isDarkMode}
               onOpenProjectModal={handleOpenProjectModal}
+            />
+          )}
+
+          {activeTab === 'EXPERIENCE' && (
+            <ExperienceView
+              isDarkMode={isDarkMode}
+              onOpenExperienceModal={handleOpenExperienceModal}
             />
           )}
 
@@ -85,11 +103,14 @@ export default function App() {
         </main>
       </div>
 
-      <Footer isDarkMode={isDarkMode} />
-
       <ProjectDetailModal
         projectId={selectedProjectId}
         onClose={handleCloseProjectModal}
+        isDarkMode={isDarkMode}
+      />
+      <ExperienceDetailModal
+        experienceId={selectedExperienceId}
+        onClose={handleCloseExperienceModal}
         isDarkMode={isDarkMode}
       />
     </div>

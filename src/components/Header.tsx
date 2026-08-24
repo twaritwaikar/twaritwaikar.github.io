@@ -18,6 +18,7 @@ export const Header: React.FC<HeaderProps> = ({
 }) => {
   const navTabs: { id: TabType; label: string }[] = [
     { id: 'HOME', label: 'HOME' },
+    { id: 'EXPERIENCE', label: 'EXPERIENCE' },
     { id: 'PROJECTS', label: 'PROJECTS' },
     { id: 'STACK', label: 'STACK' },
     { id: 'CONTACT', label: 'CONTACT' },
@@ -48,7 +49,7 @@ export const Header: React.FC<HeaderProps> = ({
         </div>
 
         {/* Center/Right Navigation Tabs */}
-        <nav id="nav_links" className="hidden sm:flex items-center gap-6 md:gap-8 font-mono text-xs md:text-sm">
+        <nav id="nav_links" className="hidden sm:flex items-center gap-4 md:gap-6 font-mono text-xs md:text-sm">
           {navTabs.map((tab) => {
             const isActive = activeTab === tab.id;
             return (

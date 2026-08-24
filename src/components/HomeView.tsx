@@ -1,7 +1,6 @@
 import React from 'react';
 import { TabType } from '../types';
 import { PORTFOLIO_DATA } from '../data/portfolioData';
-import { InteractiveTerminal } from './InteractiveTerminal';
 import { ArrowRight } from 'lucide-react';
 import { MarkdownInline } from './MarkdownArticle';
 
@@ -9,17 +8,20 @@ interface HomeViewProps {
   setActiveTab: (tab: TabType) => void;
   isDarkMode: boolean;
   onOpenResume: () => void;
-  onOpenProjectModal: (projectId: string) => void;
+  onOpenExperienceModal: (experienceId: string) => void;
 }
 
 export const HomeView: React.FC<HomeViewProps> = ({
   setActiveTab,
   isDarkMode,
   onOpenResume,
-  onOpenProjectModal,
+  onOpenExperienceModal,
 }) => {
-  const { profile } = PORTFOLIO_DATA;
+  const { profile, experience } = PORTFOLIO_DATA;
+  const currentRole = profile.currentRole;
   const panel = isDarkMode ? 'bg-[#141414]' : 'bg-[#EAEAEA]';
+  const summary = currentRole?.bullets[0] || currentRole?.description || profile.tagline;
+  const stack = currentRole?.technologies?.slice(0, 6).join(', ') || currentRole?.company || '';
 
   return (
     <div id="home_view_container" className="h-full min-h-0 flex flex-col gap-3 md:gap-4 max-w-[1280px] mx-auto overflow-hidden">
@@ -73,52 +75,43 @@ export const HomeView: React.FC<HomeViewProps> = ({
         </div>
       </section>
 
-      <section
-        id="hero_dashboard_grid"
-        className="flex-1 min-h-0 grid grid-cols-1 lg:grid-cols-12 lg:grid-rows-[minmax(0,1fr)_auto] gap-0 border border-[#262626]"
-      >
+      <section className="flex-1 min-h-0 grid grid-cols-1 lg:grid-cols-12 gap-0 border border-[#262626] overflow-hidden">
         <article
           id="latest_deployment_card"
-          onClick={() => onOpenProjectModal(profile.latestDeployment.projectId)}
-          className={`lg:col-span-8 lg:row-start-1 border-b lg:border-b-0 lg:border-r border-[#262626] transition-all cursor-pointer group flex flex-col min-h-0 ${
+          onClick={() => currentRole && onOpenExperienceModal(currentRole.id)}
+          className={`lg:col-span-8 border-b lg:border-b-0 lg:border-r border-[#262626] transition-all cursor-pointer group flex flex-col min-h-0 ${
             isDarkMode ? `${panel} hover:border-[#5CE883]` : `${panel} hover:border-black`
           }`}
         >
           <div className="px-4 py-2 bg-[#111111] border-b border-[#262626] flex items-center justify-between font-mono text-xs text-neutral-400 shrink-0">
-            <span className="group-hover:text-[#5CE883] transition-colors">
-              {profile.latestDeployment.id}
-            </span>
-            <span className="text-neutral-500">{profile.latestDeployment.version}</span>
+            <span className="group-hover:text-[#5CE883] transition-colors">LATEST_DEPLOYMENT.sh</span>
+            <span className="text-neutral-500">{currentRole?.period}</span>
           </div>
 
-          <div className="p-3 sm:p-4 grid grid-cols-1 md:grid-cols-12 gap-4 items-center flex-1 min-h-0">
+          <div className="p-3 sm:p-5 grid grid-cols-1 md:grid-cols-12 gap-4 items-center flex-1 min-h-0">
             <div className="md:col-span-8 space-y-2 min-w-0">
               <h3 className="font-mono text-lg sm:text-xl font-bold tracking-tight text-neutral-900 dark:text-white group-hover:text-[#5CE883] transition-colors">
-                {profile.latestDeployment.title}
+                {currentRole?.role}
               </h3>
-              <p className="font-sans text-sm text-neutral-400 leading-relaxed line-clamp-4">
-                <MarkdownInline markdown={profile.latestDeployment.summary} />
+              <p className="font-sans text-sm text-neutral-400 leading-relaxed">
+                <MarkdownInline markdown={summary} />
               </p>
             </div>
 
             <div className="md:col-span-4 border-t md:border-t-0 md:border-l border-[#262626] pt-4 md:pt-0 md:pl-6 space-y-3 font-mono text-xs">
               <div className="flex justify-between md:flex-col gap-1">
-                <span className="text-neutral-500 tracking-wider">STACK</span>
-                <span className="text-neutral-200 font-semibold">
-                  {profile.latestDeployment.stack}
-                </span>
+                <span className="text-neutral-500 tracking-wider">ORG</span>
+                <span className="text-neutral-200 font-semibold">{currentRole?.company}</span>
               </div>
               <div className="flex justify-between md:flex-col gap-1">
-                <span className="text-neutral-500 tracking-wider">ROLE</span>
-                <span className="text-[#5CE883] font-semibold">
-                  {profile.latestDeployment.role}
-                </span>
+                <span className="text-neutral-500 tracking-wider">STACK</span>
+                <span className="text-[#5CE883] font-semibold">{stack}</span>
               </div>
             </div>
           </div>
         </article>
 
-        <div className="lg:col-span-4 lg:row-start-1 flex flex-col border-b lg:border-b-0 border-[#262626]">
+        <div className="lg:col-span-4 flex flex-col">
           <div className="grid grid-cols-2 border-b border-[#262626]">
             <div
               id="tile_backend_stack"
@@ -163,30 +156,41 @@ export const HomeView: React.FC<HomeViewProps> = ({
             <ArrowRight className="w-7 h-7 text-black stroke-[2.5] transform group-hover:translate-x-1.5 transition-transform" />
           </div>
         </div>
+      </section>
 
-        <div
-          id="metric_experience_tile"
-          className={`lg:col-span-3 lg:row-start-2 p-4 border-t lg:border-r border-[#262626] flex flex-col justify-center ${panel}`}
-        >
-          <div className="text-[11px] font-mono tracking-widest text-neutral-400 uppercase">
-            EXPERIENCE
-          </div>
-          <div className="mt-2 flex items-baseline gap-1.5 font-mono">
-            <span className="text-3xl sm:text-4xl font-extrabold text-[#5CE883]">
-              {profile.experienceYears}
-            </span>
-            <span className="text-lg sm:text-xl font-bold tracking-wider text-neutral-400">
-              YRS
-            </span>
-          </div>
+      <section
+        id="build_experience_section"
+        className={`border border-[#262626] flex-1 min-h-0 overflow-hidden flex flex-col ${panel}`}
+      >
+        <div className="px-4 py-2 bg-[#111111] border-b border-[#262626] flex items-center justify-between font-mono text-xs text-neutral-400 shrink-0">
+          <span>BUILD/EXPERIENCE</span>
+          <button
+            type="button"
+            onClick={() => setActiveTab('EXPERIENCE')}
+            className="text-[#5CE883] hover:underline cursor-pointer"
+          >
+            OPEN_LOG
+          </button>
         </div>
-
-        <div className="lg:col-span-9 lg:row-start-2 border-t border-[#262626] bg-[#141414] min-h-0">
-          <InteractiveTerminal
-            setActiveTab={setActiveTab}
-            isDarkMode={isDarkMode}
-            onOpenResume={onOpenResume}
-          />
+        <div className="overflow-y-auto min-h-0 divide-y divide-[#222]">
+          {experience.map((exp) => (
+            <button
+              key={exp.id}
+              type="button"
+              onClick={() => onOpenExperienceModal(exp.id)}
+              className="w-full text-left px-4 py-3 grid grid-cols-1 sm:grid-cols-12 gap-1 sm:gap-4 cursor-pointer hover:bg-[#1a1a1a] transition-colors"
+            >
+              <span className="sm:col-span-3 font-mono text-[11px] text-neutral-500">{exp.period}</span>
+              <span className="sm:col-span-9 flex flex-col sm:flex-row sm:items-baseline sm:gap-3 min-w-0">
+                <span className={`font-mono text-sm font-bold ${isDarkMode ? 'text-white' : 'text-neutral-900'}`}>
+                  {exp.role}
+                </span>
+                <span className="font-mono text-xs text-[#5CE883] truncate">
+                  {exp.company} // {exp.location}
+                </span>
+              </span>
+            </button>
+          ))}
         </div>
       </section>
     </div>

@@ -62,6 +62,7 @@ export const InteractiveTerminal: React.FC<InteractiveTerminalProps> = ({
         text: `AVAILABLE COMMANDS:
   help               - Display system commands
   projects           - Navigate to projects directory
+  experience         - Open execution log / work history
   stack              - Inspect technical stack & architecture
   contact            - Open connection transmit node
   resume             - Open curriculum vitae document
@@ -77,6 +78,9 @@ export const InteractiveTerminal: React.FC<InteractiveTerminalProps> = ({
     } else if (mainCmd === 'projects' || mainCmd === 'cd projects' || (mainCmd === 'cd' && arg === 'projects')) {
       newLogs.push({ text: `Navigating to SRC/PROJECTS...`, isGreen: true });
       setTimeout(() => setActiveTab('PROJECTS'), 350);
+    } else if (mainCmd === 'experience' || mainCmd === 'work' || mainCmd === 'jobs') {
+      newLogs.push({ text: `Opening execution log...`, isGreen: true });
+      setTimeout(() => setActiveTab('EXPERIENCE'), 350);
     } else if (mainCmd === 'stack' || mainCmd === 'skills') {
       newLogs.push({ text: `Loading system tech stack...`, isGreen: true });
       setTimeout(() => setActiveTab('STACK'), 350);

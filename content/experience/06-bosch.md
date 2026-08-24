@@ -1,4 +1,6 @@
 ---
+id: bosch
+filename: bosch.intern
 period: INTERNSHIP
 role: Simulation Intern
 company: Robert Bosch

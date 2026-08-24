@@ -8,7 +8,7 @@ import {
   ChevronRight,
 } from 'lucide-react';
 import { PORTFOLIO_DATA } from '../data/portfolioData';
-import { ProjectIcon } from './projectIcons';
+import { ProjectIcon, ExperienceIcon } from './projectIcons';
 
 interface SidebarProps {
   activeTab: TabType;
@@ -16,6 +16,7 @@ interface SidebarProps {
   isDarkMode: boolean;
   onOpenResume?: () => void;
   onOpenProjectModal?: (projectId: string) => void;
+  onOpenExperienceModal?: (experienceId: string) => void;
 }
 
 export const Sidebar: React.FC<SidebarProps> = ({
@@ -24,10 +25,13 @@ export const Sidebar: React.FC<SidebarProps> = ({
   isDarkMode,
   onOpenResume,
   onOpenProjectModal,
+  onOpenExperienceModal,
 }) => {
   const [openFolders, setOpenFolders] = useState<{ [key: string]: boolean }>({
     root: true,
     projects: true,
+    experience: true,
+    salesforce: true,
     about: true,
     contact: true,
   });
@@ -125,6 +129,105 @@ export const Sidebar: React.FC<SidebarProps> = ({
             <Folder className="w-3.5 h-3.5" />
             <span className="tracking-wide">ROOT</span>
           </button>
+        </div>
+
+        {/* BUILD/EXPERIENCE FOLDER */}
+        <div className="pl-2 mb-1">
+          <button
+            id="tree_folder_experience_btn"
+            onClick={() => {
+              toggleFolder('experience');
+              setActiveTab('EXPERIENCE');
+            }}
+            className={`w-full text-left px-2 py-1.5 flex items-center gap-2 transition-all cursor-pointer ${
+              activeTab === 'EXPERIENCE'
+                ? 'bg-[#5CE883] text-black font-bold'
+                : isDarkMode
+                ? 'hover:bg-[#1a1a1a] text-neutral-300'
+                : 'hover:bg-neutral-200 text-neutral-800'
+            }`}
+          >
+            {openFolders.experience ? (
+              <ChevronDown className="w-3.5 h-3.5 shrink-0" />
+            ) : (
+              <ChevronRight className="w-3.5 h-3.5 shrink-0" />
+            )}
+            <Folder className="w-3.5 h-3.5 shrink-0" />
+            <span className="truncate">BUILD/EXPERIENCE</span>
+          </button>
+
+          {openFolders.experience && (
+            <div className="pl-5 pt-1 space-y-0.5 border-l border-neutral-700/50 my-1 ml-3">
+              <div>
+                <button
+                  id="tree_folder_salesforce_btn"
+                  onClick={() => {
+                    toggleFolder('salesforce');
+                    setActiveTab('EXPERIENCE');
+                  }}
+                  className={`w-full text-left px-2 py-1 flex items-center gap-2 transition-colors cursor-pointer ${
+                    isDarkMode
+                      ? 'text-neutral-300 hover:text-[#5CE883] hover:bg-[#161616]'
+                      : 'text-neutral-800 hover:text-black hover:bg-neutral-200'
+                  }`}
+                >
+                  {openFolders.salesforce ? (
+                    <ChevronDown className="w-3.5 h-3.5 shrink-0" />
+                  ) : (
+                    <ChevronRight className="w-3.5 h-3.5 shrink-0" />
+                  )}
+                  <Folder className="w-3.5 h-3.5 shrink-0" />
+                  <span className="truncate">SALESFORCE</span>
+                </button>
+
+                {openFolders.salesforce && (
+                  <div className="pl-5 pt-0.5 space-y-0.5 border-l border-neutral-700/50 my-1 ml-3">
+                    {PORTFOLIO_DATA.experience
+                      .filter((exp) => exp.company === 'Salesforce')
+                      .map((exp) => (
+                        <button
+                          key={exp.id}
+                          id={`file_exp_${exp.id}`}
+                          onClick={() => {
+                            setActiveTab('EXPERIENCE');
+                            onOpenExperienceModal?.(exp.id);
+                          }}
+                          className={`w-full text-left px-2 py-1 flex items-center gap-2 transition-colors cursor-pointer ${
+                            isDarkMode
+                              ? 'text-neutral-400 hover:text-[#5CE883] hover:bg-[#161616]'
+                              : 'text-neutral-600 hover:text-black hover:bg-neutral-200'
+                          }`}
+                        >
+                          <ExperienceIcon id={exp.id} />
+                          <span className="font-mono truncate">{exp.filename}</span>
+                        </button>
+                      ))}
+                  </div>
+                )}
+              </div>
+
+              {PORTFOLIO_DATA.experience
+                .filter((exp) => exp.company !== 'Salesforce')
+                .map((exp) => (
+                  <button
+                    key={exp.id}
+                    id={`file_exp_${exp.id}`}
+                    onClick={() => {
+                      setActiveTab('EXPERIENCE');
+                      onOpenExperienceModal?.(exp.id);
+                    }}
+                    className={`w-full text-left px-2 py-1 flex items-center gap-2 transition-colors cursor-pointer ${
+                      isDarkMode
+                        ? 'text-neutral-400 hover:text-[#5CE883] hover:bg-[#161616]'
+                        : 'text-neutral-600 hover:text-black hover:bg-neutral-200'
+                    }`}
+                  >
+                    <ExperienceIcon id={exp.id} />
+                    <span className="font-mono truncate">{exp.filename}</span>
+                  </button>
+                ))}
+            </div>
+          )}
         </div>
 
         {/* SRC/PROJECTS FOLDER */}

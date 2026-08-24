@@ -7,8 +7,24 @@ import { defineConfig, type Plugin } from 'vite';
 
 const resumePdf = path.resolve(__dirname, 'public/assets/Twarit_Waikar_Resume.pdf');
 
+const resumeRedirectHtml = `<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="refresh" content="0; url=/resume.pdf" />
+    <link rel="canonical" href="/resume.pdf" />
+    <title>Redirecting to resume.pdf</title>
+    <script>location.replace('/resume.pdf');</script>
+  </head>
+  <body>
+    <p><a href="/resume.pdf">Continue to resume.pdf</a></p>
+  </body>
+</html>
+`;
+
 function resumePdfPlugin(): Plugin {
   const sendPdf = (res: ServerResponse) => {
+    res.statusCode = 200;
     res.setHeader('Content-Type', 'application/pdf');
     res.setHeader('Content-Disposition', 'inline; filename="Twarit_Waikar_Resume.pdf"');
     fs.createReadStream(resumePdf).pipe(res);
@@ -42,7 +58,15 @@ function resumePdfPlugin(): Plugin {
     closeBundle() {
       const dist = path.resolve(__dirname, 'dist');
       if (!fs.existsSync(resumePdf) || !fs.existsSync(dist)) return;
+
+      const resumePath = path.join(dist, 'resume');
+      if (fs.existsSync(resumePath) && fs.statSync(resumePath).isFile()) {
+        fs.unlinkSync(resumePath);
+      }
+
       fs.copyFileSync(resumePdf, path.join(dist, 'resume.pdf'));
+      fs.mkdirSync(resumePath, { recursive: true });
+      fs.writeFileSync(path.join(resumePath, 'index.html'), resumeRedirectHtml);
     },
   };
 }

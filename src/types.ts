@@ -1,4 +1,4 @@
-export type TabType = 'HOME' | 'PROJECTS' | 'STACK' | 'CONTACT';
+export type TabType = 'HOME' | 'PROJECTS' | 'EXPERIENCE' | 'STACK' | 'CONTACT';
 
 export interface SiteConfig {
   brand: string;
@@ -43,6 +43,8 @@ export interface ProjectItem {
 }
 
 export interface ExperienceItem {
+  id: string;
+  filename: string;
   period: string;
   role: string;
   company: string;

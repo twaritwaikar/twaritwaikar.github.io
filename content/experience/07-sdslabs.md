@@ -1,6 +1,8 @@
 ---
+id: sdslabs
+filename: sdslabs.lead
 period: 2018—2021
-role: Engine / Systems Dev
+role: Joint Secretary / Lead Developer
 company: SDSLabs
 location: IIT ROORKEE
 ---

@@ -1,7 +1,7 @@
 import React from 'react';
 import { TabType } from '../types';
 import { PORTFOLIO_DATA } from '../data/portfolioData';
-import { RefreshCw, LayoutGrid } from 'lucide-react';
+import { LayoutGrid } from 'lucide-react';
 import { MarkdownArticle } from './MarkdownArticle';
 
 interface StackViewProps {
@@ -10,7 +10,7 @@ interface StackViewProps {
 }
 
 export const StackView: React.FC<StackViewProps> = ({ setActiveTab, isDarkMode }) => {
-  const { profile, techStack, experience } = PORTFOLIO_DATA;
+  const { profile, techStack } = PORTFOLIO_DATA;
 
   return (
     <div id="stack_view_container" className="h-full min-h-0 grid grid-cols-1 lg:grid-cols-12 gap-3 max-w-[1280px] mx-auto overflow-hidden">
@@ -74,7 +74,7 @@ export const StackView: React.FC<StackViewProps> = ({ setActiveTab, isDarkMode }
         {/* Top: TECH_STACK.JSON Box */}
         <div
           id="box_tech_stack"
-          className={`border border-[#2a2a2a] p-4 shrink-0 ${
+          className={`border border-[#2a2a2a] p-4 flex-1 min-h-0 overflow-y-auto ${
             isDarkMode ? 'bg-[#141414]' : 'bg-[#EAEAEA]'
           }`}
         >
@@ -102,54 +102,6 @@ export const StackView: React.FC<StackViewProps> = ({ setActiveTab, isDarkMode }
                     </li>
                   ))}
                 </ul>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Bottom: EXECUTION_LOG (EXPERIENCE) Box */}
-        <div
-          id="box_execution_log"
-          className={`border border-[#2a2a2a] p-4 flex-1 min-h-0 overflow-hidden flex flex-col ${
-            isDarkMode ? 'bg-[#141414]' : 'bg-[#EAEAEA]'
-          }`}
-        >
-          {/* Header */}
-          <div className="flex items-center gap-2 font-mono text-xs text-neutral-400 pb-3 border-b border-[#262626] mb-3 shrink-0">
-            <RefreshCw className="w-3.5 h-3.5 text-[#5CE883]" />
-            <span className="tracking-widest uppercase">
-              EXECUTION_LOG (EXPERIENCE)
-            </span>
-          </div>
-
-          {/* Experience Timeline Entries */}
-          <div className="space-y-3 overflow-y-auto min-h-0 pr-1">
-            {experience.map((exp, idx) => (
-              <div
-                key={idx}
-                className="grid grid-cols-1 sm:grid-cols-12 gap-2 sm:gap-4 pb-3 border-b border-[#222] last:border-b-0 last:pb-0"
-              >
-                {/* Period on left */}
-                <div className="sm:col-span-3 font-mono text-xs text-neutral-400 tracking-wider">
-                  {exp.period}
-                </div>
-
-                {/* Role and Details on right */}
-                <div className="sm:col-span-9 space-y-1.5">
-                  <h3
-                    className={`font-mono text-sm sm:text-base font-bold tracking-tight ${
-                      isDarkMode ? 'text-white' : 'text-neutral-900'
-                    }`}
-                  >
-                    {exp.role}
-                  </h3>
-                  <div className="font-mono text-xs text-[#5CE883]">
-                    {exp.company} // {exp.location}
-                  </div>
-                  <p className="font-sans text-xs text-neutral-600 dark:text-neutral-400 leading-relaxed pt-1 line-clamp-2">
-                    {exp.description}
-                  </p>
-                </div>
               </div>
             ))}
           </div>

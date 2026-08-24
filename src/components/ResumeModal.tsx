@@ -1,6 +1,7 @@
 import React from 'react';
 import { X, Printer, FileText } from 'lucide-react';
 import { PORTFOLIO_DATA } from '../data/portfolioData';
+import { MarkdownInline } from './MarkdownArticle';
 
 interface ResumeModalProps {
   isOpen: boolean;
@@ -108,7 +109,9 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({
               </div>
               <ul className="font-sans text-xs text-neutral-300 space-y-1.5 list-disc list-inside">
                 {(exp.bullets.length ? exp.bullets : [exp.description]).map((item) => (
-                  <li key={item}>{item}</li>
+                  <li key={item}>
+                    <MarkdownInline markdown={item} />
+                  </li>
                 ))}
               </ul>
             </div>

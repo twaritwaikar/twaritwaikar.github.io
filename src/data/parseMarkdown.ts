@@ -164,13 +164,34 @@ export function asSite(data: Record<string, unknown>, body: string): SiteConfig 
 
 export function asExperience(data: Record<string, unknown>, body: string): ExperienceItem {
   const list = bullets(body);
+  const role = str(data, 'role');
+  const company = str(data, 'company');
+  const slug = `${company}-${role}`
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '');
+  const last = list[list.length - 1];
+  const techParts = last
+    ?.replace(/\.$/, '')
+    .split(',')
+    .map((item) => item.trim())
+    .filter(Boolean);
+  const techLine =
+    techParts &&
+    techParts.length >= 4 &&
+    techParts.every((part) => part.split(/\s+/).length <= 2)
+      ? last
+      : undefined;
   return {
+    id: str(data, 'id') || slug,
+    filename: str(data, 'filename') || `${role.toLowerCase().replace(/[^a-z0-9]+/g, '-')}.employee`,
     period: str(data, 'period'),
-    role: str(data, 'role'),
-    company: str(data, 'company'),
+    role,
+    company,
     location: str(data, 'location'),
-    description: list.length ? list.join(' ') : paragraphs(body).join(' '),
+    description: list.length ? list.filter((item) => item !== techLine).join(' ') : paragraphs(body).join(' '),
     bullets: list,
+    technologies: techLine ? techParts : undefined,
   };
 }
 

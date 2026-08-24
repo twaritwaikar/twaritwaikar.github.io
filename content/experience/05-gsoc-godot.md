@@ -1,4 +1,6 @@
 ---
+id: gsoc-godot
+filename: godot.gsoc
 period: 2019—2020
 role: GSoC Student / Mentor
 company: Godot Engine

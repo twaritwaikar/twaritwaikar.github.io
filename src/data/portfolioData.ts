@@ -45,6 +45,7 @@ const experience = sortContentPaths(Object.keys(experienceFiles)).map((path) =>
 );
 
 const featured = projects.find((project) => project.featured) ?? projects[0];
+const currentRole = experience[0];
 
 function toPair(raw: string) {
   const parsed = parseMarkdownFile(raw);
@@ -90,6 +91,7 @@ export const PORTFOLIO_DATA = {
       .map((block) => block.trim())
       .filter(Boolean),
     latestDeployment: latestFrom(featured),
+    currentRole,
     education: asEducation(profileMeta),
     terminalBoot: strList(profileMeta, 'terminal_boot'),
   },

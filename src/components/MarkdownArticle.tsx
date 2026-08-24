@@ -19,6 +19,7 @@ function MarkdownLink({
       target={isMail ? undefined : '_blank'}
       rel={isMail ? undefined : 'noopener noreferrer'}
       className={linkClass}
+      onClick={(event) => event.stopPropagation()}
     >
       {children}
     </a>
