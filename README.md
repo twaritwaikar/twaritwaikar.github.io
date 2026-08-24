@@ -107,4 +107,4 @@ Replace `public/assets/Twarit_Waikar_Resume.pdf` and keep `resume:` in `content/
 
 ## Deploy
 
-Pushes to `master` build with GitHub Actions and publish to GitHub Pages (custom domain `twarit.cc`).
+Pushes to `master` build with GitHub Actions and publish to GitHub Pages (custom domain `twarit.cc`). In repo **Settings → Pages**, the source must be **GitHub Actions**.
