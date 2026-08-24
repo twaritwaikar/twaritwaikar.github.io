@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { PORTFOLIO_DATA } from '../data/portfolioData';
-import { X, Check, Copy, Play, ExternalLink } from 'lucide-react';
+import { X, Check, Copy, ExternalLink } from 'lucide-react';
 import { MarkdownArticle } from './MarkdownArticle';
 
 interface ProjectDetailModalProps {
@@ -18,8 +18,6 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
   if (!project) return null;
 
   const [copied, setCopied] = useState(false);
-  const [simulationRunning, setSimulationRunning] = useState(false);
-  const [simOutput, setSimOutput] = useState<string[]>([]);
 
   const handleCopy = () => {
     if (project.details?.codeSnippet) {
@@ -27,29 +25,6 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     }
-  };
-
-  const handleRunSimulation = () => {
-    setSimulationRunning(true);
-    setSimOutput([`> Booting sandbox execution context for ${project.name}...`]);
-
-    setTimeout(() => {
-      setSimOutput((prev) => [
-        ...prev,
-        `> Compiling target AST and binding shared memory buffer...`,
-        `> Running benchmark test suite [1,000 iterations]...`,
-      ]);
-    }, 450);
-
-    setTimeout(() => {
-      setSimOutput((prev) => [
-        ...prev,
-        `> Throughput: ${project.details?.throughput || '24k ops/sec'}`,
-        `> Latency: ${project.details?.latency || '1.2ms'}`,
-        `> EXECUTION_STATUS: 0 (SUCCESS)`,
-      ]);
-      setSimulationRunning(false);
-    }, 1100);
   };
 
   const popupLinks = (() => {
@@ -206,31 +181,6 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
               </pre>
             </div>
           )}
-
-          {/* Interactive Simulation Sandbox */}
-          <div className="space-y-2 pt-2 border-t border-[#262626]">
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-              <div className="text-[11px] font-bold text-[#5CE883] uppercase tracking-widest">
-                [ 04 // RUNTIME_SIMULATOR ]
-              </div>
-              <button
-                onClick={handleRunSimulation}
-                disabled={simulationRunning}
-                className="px-3 py-1 bg-[#161616] border border-[#5CE883] hover:bg-[#5CE883] hover:text-black text-[#5CE883] text-[11px] flex items-center justify-center gap-1.5 cursor-pointer disabled:opacity-50 shrink-0"
-              >
-                <Play className="w-3 h-3" />
-                <span>{simulationRunning ? 'EXECUTING...' : 'RUN_TEST_BENCHMARK'}</span>
-              </button>
-            </div>
-
-            {simOutput.length > 0 && (
-              <div className="p-3 bg-[#050505] border border-[#222] text-[10px] text-[#5CE883] space-y-1 font-mono">
-                {simOutput.map((line, idx) => (
-                  <div key={idx}>{line}</div>
-                ))}
-              </div>
-            )}
-          </div>
         </div>
 
         {/* Footer */}
