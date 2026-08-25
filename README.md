@@ -103,9 +103,9 @@ int main() { return 0; }
 
 ### Resume PDF
 
-The live PDF is served at [`/resume.pdf`](https://twarit.cc/resume.pdf). [`/resume`](https://twarit.cc/resume) redirects there.
+The live resume is available at [`/resume`](https://twarit.cc/resume), which opens `Twarit_Waikar_Resume.pdf`.
 
-Replace `public/assets/Twarit_Waikar_Resume.pdf` to update it. `content/site.md` should keep `resume: /resume.pdf`.
+Replace `public/assets/Twarit_Waikar_Resume.pdf` to update it. `content/site.md` should keep `resume: /resume`.
 
 ## Deploy
 
