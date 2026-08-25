@@ -21,7 +21,7 @@ export default function App() {
   const [selectedExperienceId, setSelectedExperienceId] = useState<string | null>(null);
 
   const openResume = () => {
-    window.open(PORTFOLIO_DATA.site.resumeUrl || '/resume', '_blank', 'noopener,noreferrer');
+    window.open(PORTFOLIO_DATA.site.resumeUrl || '/resume.pdf', '_blank', 'noopener,noreferrer');
   };
 
   const handleOpenProjectModal = (projectId: string) => {
