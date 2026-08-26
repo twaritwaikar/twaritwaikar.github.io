@@ -255,10 +255,10 @@ export const Sidebar: React.FC<SidebarProps> = ({
             id="tree_folder_about_btn"
             onClick={() => {
               toggleFolder('about');
-              setActiveTab('STACK');
+              setActiveTab('ABOUT');
             }}
             className={`w-full text-left px-2 py-1.5 flex items-center gap-2 transition-all cursor-pointer ${
-              activeTab === 'STACK'
+              activeTab === 'ABOUT'
                 ? 'bg-[var(--accent)] text-black font-bold'
                 : 'hover:bg-[#1a1a1a] text-neutral-300'
             }`}
@@ -278,7 +278,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 id="file_resume_pdf"
                 onClick={() => {
                   if (onOpenResume) onOpenResume();
-                  else setActiveTab('STACK');
+                  else setActiveTab('ABOUT');
                 }}
                 className="w-full text-left px-2 py-1 flex items-center gap-2 transition-colors cursor-pointer text-neutral-400 hover:text-[var(--accent)] hover:bg-[#161616]"
               >
@@ -287,9 +287,9 @@ export const Sidebar: React.FC<SidebarProps> = ({
               </button>
               <button
                 id="file_bio_txt"
-                onClick={() => setActiveTab('STACK')}
+                onClick={() => setActiveTab('ABOUT')}
                 className={`w-full text-left px-2 py-1 flex items-center gap-2 transition-colors cursor-pointer ${
-                  activeTab === 'STACK'
+                  activeTab === 'ABOUT'
                     ? 'text-[var(--accent)] font-semibold'
                     : 'text-neutral-400 hover:text-[var(--accent)] hover:bg-[#161616]'
                 }`}

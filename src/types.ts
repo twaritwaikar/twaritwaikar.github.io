@@ -1,4 +1,4 @@
-export type TabType = 'HOME' | 'PROJECTS' | 'EXPERIENCE' | 'STACK' | 'CONTACT';
+export type TabType = 'HOME' | 'PROJECTS' | 'EXPERIENCE' | 'ABOUT' | 'CONTACT';
 
 export interface SiteConfig {
   brand: string;

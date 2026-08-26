@@ -125,7 +125,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
         <button
           type="button"
           id="focus_areas_tile"
-          onClick={() => setActiveTab('STACK')}
+          onClick={() => setActiveTab('ABOUT')}
           className="lg:col-span-4 bg-[var(--accent)] text-black p-3 sm:p-4 lg:p-5 flex flex-col justify-between gap-3 lg:gap-4 cursor-pointer hover:bg-[var(--accent-hover)] transition-all select-none group text-left w-full min-h-0 lg:min-h-[160px]"
         >
           <div className="flex items-start justify-between gap-3">

@@ -98,7 +98,7 @@ export default function App() {
             />
           )}
 
-          {activeTab === 'STACK' && (
+          {activeTab === 'ABOUT' && (
             <StackView
               setActiveTab={setActiveTab}
             />

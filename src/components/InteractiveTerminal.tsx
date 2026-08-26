@@ -61,7 +61,8 @@ export const InteractiveTerminal: React.FC<InteractiveTerminalProps> = ({
   help               - Display system commands
   projects           - Navigate to projects directory
   experience         - Open execution log / work history
-  stack              - Inspect technical stack & architecture
+  about              - Open about / profile and tech stack
+  stack              - Alias for about
   contact            - Open connection transmit node
   resume             - Open curriculum vitae document
   whoami             - Query developer identity info
@@ -79,9 +80,9 @@ export const InteractiveTerminal: React.FC<InteractiveTerminalProps> = ({
     } else if (mainCmd === 'experience' || mainCmd === 'work' || mainCmd === 'jobs') {
       newLogs.push({ text: `Opening execution log...`, isGreen: true });
       setTimeout(() => setActiveTab('EXPERIENCE'), 350);
-    } else if (mainCmd === 'stack' || mainCmd === 'skills') {
-      newLogs.push({ text: `Loading system tech stack...`, isGreen: true });
-      setTimeout(() => setActiveTab('STACK'), 350);
+    } else if (mainCmd === 'about' || mainCmd === 'stack' || mainCmd === 'skills') {
+      newLogs.push({ text: `Loading about...`, isGreen: true });
+      setTimeout(() => setActiveTab('ABOUT'), 350);
     } else if (mainCmd === 'contact' || mainCmd === 'email' || mainCmd === 'mail') {
       newLogs.push({ text: `Opening secure connection node...`, isGreen: true });
       setTimeout(() => setActiveTab('CONTACT'), 350);
@@ -255,7 +256,7 @@ Follow the white rabbit -> ${PORTFOLIO_DATA.site.brand} initialized.`,
       {/* Quick Interactive Command Chips */}
       <div className="px-3 py-1.5 bg-[#121212] border-t border-[#262626] flex items-center gap-1.5 overflow-x-auto text-[10px] text-neutral-400">
         <span className="shrink-0 text-neutral-500">QUICK_RUN:</span>
-        {['help', 'projects', 'stack', 'contact', 'cat bio.txt', 'whoami', 'clear'].map((cmd) => (
+        {['help', 'projects', 'about', 'contact', 'cat bio.txt', 'whoami', 'clear'].map((cmd) => (
           <button
             key={cmd}
             type="button"

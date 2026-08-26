@@ -22,7 +22,7 @@ export const Header: React.FC<HeaderProps> = ({
     { id: 'HOME', label: 'HOME', mobileLabel: 'HOME' },
     { id: 'EXPERIENCE', label: 'EXPERIENCE', mobileLabel: 'EXP' },
     { id: 'PROJECTS', label: 'PROJECTS', mobileLabel: 'PROJ' },
-    { id: 'STACK', label: 'STACK', mobileLabel: 'STACK' },
+    { id: 'ABOUT', label: 'ABOUT', mobileLabel: 'ABOUT' },
     { id: 'CONTACT', label: 'CONTACT', mobileLabel: 'PING' },
   ];
 
