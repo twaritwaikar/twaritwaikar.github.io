@@ -13,10 +13,6 @@ live: https://twaritwaikar.itch.io/molotov-madness
 live_label: PLAY
 featured_image: https://www.youtube.com/watch?v=i5tFCnq7b2c
 images:
-  - /assets/molotov_madness_2.png|Border Control
-  - /assets/molotov_madness_3.png|Scared?
-  - /assets/molotov_madness_4.png|Molotov blast
-  - /assets/molotov_madness_5.png|Unbeatable
 links:
   - TRAILER|https://www.youtube.com/watch?v=i5tFCnq7b2c
 highlights:
