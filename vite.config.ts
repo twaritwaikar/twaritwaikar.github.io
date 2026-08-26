@@ -1,36 +1,12 @@
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
-import fs from 'node:fs';
-import path from 'node:path';
 import type { IncomingMessage, ServerResponse } from 'node:http';
 import { defineConfig, type Plugin } from 'vite';
 import { githubStarsPlugin } from './vite-plugin-github-stars';
 
-const resumePdf = path.resolve(__dirname, 'public/assets/Twarit_Waikar_Resume.pdf');
-
-const resumeRedirectHtml = `<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="refresh" content="0; url=/resume.pdf" />
-    <link rel="canonical" href="/resume.pdf" />
-    <title>Redirecting to resume.pdf</title>
-    <script>location.replace('/resume.pdf');</script>
-  </head>
-  <body>
-    <p><a href="/resume.pdf">Continue to resume.pdf</a></p>
-  </body>
-</html>
-`;
+const resumePdfUrl = '/assets/Twarit_Waikar_Resume.pdf';
 
 function resumePdfPlugin(): Plugin {
-  const sendPdf = (res: ServerResponse) => {
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'application/pdf');
-    res.setHeader('Content-Disposition', 'inline; filename="Twarit_Waikar_Resume.pdf"');
-    fs.createReadStream(resumePdf).pipe(res);
-  };
-
   const pathnameOf = (url?: string) => url?.split('?')[0];
 
   const middleware = (req: IncomingMessage, res: ServerResponse, next: () => void) => {
@@ -41,8 +17,10 @@ function resumePdfPlugin(): Plugin {
       res.end();
       return;
     }
-    if (pathname === '/resume.pdf') {
-      sendPdf(res);
+    if (pathname === '/resume.pdf' || pathname === '/resume.pdf/') {
+      res.statusCode = 302;
+      res.setHeader('Location', resumePdfUrl);
+      res.end();
       return;
     }
     next();
@@ -55,19 +33,6 @@ function resumePdfPlugin(): Plugin {
     },
     configurePreviewServer(server) {
       server.middlewares.use(middleware);
-    },
-    closeBundle() {
-      const dist = path.resolve(__dirname, 'dist');
-      if (!fs.existsSync(resumePdf) || !fs.existsSync(dist)) return;
-
-      const resumePath = path.join(dist, 'resume');
-      if (fs.existsSync(resumePath) && fs.statSync(resumePath).isFile()) {
-        fs.unlinkSync(resumePath);
-      }
-
-      fs.copyFileSync(resumePdf, path.join(dist, 'resume.pdf'));
-      fs.mkdirSync(resumePath, { recursive: true });
-      fs.writeFileSync(path.join(resumePath, 'index.html'), resumeRedirectHtml);
     },
   };
 }
