@@ -16,11 +16,17 @@ export interface SiteConfig {
   homeHighlights: string[];
 }
 
+export interface ProjectMedia {
+  src: string;
+  caption?: string;
+}
+
 export interface ProjectItem {
   id: string;
   name: string;
   title: string;
   version: string;
+  githubStars?: number;
   description: string;
   tags: string[];
   hasPreview?: boolean;
@@ -30,13 +36,13 @@ export interface ProjectItem {
   sourceLabel?: string;
   status: 'LIVE' | 'OFFLINE' | 'PRIVATE' | 'BUILD_FAIL';
   featured?: boolean;
+  featuredImage?: ProjectMedia;
   role?: string;
   stackLine?: string;
-  images?: string[];
+  images?: ProjectMedia[];
   links?: { label: string; url: string }[];
   article?: string;
   details?: {
-    architecture: string;
     throughput?: string;
     latency?: string;
     highlights: string[];

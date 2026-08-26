@@ -3,6 +3,7 @@ import type {
   EducationItem,
   ExperienceItem,
   ProjectItem,
+  ProjectMedia,
   SiteConfig,
   TechStackCategory,
 } from '../types';
@@ -207,10 +208,28 @@ export function parseLinks(data: Record<string, unknown>): { label: string; url:
     .filter((item): item is { label: string; url: string } => Boolean(item?.label && item.url));
 }
 
+export function parseMediaItem(item: string): ProjectMedia | undefined {
+  const trimmed = item.trim();
+  if (!trimmed) return undefined;
+  const split = trimmed.indexOf('|');
+  if (split === -1) return { src: trimmed };
+  const src = trimmed.slice(0, split).trim();
+  const caption = trimmed.slice(split + 1).trim();
+  if (!src) return undefined;
+  return caption ? { src, caption } : { src };
+}
+
+export function parseMediaList(data: Record<string, unknown>, key: string): ProjectMedia[] {
+  return strList(data, key)
+    .map(parseMediaItem)
+    .filter((item): item is ProjectMedia => Boolean(item));
+}
+
 export function asProject(data: Record<string, unknown>, body: string): ProjectItem {
   const { description, codeSnippet } = splitBodyAndCode(body);
   const highlights = strList(data, 'highlights');
-  const architecture = str(data, 'architecture');
+  const throughput = str(data, 'throughput');
+  const latency = str(data, 'latency');
   const status = str(data, 'status', 'LIVE').toUpperCase() as ProjectItem['status'];
   const paras = paragraphs(description);
 
@@ -229,16 +248,16 @@ export function asProject(data: Record<string, unknown>, body: string): ProjectI
     sourceLabel: str(data, 'source_label') || undefined,
     status: ['LIVE', 'OFFLINE', 'PRIVATE', 'BUILD_FAIL'].includes(status) ? status : 'LIVE',
     featured: bool(data, 'featured'),
+    featuredImage: parseMediaItem(str(data, 'featured_image')),
     role: str(data, 'role') || undefined,
     stackLine: str(data, 'stack_line') || undefined,
-    images: strList(data, 'images'),
+    images: parseMediaList(data, 'images'),
     links: parseLinks(data),
     details:
-      architecture || highlights.length || codeSnippet
+      highlights.length || codeSnippet || throughput || latency
         ? {
-            architecture,
-            throughput: str(data, 'throughput') || undefined,
-            latency: str(data, 'latency') || undefined,
+            throughput: throughput || undefined,
+            latency: latency || undefined,
             highlights,
             codeSnippet,
           }

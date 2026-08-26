@@ -1,18 +1,20 @@
 import React from 'react';
 import {
-  Box,
+  CircleDot,
   Cloud,
   Code2,
   Cog,
   Cpu,
+  Cuboid,
   FileCode,
-  Flag,
-  GitBranch,
-  GitMerge,
-  Layers,
+  FileDiff,
+  Flame,
+  GitCompareArrows,
+  Rocket,
   Search,
   Server,
   Sparkles,
+  SquareStack,
 } from 'lucide-react';
 
 export function ProjectIcon({
@@ -24,15 +26,19 @@ export function ProjectIcon({
 }) {
   switch (id) {
     case 'p4-fusion':
-      return <GitBranch className={`${className} text-orange-400`} />;
+      return <GitCompareArrows className={`${className} text-orange-400`} />;
     case 'rootex':
-      return <Box className={`${className} text-violet-400`} />;
+      return <Cuboid className={`${className} text-violet-400`} />;
     case 'godot-vcs':
-      return <GitMerge className={`${className} text-sky-400`} />;
-    case 'rubeus':
-      return <Layers className={`${className} text-amber-400`} />;
+      return <FileDiff className={`${className} text-sky-400`} />;
+    case 'molotov-madness':
+      return <Flame className={`${className} text-red-400`} />;
+    case 'outrun-chase':
+      return <Rocket className={`${className} text-fuchsia-400`} />;
     case 'g-for-golf':
-      return <Flag className={`${className} text-lime-400`} />;
+      return <CircleDot className={`${className} text-lime-400`} />;
+    case 'rubeus':
+      return <SquareStack className={`${className} text-amber-400`} />;
     default:
       return <FileCode className={`${className} text-blue-400`} />;
   }

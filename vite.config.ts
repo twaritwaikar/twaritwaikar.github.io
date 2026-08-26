@@ -4,6 +4,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import type { IncomingMessage, ServerResponse } from 'node:http';
 import { defineConfig, type Plugin } from 'vite';
+import { githubStarsPlugin } from './vite-plugin-github-stars';
 
 const resumePdf = path.resolve(__dirname, 'public/assets/Twarit_Waikar_Resume.pdf');
 
@@ -73,5 +74,5 @@ function resumePdfPlugin(): Plugin {
 
 export default defineConfig({
   base: '/',
-  plugins: [react(), tailwindcss(), resumePdfPlugin()],
+  plugins: [react(), tailwindcss(), resumePdfPlugin(), githubStarsPlugin(__dirname)],
 });

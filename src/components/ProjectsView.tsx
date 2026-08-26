@@ -1,6 +1,7 @@
 import React from 'react';
 import { PORTFOLIO_DATA } from '../data/portfolioData';
-import { ExternalLink, Lock, Maximize2, Wrench } from 'lucide-react';
+import { Star } from 'lucide-react';
+import { projectCardBackground } from '../media';
 import { MarkdownInline } from './MarkdownArticle';
 import { ProjectIcon } from './projectIcons';
 
@@ -14,7 +15,7 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
   const { projects } = PORTFOLIO_DATA;
 
   return (
-    <div id="projects_view_container" className="h-auto lg:h-full lg:min-h-0 flex flex-col gap-3 max-w-[1280px] mx-auto overflow-visible lg:overflow-hidden">
+    <div id="projects_view_container" className="h-auto lg:h-full lg:min-h-0 flex flex-col gap-3 w-full overflow-visible lg:overflow-hidden">
       <section id="projects_header_section" className="shrink-0">
         <div className="flex items-stretch gap-3">
           <span className="w-1.5 bg-white shrink-0" />
@@ -34,113 +35,60 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
 
       <section
         id="projects_grid"
-        className="grid grid-cols-1 lg:grid-cols-2 gap-4 min-h-0 lg:flex-1 lg:overflow-y-auto pr-1"
+        className="grid gap-3 md:gap-4 min-h-0 lg:flex-1 lg:overflow-y-auto lg:content-start pr-1 grid-cols-[repeat(auto-fill,minmax(min(100%,max(20rem,calc((100%-2rem)/3))),1fr))]"
       >
         {projects.map((project) => {
+          const background = projectCardBackground(
+            project.featuredImage?.src || project.images?.[0]?.src
+          );
+
           return (
             <div
               key={project.id}
               id={`project_card_${project.id}`}
               onClick={() => onOpenProjectModal(project.id)}
-              className="border border-[#2a2a2a] flex flex-col justify-between min-h-0 cursor-pointer transition-colors bg-[#141414] hover:border-[var(--accent)]"
+              className="group relative flex flex-col min-w-0 cursor-pointer border border-[#2a2a2a] bg-[#141414] transition-colors hover:border-[var(--accent)]"
             >
-              <div className="min-h-0 flex flex-col">
-                <div className="px-4 py-2.5 bg-[#111111] border-b border-[#2a2a2a] flex items-center justify-between font-mono text-xs text-neutral-300">
-                  <span className="font-bold tracking-wide flex items-center gap-2 min-w-0">
-                    <ProjectIcon id={project.id} />
-                    <span className="truncate">{project.name}</span>
-                  </span>
-                  <span className="text-neutral-500 font-medium shrink-0 ml-2">{project.version}</span>
-                </div>
-
-                <div className="p-4 sm:p-5 flex-1 min-h-0">
-                  <p className="font-sans text-sm text-neutral-400 leading-relaxed">
-                    <MarkdownInline markdown={project.description} />
-                  </p>
-
-                  <div className="flex flex-wrap gap-2 mt-4">
-                    {project.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-2 py-1 font-mono text-[10px] uppercase tracking-wider border border-[#333333] bg-[#1a1a1a] text-neutral-300"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
+              {background ? <CardBackground media={background} /> : null}
 
               <div
-                className="p-2 bg-[#111111] border-t border-[#2a2a2a] flex items-center gap-2 font-mono text-xs"
-                onClick={(event) => event.stopPropagation()}
+                className={`relative z-10 px-4 py-2.5 border-b border-[#2a2a2a] flex items-center justify-between font-mono text-xs text-neutral-300 shrink-0 ${
+                  background ? 'bg-[#111111]/95' : 'bg-[#111111]'
+                }`}
               >
-                <button
-                  id={`btn_source_${project.id}`}
-                  onClick={() => {
-                    if (project.sourceUrl) {
-                      window.open(project.sourceUrl, '_blank', 'noopener,noreferrer');
-                    }
-                  }}
-                  className="flex-1 py-1.5 px-2 border border-[#333333] hover:border-[var(--accent)] hover:text-[var(--accent)] bg-[#161616] text-neutral-300 flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
+                <span className="font-bold tracking-wide flex items-center gap-2 min-w-0">
+                  <ProjectIcon id={project.id} />
+                  <span className="truncate">{project.name}</span>
+                </span>
+                {project.githubStars != null && (
+                  <span className="text-neutral-400 font-medium shrink-0 ml-2 inline-flex items-center gap-1">
+                    <Star className="w-3 h-3 fill-current" />
+                    {project.githubStars.toLocaleString('en-US')}
+                  </span>
+                )}
+              </div>
+
+              <div className="relative z-10 p-4 sm:p-5 flex-1 flex flex-col min-h-[11rem]">
+                <p
+                  className={`font-sans text-sm leading-relaxed line-clamp-4 ${
+                    background
+                      ? 'text-neutral-100 [text-shadow:0_1px_3px_rgba(0,0,0,0.9)]'
+                      : 'text-neutral-400'
+                  }`}
                 >
-                  <span>&lt; &gt;</span>
-                  <span className="truncate">{project.sourceLabel || 'SOURCE'}</span>
-                </button>
+                  <MarkdownInline markdown={project.description} />
+                </p>
 
-                {project.status === 'LIVE' && (
-                  <button
-                    id={`btn_live_${project.id}`}
-                    onClick={() => {
-                      if (project.liveUrl) {
-                        window.open(project.liveUrl, '_blank', 'noopener,noreferrer');
-                      }
-                    }}
-                    className="flex-1 py-1.5 px-2 border border-[var(--accent)] text-[var(--accent)] hover:bg-[var(--accent)] hover:text-black bg-[#161616] flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
-                  >
-                    <ExternalLink className="w-3 h-3 shrink-0" />
-                    <span className="truncate">{project.liveLabel || 'LIVE'}</span>
-                  </button>
-                )}
-
-                {project.status === 'OFFLINE' && (
-                  <button
-                    id={`btn_offline_${project.id}`}
-                    className="flex-1 py-1.5 px-2 border border-neutral-700 text-neutral-400 bg-[#161616] flex items-center justify-center gap-1"
-                  >
-                    <Lock className="w-3 h-3" />
-                    <span>OFFLINE</span>
-                  </button>
-                )}
-
-                {project.status === 'PRIVATE' && (
-                  <button
-                    id={`btn_private_${project.id}`}
-                    className="flex-1 py-1.5 px-2 border border-neutral-700 text-neutral-400 bg-[#161616] flex items-center justify-center gap-1"
-                  >
-                    <Lock className="w-3 h-3" />
-                    <span>PRIVATE</span>
-                  </button>
-                )}
-
-                {project.status === 'BUILD_FAIL' && (
-                  <button
-                    id={`btn_buildfail_${project.id}`}
-                    className="flex-1 py-1.5 px-2 border border-amber-900/60 text-amber-500/80 bg-[#161616] flex items-center justify-center gap-1"
-                  >
-                    <Wrench className="w-3 h-3 text-amber-500" />
-                    <span>BUILD_FAIL</span>
-                  </button>
-                )}
-
-                <button
-                  id={`btn_more_${project.id}`}
-                  onClick={() => onOpenProjectModal(project.id)}
-                  title="More details"
-                  className="shrink-0 w-8 h-8 border border-[#333333] hover:border-[var(--accent)] hover:text-[var(--accent)] bg-[#161616] text-neutral-300 flex items-center justify-center transition-colors cursor-pointer"
-                >
-                  <Maximize2 className="w-3.5 h-3.5" />
-                </button>
+                <div className="flex flex-wrap gap-2 mt-auto pt-4 shrink-0">
+                  {project.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="px-2 py-1 font-mono text-[10px] uppercase tracking-wider border border-[#333333] bg-[#1a1a1a]/90 text-neutral-200"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
           );
@@ -149,3 +97,31 @@ export const ProjectsView: React.FC<ProjectsViewProps> = ({
     </div>
   );
 };
+
+function CardBackground({
+  media,
+}: {
+  media: { kind: 'image' | 'video'; src: string };
+}) {
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden>
+      {media.kind === 'video' ? (
+        <video
+          src={media.src}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 h-full w-full object-cover brightness-[0.4]"
+        />
+      ) : (
+        <img
+          src={media.src}
+          alt=""
+          className="absolute inset-0 h-full w-full object-cover brightness-[0.4]"
+        />
+      )}
+      <div className="absolute inset-0 bg-black/50 group-hover:bg-black/35 transition-colors" />
+    </div>
+  );
+}

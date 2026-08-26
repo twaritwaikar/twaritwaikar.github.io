@@ -3,7 +3,7 @@ handle: TWARIT_WAIKAR
 role: SENIOR_MTS
 headline: "Senior MTS @ Salesforce"
 title: "TWARIT WAIKAR"
-tagline: High-performance, highly available systems. Code search, AI developer experience, and AI context engineering.
+tagline: High-performance, highly available systems. Code search, AI developer experience, and AI context engineering during day time. Gamedev by night.
 location: HYDERABAD
 status: OPERATIONAL
 experience_years: "05"
@@ -17,7 +17,7 @@ terminal_boot:
   - "> Done. [Hyderabad]"
 ---
 
-Senior Member of Technical Staff at Salesforce in the AI Developer XP (ADX) organization. I work on high-performance and highly available systems, code search, AI Dev-XP, and AI context engineering.
+Senior Member of Technical Staff at Salesforce in the AI Developer XP (ADX) organization. I work on high-performance and highly available systems, code search, AI Dev-XP, and AI context engineering. Game developer by night.
 
 B.Tech in Computer Science and Engineering from Indian Institute of Technology Roorkee (2021).
 

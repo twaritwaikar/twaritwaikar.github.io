@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { PORTFOLIO_DATA } from '../data/portfolioData';
-import { X, Check, Copy, ExternalLink } from 'lucide-react';
-import { MarkdownArticle } from './MarkdownArticle';
+import { X, Check, Copy, ExternalLink, Star } from 'lucide-react';
+import { isGifSrc, isVideoSrc, youtubeEmbedId } from '../media';
+import { MarkdownArticle, MarkdownInline } from './MarkdownArticle';
+import { TweetEmbed, tweetIdFromUrl } from './TweetEmbed';
+import { ZoomableImage } from './ZoomableImage';
 
 interface ProjectDetailModalProps {
   projectId: string | null;
@@ -26,6 +29,18 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
       setTimeout(() => setCopied(false), 2000);
     }
   };
+
+  const allImages = project.images ?? [];
+  const featuredSrc = project.featuredImage?.src || allImages[0]?.src;
+  const featured = featuredSrc
+    ? {
+        src: featuredSrc,
+        caption:
+          project.featuredImage?.caption ||
+          allImages.find((item) => item.src === featuredSrc)?.caption,
+      }
+    : undefined;
+  const galleryItems = allImages.filter((item) => item.src !== featuredSrc);
 
   const popupLinks = (() => {
     const seen = new Set<string>();
@@ -55,19 +70,35 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="px-3 sm:px-4 py-3 bg-[#111] border-b border-[#262626] flex items-center justify-between text-xs select-none gap-2">
-          <div className="flex items-center gap-2 text-white font-bold tracking-wider min-w-0">
+        <div className="px-3 sm:px-4 py-3 bg-[#111] border-b border-[#262626] flex items-start justify-between text-xs select-none gap-2">
+          <div className="flex items-start gap-2 text-white font-bold tracking-wider min-w-0">
             <span className="text-[var(--accent)] shrink-0">■</span>
-            <span className="truncate">SPEC_INSPECTOR // {project.name}</span>
-            <span className="text-neutral-500 font-normal shrink-0">({project.version})</span>
+            <div className="min-w-0 flex flex-col">
+              <span className="truncate">
+                SPEC_INSPECTOR // {project.title || project.name}
+              </span>
+              {project.title && project.title !== project.name && (
+                <span className="truncate font-normal text-neutral-500 tracking-wide">
+                  {project.name}
+                </span>
+              )}
+            </div>
           </div>
 
-          <button
-            onClick={onClose}
-            className="p-1 border border-[#333] hover:border-red-500 hover:text-red-500 text-neutral-400 cursor-pointer"
-          >
-            <X className="w-4 h-4" />
-          </button>
+          <div className="flex items-center gap-2 shrink-0">
+            {project.githubStars != null && (
+              <span className="text-neutral-500 font-normal inline-flex items-center gap-1">
+                <Star className="w-3 h-3 fill-current" />
+                {project.githubStars.toLocaleString('en-US')}
+              </span>
+            )}
+            <button
+              onClick={onClose}
+              className="p-1 border border-[#333] hover:border-red-500 hover:text-red-500 text-neutral-400 cursor-pointer"
+            >
+              <X className="w-4 h-4" />
+            </button>
+          </div>
         </div>
 
         {popupLinks.length > 0 && (
@@ -88,66 +119,68 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
         )}
 
         {/* Modal Body */}
-        <div className="p-4 sm:p-6 overflow-y-auto space-y-5 text-xs">
-          {/* Overview */}
-          <div>
-            <div className="text-[11px] font-bold text-[var(--accent)] uppercase tracking-widest mb-1">
-              [ 01 // OVERVIEW ]
+        <div className="overflow-y-auto text-xs">
+          {featured && (
+            <div id="project_modal_featured" className="bg-black border-b border-[#262626]">
+              <ProjectImage
+                src={featured.src}
+                alt={featured.caption || project.title}
+                caption={featured.caption}
+                featured
+              />
             </div>
-            {project.article ? (
-              <MarkdownArticle markdown={project.article} />
-            ) : (
-              <p className="font-sans text-sm text-neutral-300 leading-relaxed">
-                {project.description}
-              </p>
-            )}
-          </div>
-
-          {project.images && project.images.length > 0 && (
-            <div className="space-y-3">
-              {project.images.map((src) => (
-                <img key={src} src={src} alt={project.title} className="w-full border border-[#262626]" />
-              ))}
+          )}
+          <div className="p-4 sm:p-6 space-y-5">
+          {(project.details?.throughput || project.details?.latency) && (
+            <div className="p-3 bg-[#141414] border border-[#262626] space-y-2">
+              {project.details.throughput && (
+                <div>
+                  <span className="text-neutral-500 font-bold">THROUGHPUT: </span>
+                  <span className="text-[var(--accent)]">{project.details.throughput}</span>
+                </div>
+              )}
+              {project.details.latency && (
+                <div>
+                  <span className="text-neutral-500 font-bold">LATENCY: </span>
+                  <span className="text-[var(--accent)]">{project.details.latency}</span>
+                </div>
+              )}
             </div>
           )}
 
-          {/* Architecture & Metrics */}
-          {project.details && (
+          {project.details?.highlights && project.details.highlights.length > 0 && (
+            <div>
+              <div className="text-[11px] font-bold text-neutral-400 mb-1.5 uppercase">
+                ENGINEERING_HIGHLIGHTS:
+              </div>
+              <ul className="space-y-1 font-sans text-xs text-neutral-300 list-disc list-inside">
+                {project.details.highlights.map((h, i) => (
+                  <li key={i}>
+                    <MarkdownInline markdown={h} />
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {project.article ? (
+            <MarkdownArticle markdown={project.article} />
+          ) : (
+            <p className="font-sans text-sm text-neutral-300 leading-relaxed">
+              {project.description}
+            </p>
+          )}
+
+          {galleryItems.length > 0 && (
             <div className="space-y-3">
-              <div className="text-[11px] font-bold text-[var(--accent)] uppercase tracking-widest">
-                [ 02 // SYSTEM_ARCHITECTURE & BENCHMARKS ]
-              </div>
-
-              <div className="p-3 bg-[#141414] border border-[#262626] space-y-2">
-                <div>
-                  <span className="text-neutral-500 font-bold">ARCHITECTURE: </span>
-                  <span className="text-neutral-200">{project.details.architecture}</span>
-                </div>
-                {project.details.throughput && (
-                  <div>
-                    <span className="text-neutral-500 font-bold">THROUGHPUT: </span>
-                    <span className="text-[var(--accent)]">{project.details.throughput}</span>
-                  </div>
-                )}
-                {project.details.latency && (
-                  <div>
-                    <span className="text-neutral-500 font-bold">LATENCY: </span>
-                    <span className="text-[var(--accent)]">{project.details.latency}</span>
-                  </div>
-                )}
-              </div>
-
-              {/* Key Highlights */}
-              <div className="pt-1">
-                <div className="text-[11px] font-bold text-neutral-400 mb-1.5 uppercase">
-                  ENGINEERING_HIGHLIGHTS:
-                </div>
-                <ul className="space-y-1 font-sans text-xs text-neutral-300 list-disc list-inside">
-                  {project.details.highlights.map((h, i) => (
-                    <li key={i}>{h}</li>
-                  ))}
-                </ul>
-              </div>
+              {galleryItems.map((item) => (
+                <ProjectImage
+                  key={item.src}
+                  src={item.src}
+                  alt={item.caption || project.title}
+                  caption={item.caption}
+                />
+              ))}
             </div>
           )}
 
@@ -156,7 +189,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
             <div className="space-y-2">
               <div className="flex items-center justify-between">
                 <div className="text-[11px] font-bold text-[var(--accent)] uppercase tracking-widest">
-                  [ 03 // CORE_IMPLEMENTATION_SNIPPET ]
+                  [ 01 // CORE_IMPLEMENTATION_SNIPPET ]
                 </div>
                 <button
                   onClick={handleCopy}
@@ -181,6 +214,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
               </pre>
             </div>
           )}
+          </div>
         </div>
 
         {/* Footer */}
@@ -203,3 +237,103 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
     </div>
   );
 };
+
+function isCompactLogo(src: string) {
+  return /\/rootex\.png$/i.test(src);
+}
+
+function ProjectImage({
+  src,
+  alt,
+  caption,
+  featured = false,
+}: {
+  src: string;
+  alt: string;
+  caption?: string;
+  featured?: boolean;
+}) {
+  const videoId = youtubeEmbedId(src);
+  let media: React.ReactNode;
+
+  if (videoId) {
+    media = (
+      <div className={featured ? undefined : 'border border-[#262626]'}>
+        <div className="relative w-full aspect-video bg-black">
+          <iframe
+            src={`https://www.youtube-nocookie.com/embed/${videoId}`}
+            title={alt}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+            className="absolute inset-0 h-full w-full border-0"
+          />
+        </div>
+      </div>
+    );
+  } else if (tweetIdFromUrl(src)) {
+    media = <TweetEmbed url={src} className={featured ? 'my-0 py-3' : 'my-0'} />;
+  } else if (isVideoSrc(src)) {
+    media = (
+      <div className={featured ? undefined : 'flex justify-center'}>
+        <video
+          src={src}
+          autoPlay
+          loop
+          muted
+          playsInline
+          controls
+          className={
+            featured
+              ? 'w-full max-h-72 sm:max-h-96 bg-black'
+              : 'max-h-64 sm:max-h-72 w-auto max-w-full border border-[#262626]'
+          }
+        />
+      </div>
+    );
+  } else if (isCompactLogo(src)) {
+    media = (
+      <div className={`flex justify-center ${featured ? 'py-4 px-4' : ''}`}>
+        <ZoomableImage
+          src={src}
+          alt={alt}
+          caption={caption}
+          className="h-28 w-auto border border-[#262626]"
+          wrapperClassName="inline-block"
+        />
+      </div>
+    );
+  } else {
+    media = (
+      <div className={featured ? undefined : 'flex justify-center'}>
+        <ZoomableImage
+          src={src}
+          alt={alt}
+          caption={caption}
+          className={
+            featured
+              ? isGifSrc(src)
+                ? 'w-full max-h-72 sm:max-h-96 object-contain'
+                : 'w-full max-h-56 sm:max-h-64 object-contain'
+              : 'max-h-64 sm:max-h-72 w-auto max-w-full object-contain border border-[#262626]'
+          }
+          wrapperClassName={featured ? undefined : 'inline-block max-w-full'}
+        />
+      </div>
+    );
+  }
+
+  return (
+    <figure>
+      {media}
+      {caption ? (
+        <figcaption
+          className={`px-3 py-2 text-center font-mono text-[11px] leading-relaxed text-neutral-400 ${
+            featured ? 'border-t border-[#262626] bg-[#111]' : 'pt-2'
+          }`}
+        >
+          {caption}
+        </figcaption>
+      ) : null}
+    </figure>
+  );
+}

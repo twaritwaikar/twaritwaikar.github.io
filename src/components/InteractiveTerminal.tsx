@@ -116,7 +116,7 @@ LOCATION: ${PORTFOLIO_DATA.profile.location}`,
           text: `## ${PORTFOLIO_DATA.profile.handle} — ${PORTFOLIO_DATA.profile.role}
 ${PORTFOLIO_DATA.profile.tagline}
 Experience: ${PORTFOLIO_DATA.profile.experienceYears} Yrs | Location: ${PORTFOLIO_DATA.profile.location}
-(Type 'resume' or click DEPLOY_RESUME to view complete document)`,
+(Type 'resume' or click OPEN_RESUME.PDF to view complete document)`,
           isOutput: true,
         });
       } else {

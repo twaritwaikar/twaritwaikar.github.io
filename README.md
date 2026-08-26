@@ -68,11 +68,12 @@ source: https://github.com/you/my-tool
 source_label: SOURCE
 live: https://example.com
 live_label: LIVE
+featured_image: /assets/my-tool.png|Hero screenshot
 images:
-  - /assets/my-tool.png
+  - /assets/my-tool.png|Hero screenshot
+  - /assets/my-tool-2.png|Debug view
 links:
   - Extra writeup|https://example.com/blog
-architecture: One-line architecture note
 highlights:
   - Highlight one
   - Highlight two
@@ -85,13 +86,15 @@ Short card description goes here.
 Longer story, lists, and `code` all work in the modal.
 
 ![Screenshot](/assets/my-tool.png)
+
+https://x.com/username/status/1234567890
 ```
 
 `status` may be `LIVE`, `OFFLINE`, `PRIVATE`, or `BUILD_FAIL`.
 
 Set `featured: true` on exactly one project to pin it on the home "latest deployment" card.
 
-Put screenshots in `public/assets/` and reference them as `/assets/filename.png`.
+Put screenshots in `public/assets/` and reference them as `/assets/filename.png`. Append `|Subtitle` to add a caption under the image in the popup (`/assets/shot.png|Level 2`). YouTube watch, share, or embed URLs in `images` or `featured_image` render as embeds in the project modal. Twitter/X status URLs work the same way. A tweet URL on its own line in the writeup (or `![Tweet](https://x.com/user/status/123)`) also becomes an embed. In the writeup, `![Subtitle](/assets/shot.png)` shows that subtitle under the image. `featured_image` is the media at the top of the popup; if omitted, the first `images` entry is used. Other `images` appear in the gallery below the writeup.
 
 An optional fenced code block at the **end** of the file becomes the snippet in the project modal:
 

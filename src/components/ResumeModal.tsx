@@ -39,7 +39,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({
         <div className="px-4 py-3 bg-[#111] border-b border-[#262626] flex items-center justify-between text-xs select-none">
           <div className="flex items-center gap-2 text-[var(--accent)] font-bold tracking-wider">
             <FileText className="w-4 h-4" />
-            <span>DEPLOY_RESUME.PDF // ARCHITECT_PROFILE</span>
+            <span>OPEN_RESUME.PDF // ARCHITECT_PROFILE</span>
           </div>
 
           <div className="flex items-center gap-3">

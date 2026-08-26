@@ -2,6 +2,7 @@ import siteRaw from '../../content/site.md?raw';
 import profileRaw from '../../content/profile.md?raw';
 import stackRaw from '../../content/stack.md?raw';
 import contactRaw from '../../content/contact.md?raw';
+import githubStars from 'virtual:github-stars';
 import {
   asContact,
   asEducation,
@@ -14,6 +15,7 @@ import {
   str,
   strList,
 } from './parseMarkdown';
+import { githubRepoFromUrl } from './githubRepo';
 import type { ProjectItem } from '../types';
 
 const experienceFiles = import.meta.glob('../../content/experience/*.md', {
@@ -36,9 +38,13 @@ const contactFile = parseMarkdownFile(contactRaw);
 const site = asSite(siteFile.data, siteFile.body);
 const profileMeta = profileFile.data;
 
-const projects = sortContentPaths(Object.keys(projectFiles)).map((path) =>
-  asProject(...toPair(projectFiles[path]))
-);
+const projects = sortContentPaths(Object.keys(projectFiles)).map((path) => {
+  const project = asProject(...toPair(projectFiles[path]));
+  const repo = githubRepoFromUrl(project.sourceUrl);
+  if (!repo) return project;
+  const stars = githubStars[repo];
+  return stars == null ? project : { ...project, githubStars: stars };
+});
 
 const experience = sortContentPaths(Object.keys(experienceFiles)).map((path) =>
   asExperience(...toPair(experienceFiles[path]))

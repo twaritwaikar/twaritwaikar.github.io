@@ -62,11 +62,11 @@ export const HomeView: React.FC<HomeViewProps> = ({
 
         <div id="hero_action_buttons" className="flex flex-wrap items-center gap-3 pt-1">
           <button
-            id="btn_deploy_resume"
+            id="btn_open_resume"
             onClick={onOpenResume}
             className="px-5 py-2.5 font-mono text-xs sm:text-sm font-semibold tracking-wider border border-[var(--accent)] text-[var(--accent)] hover:bg-[var(--accent)] hover:text-black transition-all flex items-center gap-2 cursor-pointer btn-brutalist"
           >
-            <span>DEPLOY_RESUME.PDF</span>
+            <span>OPEN_RESUME.PDF</span>
           </button>
 
           <button

@@ -11,16 +11,15 @@ source: https://github.com/sdslabs/Rubeus
 source_label: SOURCE
 live: https://blog.sdslabs.co/2018/12/making-a-game-engine-from-scratch
 live_label: BLOG
+featured_image: /assets/rubeus.png
 images:
   - /assets/rubeus.png
   - /assets/rubeus_render.png
 links:
-  - View code|https://github.com/sdslabs/Rubeus
-  - User guides|https://github.com/sdslabs/Rubeus/wiki
-  - API docs|https://blog.sdslabs.co/Rubeus-Docs/html/index.html
-  - v1.0 release blog|https://blog.sdslabs.co/2018/12/making-a-game-engine-from-scratch
-  - v2.0 release blog|https://blog.sdslabs.co/2019/10/announcing-rubeus-engine-2
-architecture: Cross-platform 2D engine on C++17, GLFW, and OpenGL 3.3 with sprites, collision, audio, and a beginner-friendly CLI workflow.
+  - USER MANUAL|https://github.com/sdslabs/Rubeus/wiki
+  - DOCS|https://blog.sdslabs.co/Rubeus-Docs/html/index.html
+  - RELEASE V1.0|https://blog.sdslabs.co/2018/12/making-a-game-engine-from-scratch
+  - RELEASE V2.0|https://blog.sdslabs.co/2019/10/announcing-rubeus-engine-2
 highlights:
   - Original author of the v1.0 release at SDSLabs
   - Colour and image textured 2D sprites
@@ -29,7 +28,7 @@ highlights:
 
 **Rubeus Engine** is a simple, cross-platform 2D game engine written in C++17 using OpenGL 3.3. The goal is a simple, fast API for turning game ideas into playable prototypes.
 
-I was the original author of the v1.0 release.
+I was mainly using it to learn how to make a cross-platform 2D engine on C++17, GLFW, and OpenGL 3.3 with sprites, collision, audio, and a beginner-friendly CLI workflow. This was my first time making a game engine.
 
 Rubeus uses [broCLI](https://github.com/sdslabs/broCLI), a Go CLI that scaffolds Rubeus projects. broCLI was later superseded by a project manager shipped with Rubeus v2.0.
 
