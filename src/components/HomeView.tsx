@@ -134,7 +134,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
                 {PORTFOLIO_DATA.site.homeFocusLabel}
               </div>
               <div className="mt-0.5 font-mono text-[10px] font-semibold tracking-widest uppercase text-black/50">
-                {PORTFOLIO_DATA.site.homeTiles.join(' Â· ')}
+                {PORTFOLIO_DATA.site.homeTiles.join(' \u00b7 ')}
               </div>
             </div>
             <div className="flex items-center gap-2 shrink-0">
