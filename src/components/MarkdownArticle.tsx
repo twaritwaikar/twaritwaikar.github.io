@@ -197,6 +197,11 @@ const articleComponents: Components = {
   li: ({ children }) => (
     <li className="pl-0.5 [&>p]:mb-1 [&>p:last-child]:mb-0">{children}</li>
   ),
+  blockquote: ({ children }) => (
+    <blockquote className="my-3 border-l-2 border-[var(--accent)] bg-[#141414] px-4 py-3 [&>p]:mb-2 [&>p:last-child]:mb-0">
+      {children}
+    </blockquote>
+  ),
 };
 
 const inlineComponents: Components = {

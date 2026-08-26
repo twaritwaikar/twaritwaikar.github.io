@@ -34,4 +34,6 @@ It became one of the most successful tools built at Salesforce for P4 migrations
 
 p4-fusion went on to be used internally for various conversion from Perforce to Git, not just at Salesforce but in [other corporations](https://github.com/salesforce/p4-fusion/issues?q=sort%3Aupdated-desc%20is%3Aissue%20state%3Aclosed) stuck in vendor lock-in with Helix Perforce.
 
-![Beyang Liu on p4-fusion bringing Sourcegraph to a massive Perforce codebase](https://x.com/beyang/status/1509205179639365634)
+> If you do work that requires converting between Perforce and Git, you should check out [p4-fusion](https://github.com/salesforce/p4-fusion). We were fortunate to work with [@TwaritW](https://x.com/TwaritW), who wrote this to address bottlenecks in git-p4 and bring [@Sourcegraph](https://x.com/sourcegraph) to a truly *massive* codebase.
+>
+> — [Beyang](https://x.com/beyang/status/1509205179639365634), March 30, 2022

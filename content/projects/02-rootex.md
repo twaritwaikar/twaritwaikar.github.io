@@ -70,18 +70,34 @@ This project went on to become my most locally popular project to the point that
 
 ## Devlogs
 
-![Effekseer particle effects running in Rootex after GameFromScratch covered the library](https://x.com/TwaritW/status/1371254261284139008)
+Thanks to [GameFromScratch](https://www.youtube.com/watch?v=e0ueoZaNTw0) covering Effekseer, we found the perfect solution for adding VFX in Rootex. Here's the Effekseer particle effects engine running in the editor.
 
-![Automatic LOD meshes, generated with meshoptimizer](https://x.com/TwaritW/status/1369729426036977664)
+![Effekseer particle effects running in Rootex](/assets/rootex_effekseer.mp4)
+
+Added automatic LOD meshes, generated with meshoptimizer. This should help with some of our performance issues.
+
+![Automatic LOD meshes](/assets/rootex_lod.mp4)
+
+Reversing time in the physics simulation.
 
 ![Reversing time in the physics simulation](/assets/rootex_time_reversal.mp4)
 
-![Lottie vector animations through RmlUi, exportable from After Effects](https://x.com/TwaritW/status/1321478443335233536)
+We added vector animations to Rootex — Lottie files which can be exported from After Effects, thanks to RmlUi.
 
-![Forward+ style static lighting — 1,000 lights at roughly the unlit framerate](https://x.com/TwaritW/status/1311971765501927425)
+![Lottie vector animations through RmlUi](/assets/rootex_lottie.mp4)
 
-![CPU-based particle systems](https://x.com/TwaritW/status/1244988087211442177)
+Just finished adding static lights with a simple algo akin to Forward+ rendering. This scene is rendering 1,000 static lights, with one mesh able to be affected by 10 lights at once. The framerate is about the same as unlit.
 
-![3D particles a day later](https://x.com/TwaritW/status/1245484671246323714)
+![Forward+ style static lighting](/assets/rootex_forward_plus.jpg)
 
-![First 3D mesh in Rootex: the Utah teapot](https://x.com/TwaritW/status/1214597795912380416)
+We added CPU based particle systems to our engine!
+
+![CPU-based particle systems](/assets/rootex_cpu_particles.mp4)
+
+3D particles made it in too :P
+
+![3D particles a day later](/assets/rootex_3d_particles.mp4)
+
+Hello teapot! I have been waiting for you for so long! <3
+
+![First 3D mesh in Rootex: the Utah teapot](/assets/rootex_teapot.png)
