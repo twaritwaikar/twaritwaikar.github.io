@@ -7,7 +7,7 @@ company: Salesforce
 location: HYDERABAD
 ---
 
-- Lead development for CodeSearch, an in-house code search tool replacing Sourcegraph and extended it for 25,000 MAUs.
+- Lead development for CodeSearch, an in-house code search tool replacing Sourcegraph and extended it for 28,000 MAUs.
 - Horizontally scalable Kubernetes architecture that provisions on demand for traffic, including large monorepos, without giving up speed.
 - SLA-based indexing, multiple code hosts, authorization, DX-tool integration, code ownership, MCP, and streaming APIs.
 - Experimented with knowledge graphs and related stores on AWS Neptune.
